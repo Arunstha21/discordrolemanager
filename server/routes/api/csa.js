@@ -24,8 +24,9 @@ csaRouter.get("/", async (req, res) => {
 
   try {
     const gesData = await getData(csaEventId);
+    const parsedGesData = JSON.parse(gesData);
     // Send the response
-    res.status(200).json({ gesData });
+    res.status(200).json({ parsedGesData });
   } catch (err) {
     console.error("Error while fetching data:", err);
     res.status(500).json({ error: "Error while fetching data" });

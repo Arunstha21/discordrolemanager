@@ -10,6 +10,7 @@ const csaRouter = require('./routes/api/csa');
 const registerCommands = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
 const { onJoin, email, verify, close, playerStatsInt } = require('./discord/commands');
+const Eris = require('eris');
 
 app.use(jsonParser);
 app.use(cors());
@@ -76,6 +77,7 @@ app.listen(3001, async () => {
     await connectDb();
 
     try {
+
         const client = await connectDiscord();
         
         if (client.isReady()) {
@@ -92,6 +94,7 @@ app.listen(3001, async () => {
         });
 
         client.on("interactionCreate", async (interaction) => {
+            console.log(interaction);
             if (!interaction.isCommand()) return;
 
             const commands = {
