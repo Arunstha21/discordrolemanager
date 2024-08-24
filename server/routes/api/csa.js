@@ -1,12 +1,15 @@
 const express = require('express');
 const csaRouter = express.Router();
-const pmslDB = process.env.PMSL_DBURL;
+const env = require('dotenv').config();
+const pmslDB = env.parsed.PMSL_DBURL;
 const {MongoClient, ObjectId} = require('mongodb');
 const client = new MongoClient(pmslDB);
 
-client.connect().then(() => {
+client.connect()
+.then(() => {
     console.log("Connected to database");
-}).catch(err => {
+})
+.catch(err => {
     console.error("Error connecting to database:", err);
 });
 
@@ -127,7 +130,6 @@ csaRouter.get('/event',async (req, res)=>{
 csaRouter.post("/overallResults", async (req, res) => {
     try {
       const matchIds = req.body.matchIds.map(id => new ObjectId(id));
-      const stageId = "6667e2253decc4facdc0d000";
       const teamStatsColl = client.db("briskFlowPubgM").collection("teamstats");
       const playerStatsColl = client.db("briskFlowPubgM").collection("playerstats");
       const matchNoColl = client.db("briskFlowPubgM").collection("matches");
