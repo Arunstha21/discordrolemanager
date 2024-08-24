@@ -23,7 +23,7 @@ csaRouter.get("/", async (req, res) => {
   const csaEventId = "66c41f2833aa084df2231abc";
 
   try {
-    const gesData = await getData(csaEventId, client, ObjectId);
+    const gesData = await getData(csaEventId);
     // Send the response
     res.status(200).json({ gesData });
   } catch (err) {
@@ -65,7 +65,7 @@ csaRouter.get("/event", async (req, res) => {
 csaRouter.post("/overallResults", async (req, res) => {
   try {
     const ids = req.body.matchIds;
-    const result = await overallResults(ids, client, ObjectId);
+    const result = await overallResults(ids);
     res.status(200).json({ result });
   } catch (err) {
     console.error("Error while fetching data:", err);

@@ -74,35 +74,34 @@ app.use('/api/csa', csaRouter);
 app.listen(3001, async () => {
     console.log('Server is running on port 3001');
     await connectDb();
-
-    const client = await connectDiscord();
-
-    client.on('ready', () => {
-        console.log('Bot is ready');
-    });
-
-    client.on('guildMemberAdd', async (member) => {
-        await onJoin(member);
-    });
-
-    client.on('interactionCreate', async (interaction) => {
-        if (!interaction.isCommand()) return;
-    
-        const commands = {
-            email: email,
-            verify: verify,
-            close: close,
-            playerstats: playerStatsInt
-        };
-    
-        const { commandName } = interaction;
-    
-        const commandFunction = commands[commandName];
-        if (commandFunction) {
-            await commandFunction(interaction);
-        }
-    });
 })
+const client = await connectDiscord();
+
+client.on('ready', () => {
+    console.log('Bot is ready');
+});
+
+client.on('guildMemberAdd', async (member) => {
+    await onJoin(member);
+});
+
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isCommand()) return;
+
+    const commands = {
+        email: email,
+        verify: verify,
+        close: close,
+        playerstats: playerStatsInt
+    };
+
+    const { commandName } = interaction;
+
+    const commandFunction = commands[commandName];
+    if (commandFunction) {
+        await commandFunction(interaction);
+    }
+});
 
 app.post('/api/registerCommands', async (req, res) => {
     const {guildId} = req.body;

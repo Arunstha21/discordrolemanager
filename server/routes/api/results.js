@@ -1,4 +1,11 @@
-async function overallResults(ids, client, ObjectId) {
+require("dotenv").config();
+const pmslDB = process.env.PMSL_DBURL;
+
+const { MongoClient, ObjectId } = require("mongodb");
+const client = new MongoClient(pmslDB);
+
+
+async function overallResults(ids) {
     const matchIds = ids.map((id) => new ObjectId(id));
     const teamStatsColl = client.db("briskFlowPubgM").collection("teamstats");
     const playerStatsColl = client.db("briskFlowPubgM").collection("playerstats");
@@ -249,8 +256,7 @@ async function overallResults(ids, client, ObjectId) {
     return result;
   }
 
-
-async function getData(csaEventId, client, ObjectId){
+async function getData(csaEventId){
 
     const event = await client
       .db("briskFlowPubgM")

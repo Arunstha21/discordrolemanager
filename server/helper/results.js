@@ -1,15 +1,10 @@
 const { getData, overallResults } = require("../routes/api/results");
 const logger = require("./logger");
-require("dotenv").config();
-const pmslDB = process.env.PMSL_DBURL;
-
-const { MongoClient, ObjectId } = require("mongodb");
-const client = new MongoClient(pmslDB);
 
 async function playerStats(stage) {
     try {
         const csaEventId = "66c41f2833aa084df2231abc";
-        const gesData = await getData(csaEventId, client, ObjectId);
+        const gesData = await getData(csaEventId);
         const {event, group, matchData } = gesData;
         const stages = event.stages;
 
@@ -34,7 +29,7 @@ async function playerStats(stage) {
             title = `${stageData.name} - Player Stats`;
             matchIds = stageData.matchIds;
         }
-        const overallData = await overallResults(matchIds, client, ObjectId)
+        const overallData = await overallResults(matchIds)
     
         overallData.title = title;
         return overallData;
