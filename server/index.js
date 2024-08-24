@@ -78,9 +78,14 @@ app.listen(3001, async () => {
     try {
         const client = await connectDiscord();
         
-        client.on("ready", () => {
-            console.log("Bot is ready");
-        });
+        if (client.isReady()) {
+            console.log("Bot is ready (triggered immediately after connection)");
+        } else {
+            // Set up event listeners
+            client.on("ready", () => {
+                console.log("Bot is ready (triggered by event listener)");
+            });
+        }
 
         client.on("guildMemberAdd", async (member) => {
             await onJoin(member);

@@ -236,7 +236,7 @@ async function playerStatsInt(interaction) {
       }
 
       const teamName = interaction.channel.name.replaceAll('-', ' ');
-      const teamPlayerStats = playerData.result.playerResult.filter((player) => player.teamName.toLowerCase() === teamName);
+      const teamPlayerStats = playerData?.playerResult?.filter((player) => player.teamName.toLowerCase() === teamName);
 
       if (teamPlayerStats.length === 0) {
           await interaction.editReply("No player stats found");

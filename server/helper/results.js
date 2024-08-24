@@ -5,7 +5,8 @@ async function playerStats(stage) {
     try {
         const csaEventId = "66c41f2833aa084df2231abc";
         const gesData = await getData(csaEventId);
-        const {event, group, matchData } = gesData;
+        const parsedGesData = JSON.parse(gesData);
+        const {event, group, matchData } = parsedGesData;
         const stages = event.stages;
 
         const stageWithMatchIds = stages.map(s => {
@@ -16,9 +17,10 @@ async function playerStats(stage) {
             const matchIds = matchData
                 .filter(m => m.groupId.some(gid => stageGroupIds.includes(gid)))
                 .map(m => m.id);
-        
+
             return { id: s._id, name: s.name, matchIds  };
         });
+
         let matchIds = [];
         let title;
         if (!stage) {
@@ -29,8 +31,8 @@ async function playerStats(stage) {
             title = `${stageData.name} - Player Stats`;
             matchIds = stageData.matchIds;
         }
-        const overallData = await overallResults(matchIds)
-    
+
+        const overallData = await overallResults(matchIds);
         overallData.title = title;
         return overallData;
     } catch (error) {

@@ -4,6 +4,17 @@ const pmslDB = process.env.PMSL_DBURL;
 const { MongoClient, ObjectId } = require("mongodb");
 const client = new MongoClient(pmslDB);
 
+const toHHMMSS = (secs) => {
+    const sec_num = parseInt(secs, 10);
+    const hours = Math.floor(sec_num / 3600);
+    const minutes = Math.floor(sec_num / 60) % 60;
+    const seconds = sec_num % 60;
+  
+    return [hours, minutes, seconds]
+      .map((v) => (v < 10 ? "0" + v : v))
+      .filter((v, i) => v !== "00" || i > 0)
+      .join(":");
+  };
 
 async function overallResults(ids) {
     const matchIds = ids.map((id) => new ObjectId(id));
@@ -295,11 +306,16 @@ async function getData(csaEventId){
       .toArray();
 
     // Prepare match data
-    const matchData = schedules.map((schedule) => ({
-      id: schedule.match,
-      groupId: schedule.groups,
-      matchNo: `${schedule.matchDetails.number}`,
-    }));
+    const matchData = schedules
+    .map((schedule) => {
+        if (!schedule.match) return null;
+        return {
+            id: schedule.match,
+            groupId: schedule.groups,
+            matchNo: `${schedule.matchDetails.number}`,
+        };
+    })
+    .filter((data) => data !== null);
 
     // Create a map of match types
     const matchTypeMap = schedules.reduce((acc, schedule) => {
@@ -322,8 +338,8 @@ async function getData(csaEventId){
       group: groupDataWithoutSlots,
       matchData,
     };
-
-    return gesData;
+    const data = JSON.stringify(gesData);
+    return data;
 }
 
 module.exports = { overallResults, getData };
