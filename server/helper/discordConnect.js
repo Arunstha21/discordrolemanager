@@ -7,11 +7,17 @@ const Token = process.env.DISCORD_TOKEN;
 async function connectDiscord(){
     if (client.isReady()) {
         logger.info('Client already connected');
+        client.once('ready', () => {
+            console.log('Bot connected and ready (inside discordConnect.js)');
+        });
         return client;
     }
     try {
         await client.login(Token);
         logger.info('Connected to Discord');
+        client.once('ready', () => {
+            console.log('Bot connected and ready (inside discordConnect.js)');
+        });
         return client;
     } catch (error) {
         logger.error('Failed to connect to Discord', error);
