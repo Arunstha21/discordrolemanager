@@ -75,7 +75,7 @@ app.listen(3001, async () => {
     console.log('Server is running on port 3001');
     await connectDb();
 })
-const client = await connectDiscord();
+const client = connectDiscord();
 
 client.on('ready', () => {
     console.log('Bot is ready');
