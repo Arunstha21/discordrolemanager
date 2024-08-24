@@ -10,7 +10,19 @@ const csaRouter = require('./routes/api/csa');
 const registerCommands = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
 const { onJoin, email, verify, close, playerStatsInt } = require('./discord/commands');
-const Eris = require('eris');
+const { Client, GatewayIntentBits } = require("discord.js");
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+    ],
+});
+const logger = require("./helper/logger");
+require("dotenv").config();
+
+const Token = process.env.DISCORD_TOKEN;
 
 app.use(jsonParser);
 app.use(cors());
@@ -77,17 +89,10 @@ app.listen(3001, async () => {
     await connectDb();
 
     try {
-
-        const client = await connectDiscord();
-        
-        if (client.isReady()) {
-            console.log("Bot is ready (triggered immediately after connection)");
-        } else {
-            // Set up event listeners
-            client.on("ready", () => {
-                console.log("Bot is ready (triggered by event listener)");
-            });
-        }
+    
+        client.on("ready", () => {
+            console.log("Bot is ready!!");
+        });
 
         client.on("guildMemberAdd", async (member) => {
             await onJoin(member);
@@ -110,8 +115,10 @@ app.listen(3001, async () => {
                 await commandFunction(interaction);
             }
         });
+
+        await client.login(Token);
     } catch (error) {
-        console.error("Failed to initialize Discord client", error);
+        logger.error("Failed to initialize Discord client", error);
     }
 })
 
