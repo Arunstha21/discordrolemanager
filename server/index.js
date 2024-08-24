@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
 const createServerWithTemplate = require('./discord/createServer');
-const {deletServer, provideRole, listServer, createServer, listServerData, createChannels} = require('./discord/discord');
+const {deletServer, provideRole, listServer, createServer, listServerData, createChannels, sendResult} = require('./discord/discord');
 const jsonParser = express.json();
 const cors = require('cors');
 const connectDiscord = require('./helper/discordConnect');
 const router = require('./routes/api/members');
+const csaRouter = require('./routes/api/csa');
 const registerCommands = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
 const { onJoin, email, verify, close, playerStatsInt } = require('./discord/commands');
@@ -68,7 +69,7 @@ app.post('/api/createChannels', async (req, res) => {
 });
 
 app.use('/api/members', router);
-
+app.use('/api/csa', csaRouter);
 
 app.listen(3001, async () => {
     console.log('Server is running on port 3001');
@@ -86,26 +87,21 @@ app.listen(3001, async () => {
 
     client.on('interactionCreate', async (interaction) => {
         if (!interaction.isCommand()) return;
-
+    
+        const commands = {
+            email: email,
+            verify: verify,
+            close: close,
+            playerstats: playerStatsInt
+        };
+    
         const { commandName } = interaction;
-
-        if (commandName === 'email') {
-            await email(interaction);
+    
+        const commandFunction = commands[commandName];
+        if (commandFunction) {
+            await commandFunction(interaction);
         }
-
-        if (commandName === 'verify') {
-            await verify(interaction);
-        }
-
-        if(commandName === 'close'){
-            await close(interaction);
-        }
-
-        if(commandName === 'playerstats'){
-            await playerStatsInt(interaction);
-        }
-    }
-    );
+    });
 })
 
 app.post('/api/registerCommands', async (req, res) => {
@@ -118,4 +114,20 @@ app.post('/api/registerCommands', async (req, res) => {
         
     }
 })
+
+app.post('/api/sendResult', async (req, res) => {
+    const { tableData, headers, message, isOverall } = req.body;
+    if (tableData.length === 0) {
+        res.status(400).json({ error: 'No data to send' });
+        return;
+    }
+    
+    try {
+        await sendResult(tableData, headers, message, isOverall);
+        res.status(200).json({ message: 'Result sent' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+)
 

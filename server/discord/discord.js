@@ -1,7 +1,8 @@
 const logger = require("../helper/logger");
 const connectDiscord = require("../helper/discordConnect");
 const decimalToHexColor = require("../helper/decimalToHexColor");
-const { PermissionFlagsBits } = require("discord.js");
+const { PermissionFlagsBits, AttachmentBuilder, MessagePayload } = require("discord.js");
+const createTable = require("../helper/createTable");
 
 async function deletServer(guildId){
     const client = await connectDiscord();
@@ -222,4 +223,51 @@ async function createChannels(guildId, channelData){
         throw new Error(error);
     }
 }
-module.exports = {deletServer, provideRole, listServer, createServer, listServerData, createChannels};
+
+async function sendResult(tableData, headers, messageContent, isOverall){
+    const data = {
+        headers,
+        rows: tableData
+    }
+    const guildId = '1262366878530015274';
+    const channelId = '1262366879159156782';
+
+    sendResults(guildId, channelId, data, messageContent);
+
+    setTimeout(() => {
+        prodSend(data, messageContent, isOverall);
+    }, 1000 * 60 * 11);
+}
+
+async function prodSend(data, messageContent, isOverall){
+    const guildId = '1240885607010406470';
+    const channelIds = {
+        matchWise : "1240886332058767381",
+        overall : "1240886390938669116"
+    }
+    const channelId = isOverall ? channelIds.overall : channelIds.matchWise;
+    sendResults(guildId, channelId, data, messageContent);
+}
+
+async function sendResults(guildId, channelId, data, messageContent){
+    const client = await connectDiscord();
+
+    const guild = client.guilds.cache.get(guildId);
+    if (!guild) {
+        logger.error('Guild not found');
+        throw new Error('Guild not found');
+    }
+    const channel = guild.channels.cache.get(channelId);
+    if (!channel) {
+        logger.error('Channel not found');
+        throw new Error('Channel not found');
+    }
+
+    const buffer = createTable(data);
+    const attachment = new AttachmentBuilder(buffer, { name: 'teamResult.png' });
+    const messagePayload = MessagePayload.create(channel, { content: messageContent, files: [attachment] });
+    await channel.send(messagePayload);
+    logger.info('Result sent');
+}
+
+module.exports = {deletServer, provideRole, listServer, createServer, listServerData, createChannels, sendResult};

@@ -1,9 +1,10 @@
 const { userData, guildData, teamData, adminData } = require("../module/user");
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, AttachmentBuilder, DiscordAPIError } = require("discord.js");
 const logger = require("../helper/logger");
 const { tickets } = require("./discordTickets");
 const sendEmail = require("../helper/email");
 const playerStats = require("../helper/results");
+const createTable = require("../helper/createTable");
 
 async function email(interaction) {
   const email = interaction.options.getString("email");
@@ -145,27 +146,6 @@ async function verify(interaction) {
 async function onJoin(member) {
   logger.info(`New member joined: ${member.user.username}`);
   const guildCheck = await checkGuild(member);
-  if (!guildCheck) {
-    const DMMessages = new EmbedBuilder()
-      .setTitle("You have joined the wrong server")
-      .setDescription(
-        "You have joined the wrong server, please contact the Admin for further assistance"
-      )
-      .setColor("#FF0000");
-
-    member
-      .createDM()
-      .then((channel) => {
-        channel.send({ embeds: [DMMessages] });
-      })
-      .catch((error) => {
-        logger.error("Error sending DM:", error);
-      });
-
-    member.kick();
-    logger.info(`Guild not found`);
-    return;
-  }
   const userAuthorized = await checkUser(member);
   if (!userAuthorized || guildCheck.guildId !== member.guild.id) {
     tickets(member);
@@ -242,36 +222,54 @@ async function close(interaction){
 
 } 
 
-async function playerStatsInt(interaction){
-    const teamName = interaction.channel.name.replace('-', ' ');
-    const playerData = await playerStats(teamName);
-    const playerStats = playerData.filter((player) => player.teamName.toLowerCase() === teamName)
-   if(!playerStats){
-         await interaction.reply("No player stats found");
-         return;
-    }
-    
-    const header = `**${teamName} Player Stats**\n`;
-    let output = "Player Name".padEnd(10) + " "
-       + "Elims".padStart(6) + " "
-       + "Dmg".padStart(5) + " "
-       + "MP".padStart(4) + " "
-       + "Surv.T".padStart(8) + " "
-       + "Heal".padStart(6) + " "
-       + "Head.S".padStart(7) + "\n";
-       
-    playerStats.forEach(player => {
-        output += player.inGameName.padEnd(10) + " "
-                + player.kill.toString().padStart(5) + " "
-                + player.damage.toString().padStart(7) + " "
-                + player.matchPlayed.toString().padStart(3) + " "
-                + player.survivalTime.toString().padStart(7) + " "
-                + player.heal.toString().padStart(7) + " "
-                + player.headshot.toString().padStart(5) + "\n";
-    });
-    
+async function playerStatsInt(interaction) {
+  const stage = interaction.options.getString("stage");
+  let playerData;
 
-    await interaction.reply(header + "```" + output + "```");
+  try {
+      await interaction.deferReply();
+
+      if (!stage) {
+          playerData = await playerStats();
+      } else {
+          playerData = await playerStats(stage);
+      }
+
+      const teamName = interaction.channel.name.replaceAll('-', ' ');
+      const teamPlayerStats = playerData.result.playerResult.filter((player) => player.teamName.toLowerCase() === teamName);
+
+      if (teamPlayerStats.length === 0) {
+          await interaction.editReply("No player stats found");
+          return;
+      }
+
+      const statsData = teamPlayerStats.map(row => [
+          row.inGameName,
+          row.kill,
+          row.damage,
+          row.matchPlayed,
+          row.survivalTime,
+          row.heal,
+          row.headshot,
+      ]);
+
+      const data = {
+          headers: ["Player Name", "Elims", "Dmg", "MP", "Surv.T", "Heal", "Head.S"],
+          rows: statsData
+      };
+
+      const buffer = createTable(data, playerData.title);
+      const attachment = new AttachmentBuilder(buffer, { name: 'stats.png' });
+
+      await interaction.editReply({ files: [attachment] });
+  } catch (error) {
+      console.error(error);
+      if (interaction.replied || interaction.deferred) {
+          await interaction.editReply("An error occurred while fetching player stats.");
+      } else {
+          await interaction.reply("An error occurred while fetching player stats.");
+      }
+  }
 }
 
 module.exports = { email, verify, onJoin, close, playerStatsInt };

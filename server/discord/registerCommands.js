@@ -3,30 +3,31 @@ const logger = require('../helper/logger');
 const env = require('dotenv').config();
 
 const commands = [
-    {
-        name: 'email',
-        description: 'Takes an email input and sends a verification code to that email',
-        options: [
-            {
-                name: 'email',
-                description: 'Email to send the verification code',
-                required: true,
-                type: ApplicationCommandOptionType.String,
-            },
-        ],
-    },
-    {
-        name: 'verify',
-        description: 'Takes an otp input and verifies the user',
-        options: [
-            {
-                name: 'otp',
-                description: 'OTP sent to the email',
-                required: true,
-                type: ApplicationCommandOptionType.Number,
-            },
-        ],
-    },
+
+    // {
+    //     name: 'email',
+    //     description: 'Takes an email input and sends a verification code to that email',
+    //     options: [
+    //         {
+    //             name: 'email',
+    //             description: 'Email to send the verification code',
+    //             required: true,
+    //             type: ApplicationCommandOptionType.String,
+    //         },
+    //     ],
+    // },
+    // {
+    //     name: 'verify',
+    //     description: 'Takes an otp input and verifies the user',
+    //     options: [
+    //         {
+    //             name: 'otp',
+    //             description: 'OTP sent to the email',
+    //             required: true,
+    //             type: ApplicationCommandOptionType.Number,
+    //         },
+    //     ],
+    // },
     {
         name: 'close',
         description: 'Closes the ticket channel and deletes it, by the admins',
@@ -34,6 +35,20 @@ const commands = [
     {
         name: 'playerstats',
         description: 'Get the stats of the players',
+        options: [
+            {
+                name: 'stage',
+                description: 'Select stage to get the stage stats',
+                choices: [
+                    {
+                        name: 'League Stage - Week 1',
+                        value: '66c41f2833aa084df2231abe',
+                    }
+                ],
+                type: ApplicationCommandOptionType.String,
+
+            }
+        ],
     }
 ];
 

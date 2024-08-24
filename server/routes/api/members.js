@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { teamData, userData, guildData } = require("../../module/user");
+const { teamData, userData, guildData, adminData } = require("../../module/user");
 const logger = require("../../helper/logger");
 
 router.post('/admin/import', async (req, res) => {
@@ -9,7 +9,7 @@ router.post('/admin/import', async (req, res) => {
         try {
             const guild = await findOrCreateGuild(data.guildId, data.guildName);
 
-            const user = new userData({
+            const user = new adminData({
                 discordTag: data.discordTag,
                 emailId: data.emailId,
                 role: ["Admin"],
