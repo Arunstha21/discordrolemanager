@@ -1,6 +1,3 @@
-const {google} = require('googleapis');
-const SCOPE = ['https://www.googleapis.com/auth/gmail.send'];
-const {GoogleAuth} = require('google-auth-library');
 const logger = require('./logger');
 const credentials = require('../credentials.json');
 

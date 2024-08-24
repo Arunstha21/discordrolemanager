@@ -1,9 +1,8 @@
 const {Client, GatewayIntentBits} = require("discord.js");
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent,  ] });
-const env = require('dotenv').config();
 const logger = require("./logger");
 
-const Token = env.parsed.DISCORD_TOKEN;
+const Token = process.env.DISCORD_TOKEN;
 async function connectDiscord(){
     if (client.isReady()) {
         logger.info('Client already connected');
