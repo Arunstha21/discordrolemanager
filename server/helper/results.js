@@ -1,9 +1,15 @@
+const { getData, overallResults } = require("../routes/api/results");
 const logger = require("./logger");
+require("dotenv").config();
+const pmslDB = process.env.PMSL_DBURL;
+
+const { MongoClient, ObjectId } = require("mongodb");
+const client = new MongoClient(pmslDB);
 
 async function playerStats(stage) {
     try {
-        const csa = await fetch('http://localhost:3004/api/csa');
-        const {gesData} = await csa.json();
+        const csaEventId = "66c41f2833aa084df2231abc";
+        const gesData = await getData(csaEventId, client, ObjectId);
         const {event, group, matchData } = gesData;
         const stages = event.stages;
 
@@ -28,18 +34,10 @@ async function playerStats(stage) {
             title = `${stageData.name} - Player Stats`;
             matchIds = stageData.matchIds;
         }
-        
-        const response = await fetch(`http://localhost:3004/api/overallResults`,{
-            method:'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({matchIds})
-        })
-
-        if(response.ok){
-            const data = await response.json();
-            data.title = title;
-            return data;
-        }
+        const overallData = await overallResults(matchIds, client, ObjectId)
+    
+        overallData.title = title;
+        return overallData;
     } catch (error) {
         logger.error("Error fetching player stats", error);
     }
