@@ -2,7 +2,7 @@ const express = require('express');
 const csaRouter = express.Router();
 const pmslDB = process.env.PMSL_DBURL;
 const {MongoClient, ObjectId} = require('mongodb');
-const client = new MongoClient(pmslDB, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(pmslDB);
 
 client.connect().then(() => {
     console.log("Connected to database");
