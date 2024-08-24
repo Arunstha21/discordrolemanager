@@ -2,7 +2,13 @@ const express = require('express');
 const csaRouter = express.Router();
 const pmslDB = process.env.PMSL_DBURL;
 const {MongoClient, ObjectId} = require('mongodb');
-const client = new MongoClient(pmslDB);
+const client = new MongoClient(pmslDB, { useNewUrlParser: true, useUnifiedTopology: true });
+
+client.connect().then(() => {
+    console.log("Connected to database");
+}).catch(err => {
+    console.error("Error connecting to database:", err);
+});
 
 const toHHMMSS = (secs) => {
     const sec_num = parseInt(secs, 10)
