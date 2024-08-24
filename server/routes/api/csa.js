@@ -2,7 +2,7 @@ const express = require('express');
 const csaRouter = express.Router();
 require('dotenv').config();
 const pmslDB = process.env.PMSL_DBURL;
-console.log(pmslDB);
+
 const {MongoClient, ObjectId} = require('mongodb');
 const client = new MongoClient(pmslDB);
 
