@@ -43,6 +43,10 @@ const commands = [
                     {
                         name: 'League Stage - Week 1',
                         value: '66c41f2833aa084df2231abe',
+                    },
+                    {
+                        name: 'League Stage - Week 2',
+                        value: '66ced75b9591ba738879ba2d',
                     }
                 ],
                 type: ApplicationCommandOptionType.String,
