@@ -53,6 +53,14 @@ const commands = [
 
             }
         ],
+    },
+    {
+        name: 'gunslingers',
+        description: 'Get the top 5 gunslingers',
+    },
+    {
+        name: 'grenademaster',
+        description: 'Get the top 5 Grenade Master',
     }
 ];
 

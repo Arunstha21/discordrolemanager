@@ -9,7 +9,7 @@ const router = require('./routes/api/members');
 const csaRouter = require('./routes/api/csa');
 const registerCommands = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
-const { onJoin, email, verify, close, playerStatsInt } = require('./discord/commands');
+const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats } = require('./discord/commands');
 const { Client, GatewayIntentBits } = require("discord.js");
 const client = new Client({
     intents: [
@@ -106,6 +106,8 @@ app.listen(3001, async () => {
                 verify: verify,
                 close: close,
                 playerstats: playerStatsInt,
+                gunslingers: gunslingerStats,
+                grenademaster: grenadeMasterStats
             };
 
             const { commandName } = interaction;

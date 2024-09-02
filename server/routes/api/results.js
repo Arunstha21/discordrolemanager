@@ -70,6 +70,8 @@ async function overallResults(ids) {
               assist: 1,
               heal: 1,
               headshot: 1,
+              knockout: 1,
+              grenadeKill: 1,
             },
           }
         )
@@ -116,6 +118,8 @@ async function overallResults(ids) {
           heal: 0,
           headshot: 0,
           matchPlayed: 0,
+          knockout: 0,
+          grenadeKill: 0,
         };
       }
   
@@ -126,6 +130,9 @@ async function overallResults(ids) {
       playerStatsMap[playerId].assist += data.assist;
       playerStatsMap[playerId].heal += data.heal;
       playerStatsMap[playerId].headshot += data.headshot;
+      playerStatsMap[playerId].knockout += data.knockout;
+      playerStatsMap[playerId].grenadeKill += data.grenadeKill;
+
       totalSurvivalTime += data.survivalTime;
       totalDamage += data.damage;
       totalKills += data.kill;
@@ -204,6 +211,11 @@ async function overallResults(ids) {
         playerStatsMap[playerId].survivalTime /
         playerStatsMap[playerId].matchPlayed;
       const avgSurvTime = toHHMMSS(survTime);
+
+      const gunslinger = playerStatsMap[playerId].kill + playerStatsMap[playerId].damage + playerStatsMap[playerId].headshot;
+      const grenadeMaster = playerStatsMap[playerId].knockout + playerStatsMap[playerId].grenadeKill;
+      const slingerNumber = gunslinger/playerStatsMap[playerId].matchPlayed;
+
   
       playerResult.push({
         teamName: teamName,
@@ -217,7 +229,11 @@ async function overallResults(ids) {
         assist: playerStatsMap[playerId].assist,
         heal: playerStatsMap[playerId].heal,
         headshot: playerStatsMap[playerId].headshot,
+        knockout: playerStatsMap[playerId].knockout,
+        grenadeKill: playerStatsMap[playerId].grenadeKill,
         mvp: MVP,
+        slingerNumber: slingerNumber.toFixed(3),
+        grenadeMaster: grenadeMaster,
       });
     }
   

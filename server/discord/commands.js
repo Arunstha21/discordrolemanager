@@ -3,7 +3,7 @@ const { EmbedBuilder, AttachmentBuilder, DiscordAPIError } = require("discord.js
 const logger = require("../helper/logger");
 const { tickets } = require("./discordTickets");
 const sendEmail = require("../helper/email");
-const playerStats = require("../helper/results");
+const {playerStats, gunslingers, grenadeMaster} = require("../helper/results");
 const createTable = require("../helper/createTable");
 
 async function email(interaction) {
@@ -272,4 +272,69 @@ async function playerStatsInt(interaction) {
   }
 }
 
-module.exports = { email, verify, onJoin, close, playerStatsInt };
+async function gunslingerStats(interaction) {
+  try {
+      await interaction.deferReply();
+      const playerData = await gunslingers();
+
+      const statsData = playerData.map(row => [
+          row.inGameName,
+          row.kill,
+          row.damage,
+          row.matchPlayed,
+          row.headshot,
+          row.slingerNumber
+      ]);
+
+      const data = {
+          headers: ["Player Name", "Elims", "Dmg", "MP", "Head.S", "GS"],
+          rows: statsData
+      };
+
+      const buffer = createTable(data, playerData.title);
+      const attachment = new AttachmentBuilder(buffer, { name: 'gunslinger.png' });
+
+      await interaction.editReply({ files: [attachment] });
+  } catch (error) {
+      console.error(error);
+      if (interaction.replied || interaction.deferred) {
+          await interaction.editReply("An error occurred while fetching gunslinger stats.");
+      } else {
+          await interaction.reply("An error occurred while fetching gunslinger stats.");
+      }
+  }
+}
+
+async function grenadeMasterStats(interaction) {
+  try {
+      await interaction.deferReply();
+      const playerData = await grenadeMaster();
+
+      const statsData = playerData.map(row => [
+          row.inGameName,
+          row.kill,
+          row.grenadeKill,
+          row.matchPlayed,
+          row.knockout,
+      ]);
+
+      const data = {
+          headers: ["Player Name", "Elims", "Grenade.E", "MP", "knockout"],
+          rows: statsData
+      };
+
+      const buffer = createTable(data, playerData.title);
+      const attachment = new AttachmentBuilder(buffer, { name: 'grenadeMaster.png' });
+
+      await interaction.editReply({ files: [attachment] });
+  } catch (error) {
+      console.error(error);
+      if (interaction.replied || interaction.deferred) {
+          await interaction.editReply("An error occurred while fetching Grenade Master stats.");
+      } else {
+          await interaction.reply("An error occurred while fetching Grenade Master stats.");
+      }
+  }
+}
+
+module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats };

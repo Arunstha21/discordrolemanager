@@ -266,6 +266,8 @@ csaRouter.post("/topTenMvps", async (req, res) => {
           heal: 0,
           headshot: 0,
           matchPlayed: 0,
+          knockout: 0,
+          grenadeKill: 0,
         };
       }
       playerStatsMap[playerId].matchPlayed++;
@@ -275,6 +277,9 @@ csaRouter.post("/topTenMvps", async (req, res) => {
       playerStatsMap[playerId].assist += data.assist;
       playerStatsMap[playerId].heal += data.heal;
       playerStatsMap[playerId].headshot += data.headshot;
+      playerStatsMap[playerId].knockout += data.knockout;
+      playerStatsMap[playerId].grenadeKill += data.grenadeKill;
+
       totalSurvivalTime += data.survivalTime;
       totalDamage += data.damage;
       totalKills += data.kill;
@@ -307,8 +312,7 @@ csaRouter.post("/topTenMvps", async (req, res) => {
       const ign = playerDoc.ign;
       const uId = playerDoc.uId;
 
-      const playerSurvivalTimeRatio =
-        playerStatsMap[playerId].survivalTime / totalSurvivalTime;
+      const playerSurvivalTimeRatio = playerStatsMap[playerId].survivalTime / totalSurvivalTime;
       const playerDamageRatio = playerStatsMap[playerId].damage / totalDamage;
       const playerKillRatio = playerStatsMap[playerId].kill / totalKills;
 
@@ -318,6 +322,7 @@ csaRouter.post("/topTenMvps", async (req, res) => {
           playerKillRatio * 0.2) *
         100
       ).toFixed(3);
+
       const survTime =
         playerStatsMap[playerId].survivalTime /
         playerStatsMap[playerId].matchPlayed;
@@ -417,6 +422,33 @@ csaRouter.get("/gesData", async (req, res) => {
     res.status(500).json({ error: "Error while fetching data" });
   }
 });
+
+csaRouter.get("/getPlayerIds", async (req, res) => {
+  try {
+    const playerStatsColl = await client
+      .db("briskFlowPubgM")
+      .collection("teams")
+      .find({event: new ObjectId("66c41f2833aa084df2231abc")})
+      .toArray();
+
+    const playerIds = playerStatsColl.reduce((acc, team) => {
+      acc.push(...team.players);
+      return acc;
+    }, []);
+
+    const playerInfo = await client
+      .db("briskFlowPubgM")
+      .collection("players")
+      .find({ _id: { $in: playerIds } })
+      .toArray();
+
+    res.status(200).json({ playerInfo });
+  } catch (err) {
+    console.error("Error while fetching data:", err);
+    res.status(500).json({ error: "Error while fetching data" });
+  }
+});
+
 
 module.exports = csaRouter;
 
