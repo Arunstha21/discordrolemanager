@@ -1,6 +1,8 @@
 require("dotenv").config();
 const pmslDB = process.env.PMSL_DBURL;
 
+const bonus = require("./bonus.json");
+
 const { MongoClient, ObjectId } = require("mongodb");
 const client = new MongoClient(pmslDB);
 
@@ -37,8 +39,9 @@ async function overallResults(ids) {
   
     // Fetch all matches at once with projection
     const matches = await matchNoColl
-      .find({ _id: { $in: matchIds } }, { projection: { _id: 1 } })
+      .find({ _id: { $in: matchIds } }, { projection: { _id: 1, group: 1 } })
       .toArray();
+      const groupId = matches[0].group.toString();
     const validMatchIds = matches.map((match) => match._id);
   
     // Fetch all team and player stats at once with projections
@@ -171,15 +174,18 @@ async function overallResults(ids) {
       const teamName = teamDoc.name;
       const teamTag = teamDoc.tag;
   
-      const overallPoint = teamStatsMap[teamId].totalPoint;
+      const starterPoint = groupId === "66e2a4b92892e28f32a1a332" ? bonus[teamId] : null;
+      const overallPoint = teamStatsMap[teamId].totalPoint + (groupId === "66e2a4b92892e28f32a1a332" ? bonus[teamId] : 0);
   
       teamResult.push({
+        teamId: teamId,
         team: teamName,
         tag: teamTag,
         kill: teamStatsMap[teamId].kill,
         damage: teamStatsMap[teamId].damage,
         matchCount: teamStatsMap[teamId].matchCount,
         placePoint: teamStatsMap[teamId].placePoint,
+        starterPoint : starterPoint,
         totalPoint: overallPoint,
         lastMatchRank: teamStatsMap[teamId].lastMatchRank,
         wwcd: teamStatsMap[teamId].wwcd,
@@ -357,5 +363,6 @@ async function getData(csaEventId){
     const data = JSON.stringify(gesData);
     return data;
 }
+
 
 module.exports = { overallResults, getData };

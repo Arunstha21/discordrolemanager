@@ -51,6 +51,10 @@ const commands = [
                     {
                         name: 'League Stage - Week 3',
                         value: '66d81dbb8eeb95973d9a4fe3',
+                    },
+                    {
+                        name: 'Finals',
+                        value: '66e2a4b92892e28f32a1a32f',
                     }
                 ],
                 type: ApplicationCommandOptionType.String,
