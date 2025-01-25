@@ -7,19 +7,23 @@ const cors = require('cors');
 const connectDiscord = require('./helper/discordConnect');
 const router = require('./routes/api/members');
 const csaRouter = require('./routes/api/csa');
+const pmncRouter = require('./routes/api/pmnc');
 const registerCommands = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
 const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats } = require('./discord/commands');
-const { Client, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMessageReactions,
     ],
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
 });
 const logger = require("./helper/logger");
+const { languages, translateText, getFlagMap } = require('./discord/translate');
 require("dotenv").config();
 
 const Token = process.env.DISCORD_TOKEN;
@@ -83,11 +87,13 @@ app.post('/api/createChannels', async (req, res) => {
 
 app.use('/api/members', router);
 app.use('/api/csa', csaRouter);
+app.use('/api/pmnc', pmncRouter);
 
 app.listen(3001, async () => {
     console.log('Server is running on port 3001');
     await connectDb();
 
+    const flagMap = await getFlagMap();
     try {
     
         client.on("ready", () => {
@@ -114,6 +120,40 @@ app.listen(3001, async () => {
             const commandFunction = commands[commandName];
             if (commandFunction) {
                 await commandFunction(interaction);
+            }
+        });
+
+        client.on("messageReactionAdd", async (reaction, user) => {
+            try {
+                if (flagMap.has(reaction.emoji.name)) {
+                    const flag = flagMap.get(reaction.emoji.name);
+                    const message = reaction.message.content;
+                    const messageUser = reaction.message.author;
+                    const translate = await translateText(message, flag.code);
+                    let embed = new EmbedBuilder()
+                        .setColor(0x3498db)
+                        .setDescription(translate);
+    
+                    if (messageUser.id === user.id) {
+                        embed.setAuthor({
+                            name: `${messageUser.username}`,
+                            iconURL: messageUser.displayAvatarURL(),
+                        });
+                    } else {
+                        embed.setAuthor({
+                            name: `${messageUser.username}`,
+                            iconURL: messageUser.displayAvatarURL(),
+                        }).setFooter({
+                            text: `Requested by ${user.username}`,
+                        });
+                    }
+                    reaction.message.channel.send({ embeds: [embed] });
+                }else {
+                    console.log("Emoji is not flag");
+                }
+            } catch (error) {
+                logger.error("Error translating message:", error);
+                console.log("Error translating message:", error);
             }
         });
 
