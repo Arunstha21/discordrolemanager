@@ -9,7 +9,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Card, CardContent } from "./ui/Card";
-const apiLink = "http://localhost:3001";
+const apiLink = "https://discordrolemanager.onrender.com";
 
 export default function CreateChannel({ server,serverData, fetchServerData }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);

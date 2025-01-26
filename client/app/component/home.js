@@ -4,7 +4,7 @@ import ServerCard from "./serverCard";
 import SelectedServer from "./selectedServer";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/Card";
 import CreateServer from "./CreateServer";
-const apiLink = "http://localhost:3001";
+const apiLink = "https://discordrolemanager.onrender.com";
 
 export default function Home() {
   const [serverList, setServerList] = useState([]);

@@ -1,5 +1,5 @@
 const { useState, useEffect } = require("react");
-const apiLink = "http://localhost:3001";
+const apiLink = "https://discordrolemanager.onrender.com";
 
 export default function ProvideRole({ server, serverData, fetchServerData }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);

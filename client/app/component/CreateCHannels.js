@@ -8,7 +8,7 @@ import {
 } from "./ui/dropdownMenu";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-const apiLink = "http://localhost:3001";
+const apiLink = "https://discordrolemanager.onrender.com";
 
 export default function CreateChannel({ server }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);

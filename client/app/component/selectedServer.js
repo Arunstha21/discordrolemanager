@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ImportMembers from "./import";
 import CreateChannel from "./CreateChannel";
 import ProvideRole from "./ProvideRole";
-const apiLink = "http://localhost:3001";
+const apiLink = "https://discordrolemanager.onrender.com";
 
 export default function SelectedServer({ server, closeSelectedServer }) {
     const [serverData, setServerData] = useState(null);

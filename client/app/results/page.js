@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 const apiDomain = "http://localhost:3001";
+// const apiDomain = "https://discordrolemanager.onrender.com";
 import Loading from "./loading";
 
 export default function Result() {
@@ -67,7 +68,7 @@ export default function Result() {
   const getResultData = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${apiDomain}/api/csa/gesData`, {
+      const response = await fetch(`${apiDomain}/api/pmnc/gesData`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +113,7 @@ export default function Result() {
         const stageOption = [];
         const groupOptions = [];
 
-        const csaEventID = "66c41f2833aa084df2231abc";
+        const csaEventID = "67212d27e5a16f3b66d82a2c";
         const csaStages = stage.filter((option) => option.event === csaEventID);
 
         csaStages.forEach((data) => {
@@ -198,7 +199,7 @@ export default function Result() {
           hideAllExcept(groupDiv);
           try {
             setIsLoading(true);
-            const response = await fetch(`${apiDomain}/api/csa/gesData`, {
+            const response = await fetch(`${apiDomain}/api/pmnc/gesData`, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
@@ -262,7 +263,7 @@ export default function Result() {
           });
           try {
             setIsLoading(true);
-            const response = await fetch(`${apiDomain}/api/csa/topTenMvps`, {
+            const response = await fetch(`${apiDomain}/api/pmnc/topTenMvps`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -309,7 +310,7 @@ export default function Result() {
           } else {
             try {
               setIsLoading(true);
-              const response = await fetch(`${apiDomain}/api/csa/perMatchResults`, {
+              const response = await fetch(`${apiDomain}/api/pmnc/perMatchResults`, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -390,7 +391,7 @@ export default function Result() {
           async function getOverall(matchIds) {
             try {
               setIsLoading(true);
-              const response = await fetch(`${apiDomain}/api/csa/overallResults`, {
+              const response = await fetch(`${apiDomain}/api/pmnc/overallResults`, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -487,8 +488,22 @@ export default function Result() {
       tableHead.innerHTML = "";
       tableBody.innerHTML = "";
     }
-
-    const headers = [
+    let headers = [];
+    if (isOverall) {
+    headers = [
+      "Rank",
+      "Team",
+      "Tag",
+      "Kills",
+      "Damage",
+      "Place Points",
+      "Total Points",
+      "WWCD",
+      "Match Count",
+      "Last Match Rank",
+    ];
+  }else {
+    headers = [
       "Rank",
       "Team",
       "Tag",
@@ -498,8 +513,9 @@ export default function Result() {
       "Total Points",
       "WWCD",
       "Match",
-      "Last Match Rank",
+      "Match Rank",
     ];
+  }
 
     const headRow = document.createElement("tr");
     headers.forEach((headerText) => {
@@ -550,11 +566,12 @@ export default function Result() {
         item.kill,
         item.damage,
         item.placePoint,
+        item.starterPoint !== null ? item.starterPoint : undefined, 
         item.totalPoint,
         item.wwcd,
         item.matchCount || item.match,
         item.lastMatchRank || item.rank,
-      ];
+      ].filter(value => value !== undefined);
     });
 
     setTableData(tableRows);
@@ -694,7 +711,7 @@ export default function Result() {
     const message = `${messageContent.stage} - ${messageContent.match === 'Overall' ? `After Match ${messageContent.count}` : messageContent.match}`;
     const isOverall = messageContent.match === 'Overall';
     try {
-        const response = await fetch("http://localhost:3001/api/sendResult", {
+        const response = await fetch("https://discordrolemanager.onrender.com/api/sendResult", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
