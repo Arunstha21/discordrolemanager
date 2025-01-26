@@ -4,7 +4,6 @@ const createServerWithTemplate = require('./discord/createServer');
 const {deletServer, provideRole, listServer, createServer, listServerData, createChannels, sendResult} = require('./discord/discord');
 const jsonParser = express.json();
 const cors = require('cors');
-const connectDiscord = require('./helper/discordConnect');
 const router = require('./routes/api/members');
 const csaRouter = require('./routes/api/csa');
 const pmncRouter = require('./routes/api/pmnc');
@@ -12,6 +11,7 @@ const registerCommands = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
 const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats } = require('./discord/commands');
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
+const fs = require('fs'); // Ensure fs module is imported
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -189,24 +189,27 @@ app.post('/api/sendResult', async (req, res) => {
     }
 }
 )
+
 const roleManagerActiveStatus = require("./discord/roleManager.json");
-app.post('/api/actvateRoleManager', (req, res)=>{
-    const {activate} = req.body;
-    const message = [
-        true= "Role Manager is active",
-        false = "Role Manager is inactive",
-    ]
-    if(!activate){
-        res.status(400).json({message: "Please provide activate status"});
+
+app.post('/api/activateRoleManager', (req, res) => {
+    const { activate } = req.body;
+    if (activate === undefined) {
+        return res.status(400).json({ message: "Please provide activate status" });
     }
-    if(activate === roleManagerActiveStatus.active){
-        res.status(200).json({message: message[activate]});
+    const messages = {
+        true: "Role Manager is active",
+        false: "Role Manager is inactive",
+    };
+    if (activate === roleManagerActiveStatus.active) {
+        return res.status(200).json({ message: messages[activate] });
     }
+    
     roleManagerActiveStatus.active = activate;
-    fs.writeFile('./discord/roleManager.json', JSON.stringify(roleManagerActiveStatus), (err) => {
-        if(err){
-            res.status(500).json({message: "Failed to activate Role Manager"});
+    fs.writeFile('./discord/roleManager.json', JSON.stringify(roleManagerActiveStatus, null, 2), (err) => {
+        if (err) {
+            return res.status(500).json({ message: "Failed to activate Role Manager" });
         }
-        res.status(200).json({message: message[activate]});
+        return res.status(200).json({ message: messages[activate] });
     });
-})
+});
