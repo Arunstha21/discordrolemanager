@@ -189,4 +189,24 @@ app.post('/api/sendResult', async (req, res) => {
     }
 }
 )
-
+const roleManagerActiveStatus = require("./discord/roleManager.json");
+app.post('/api/actvateRoleManager', (req, res)=>{
+    const {activate} = req.body;
+    const message = [
+        true= "Role Manager is active",
+        false = "Role Manager is inactive",
+    ]
+    if(!activate){
+        res.status(400).json({message: "Please provide activate status"});
+    }
+    if(activate === roleManagerActiveStatus.active){
+        res.status(200).json({message: message[activate]});
+    }
+    roleManagerActiveStatus.active = activate;
+    fs.writeFile('./discord/roleManager.json', JSON.stringify(roleManagerActiveStatus), (err) => {
+        if(err){
+            res.status(500).json({message: "Failed to activate Role Manager"});
+        }
+        res.status(200).json({message: message[activate]});
+    });
+})

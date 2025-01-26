@@ -5,6 +5,7 @@ const { tickets } = require("./discordTickets");
 const sendEmail = require("../helper/email");
 const {playerStats, gunslingers, grenadeMaster} = require("../helper/results");
 const createTable = require("../helper/createTable");
+const activeStatus = require("./roleManager.json")
 
 async function email(interaction) {
   const email = interaction.options.getString("email");
@@ -144,12 +145,15 @@ async function verify(interaction) {
 }
 
 async function onJoin(member) {
+  if(activeStatus.active === false){
+    return;
+  }
   logger.info(`New member joined: ${member.user.username}`);
   const guildCheck = await checkGuild(member);
   const userAuthorized = await checkUser(member);
   if (!userAuthorized || guildCheck.guildId !== member.guild.id) {
     tickets(member);
-    return;
+    return;                                                                                                                               
   }
   const roles = userAuthorized.role;
   for (const role of roles) {
