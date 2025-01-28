@@ -23,8 +23,9 @@ const client = new Client({
     partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
 });
 const logger = require("./helper/logger");
-const { languages, translateText, getFlagMap } = require('./discord/translate');
+const { translateText, getFlagMap } = require('./discord/translate');
 require("dotenv").config();
+const venom = require('venom-bot');
 
 const Token = process.env.DISCORD_TOKEN;
 
@@ -94,8 +95,16 @@ app.listen(3001, async () => {
     await connectDb();
 
     const flagMap = await getFlagMap();
+    venom.create({
+        session: 'whatsapp-bot',
+        multidevice: true,
+        headless: 'new',
+        browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+        executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+      }).then((client) => startBot(client)).catch((err) => console.log(err));
+      
     try {
-    
+        
         client.on("ready", () => {
             console.log("Bot is ready!!");
         });
@@ -149,7 +158,7 @@ app.listen(3001, async () => {
                     }
                     reaction.message.channel.send({ embeds: [embed] });
                 }else {
-                    console.log("Emoji is not flag");
+                    console.log(`${reaction.emoji.name} Emoji is not flag`);
                 }
             } catch (error) {
                 logger.error("Error translating message:", error);
@@ -191,6 +200,7 @@ app.post('/api/sendResult', async (req, res) => {
 )
 
 const roleManagerActiveStatus = require("./discord/roleManager.json");
+const startBot = require('./whatsapp/main');
 
 app.post('/api/activateRoleManager', (req, res) => {
     const { activate } = req.body;
@@ -204,7 +214,7 @@ app.post('/api/activateRoleManager', (req, res) => {
     if (activate === roleManagerActiveStatus.active) {
         return res.status(200).json({ message: messages[activate] });
     }
-    
+
     roleManagerActiveStatus.active = activate;
     fs.writeFile('./discord/roleManager.json', JSON.stringify(roleManagerActiveStatus, null, 2), (err) => {
         if (err) {
