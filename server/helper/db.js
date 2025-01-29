@@ -22,7 +22,6 @@ const connectDB = async () => {
         console.error('Error connecting to the database:', err);
         throw new Error('Database connection error');
     }
-
 }
 
 module.exports = connectDB;
