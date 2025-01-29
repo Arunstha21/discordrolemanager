@@ -76,7 +76,7 @@ async function startBot() {
     reaction.forEach(async (reaction) => {
       const flagMap = await getFlagMap();
       if (flagMap.has(reaction.reaction.text)) {
-        const flag = flagMap.get(reaction.reactionText);
+        const flag = flagMap.get(reaction.reaction.text);
         const message = messageStore.get(reaction.key.id);
         if (!message) {
           console.log("Message not found");
