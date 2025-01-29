@@ -83,8 +83,7 @@ async function startBot() {
           return;
         } else {
           console.log("Message found", message);
-          const text =
-            message.conversation || message.extendedTextMessage?.text;
+          const text = message.message.conversation || message.message.extendedTextMessage?.text;
           const chatId = message.key.remoteJid || message.key.participant;
 
           const translate = await translateText(text, flag.code);
