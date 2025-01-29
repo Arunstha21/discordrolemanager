@@ -84,11 +84,11 @@ async function startBot() {
   
       const { remoteJid } = message.key;
       const isPrivate = remoteJid.endsWith("@s.whatsapp.net");
-  
+        
       try {
         const text = getMessageText(message);
         if (!text || !isPrivate) continue; // Only handle DMs
-  
+        await setMessage(message.key.id, message);
         const sender = message.key.participant || remoteJid;
         const name = message.pushName || "User";
         const command = text.toLowerCase().trim();
