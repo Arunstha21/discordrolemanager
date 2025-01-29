@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/translate": "^8.5.0",
+    "@whiskeysockets/baileys": "^6.7.9",
     "canvas": "^2.11.2",
     "cors": "^2.8.5",
     "discord.js": "^14.14.1",

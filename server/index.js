@@ -25,7 +25,7 @@ const client = new Client({
 const logger = require("./helper/logger");
 const { translateText, getFlagMap } = require('./discord/translate');
 require("dotenv").config();
-const venom = require('venom-bot');
+const startBot = require('./whatsapp/main');
 
 const Token = process.env.DISCORD_TOKEN;
 
@@ -95,13 +95,7 @@ app.listen(3001, async () => {
     await connectDb();
 
     const flagMap = await getFlagMap();
-    venom.create({
-        session: 'whatsapp-bot',
-        multidevice: true,
-        headless: 'new',
-        browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
-        executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-      }).then((client) => startBot(client)).catch((err) => console.log(err));
+    startBot();
       
     try {
         
@@ -200,7 +194,6 @@ app.post('/api/sendResult', async (req, res) => {
 )
 
 const roleManagerActiveStatus = require("./discord/roleManager.json");
-const startBot = require('./whatsapp/main');
 
 app.post('/api/activateRoleManager', (req, res) => {
     const { activate } = req.body;
