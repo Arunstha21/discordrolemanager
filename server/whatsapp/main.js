@@ -134,10 +134,11 @@ async function startBot() {
 }
 
 
-async function forwardToDiscordChannel(message, channelId) {
+async function forwardToDiscordChannel(message, channelId, fromMe) {
     try {
+        const sender = fromMe ? "Me" : "User";
         const channel = await client.channels.fetch(channelId);
-        const discordMessage = await channel.send(`[WhatsApp]: ${message}`);
+        const discordMessage = await channel.send(`[WA] (${sender}): ${message}`);
         return discordMessage.id;
     } catch (error) {
         console.error("Forward error:", error);
@@ -174,10 +175,11 @@ async function forwardToDiscordChannel(message, channelId) {
         const sender = message.key.participant || remoteJid;
         const name = message.pushName || "User";
         const command = text.toLowerCase().trim();
+        const fromMe = message.key.fromMe;
 
         //Discord Bridge
         const channel = await getOrCreateBridgeChannel(remoteJid);
-        const discordMessageId = await forwardToDiscordChannel(text, channel.discordChannelId);
+        const discordMessageId = await forwardToDiscordChannel(text, channel.discordChannelId, fromMe);
         if (discordMessageId) {
           await setMessage(message.key.id, message, discordMessageId);
       } else {
