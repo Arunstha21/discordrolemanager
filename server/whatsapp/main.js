@@ -1,7 +1,19 @@
-const { getFlagMap, translateText } = require("../discord/translate");
+const { Client, GatewayIntentBits, ChannelType, PermissionsBitField } = require("discord.js");
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMessageReactions,
+    ],
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+});
+
 const { makeWASocket, useMultiFileAuthState, DisconnectReason } = require("@whiskeysockets/baileys");
+const { WALastInteraction, WAMessage, BridgeChannel } = require("../module/whatsapp");
+const { translateText, getFlagMap } = require("../discord/translate");
 const connectDB = require("../helper/db");
-const { WALastInteraction, WAMessage } = require("../module/whatsapp");
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1500;
@@ -38,6 +50,7 @@ const COMMANDS = {
   `- "FAQ" for the FAQ Document 📄\n` +
   `- "Roadmap" for the Roadmap 🗺️\n` +
   `- "Timeline" for the Timeline 📅\n` +
+  `- "Calendar" for the Calendar\n` +
   `- "Register" for the Registration Link\n\n` +
   `Looking forward to assisting you!`
 };
@@ -47,7 +60,7 @@ setInterval(async () => {
         await withRetry(
             async () => {
                 const result = await WAMessage.deleteMany({ 
-                    createdAt: { $lt: new Date(Date.now() - 24 * 60 * 60 * 1000) } 
+                    createdAt: { $lt: new Date(Date.now() - 48 * 60 * 60 * 1000) } 
                 });
                 console.log(`Cleaned up ${result.deletedCount} old messages`);
             },
@@ -56,7 +69,13 @@ setInterval(async () => {
     } catch (error) {
         logError("messageCleanupInterval", error);
     }
-}, 8 * 60 * 60 * 1000);
+}, 3 * 24 * 60 * 60 * 1000);
+
+
+const GuildId = "1326051754537779260"
+const CategoryId = "1334811119906328647"
+const AdminChannelId = "1334811163455918130"
+const Token = process.env.DISCORD_TOKEN;
 
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState("./auth_info");
@@ -66,7 +85,71 @@ async function startBot() {
   });
   await connectDB();
 
+    await client.login(Token);
+
   sock.ev.on("creds.update", saveCreds);
+
+
+  async function getOrCreateBridgeChannel(whatsappId) {
+    const existing = await BridgeChannel.findOne({ whatsappId });
+    if (existing) return existing;
+
+    const guild = client.guilds.cache.get(GuildId);
+    if (!guild) {
+        console.error("Guild not found.");
+        return null;
+    }
+
+    const category = guild.channels.cache.get(CategoryId);
+    if (!category) {
+        console.error("Category channel not found.");
+        return null;
+    }
+
+    const channelName = `wa-${whatsappId.replace(/[^0-9]/g, '')}`.slice(0, 95);
+    const channel = await guild.channels.create({
+        name: channelName,
+        type: ChannelType.GuildText,
+        parent: category,
+        topic: `Bridge for WhatsApp user: ${whatsappId}`,
+        permissionOverwrites: [
+          {
+              id: client.user.id,
+              allow: [
+                  PermissionsBitField.Flags.ViewChannel,
+                  PermissionsBitField.Flags.SendMessages,
+                  PermissionsBitField.Flags.EmbedLinks,
+                  PermissionsBitField.Flags.AttachFiles
+              ]
+          },
+          {
+              id: guild.roles.everyone.id,
+              deny: [PermissionsBitField.Flags.ViewChannel]
+          }
+      ]
+    });
+
+    await channel.send(`**Bridge Created**\nLinked to WhatsApp user: \`${whatsappId}\``);
+    return await BridgeChannel.create({ whatsappId, discordChannelId: channel.id });
+}
+
+
+async function forwardToDiscordChannel(message, channelId) {
+    try {
+        const channel = await client.channels.fetch(channelId);
+        const discordMessage = await channel.send(`[WhatsApp]: ${message}`);
+        return discordMessage.id;
+    } catch (error) {
+        console.error("Forward error:", error);
+        try {
+            const adminChannel = await client.channels.fetch(AdminChannelId);
+            await adminChannel.send(`❗ Bridge error in <#${channelId}>: ${error.message}`);
+        } catch (adminError) {
+            console.error("Failed to notify admin channel:", adminError);
+        }
+        return null;
+    }
+}
 
   sock.ev.on("connection.update", (update) => {
     const { connection, lastDisconnect } = update;
@@ -88,11 +171,18 @@ async function startBot() {
       try {
         const text = getMessageText(message);
         if (!text || !isPrivate) continue; // Only handle DMs
-        await setMessage(message.key.id, message);
         const sender = message.key.participant || remoteJid;
         const name = message.pushName || "User";
         const command = text.toLowerCase().trim();
-  
+
+        //Discord Bridge
+        const channel = await getOrCreateBridgeChannel(remoteJid);
+        const discordMessageId = await forwardToDiscordChannel(text, channel.discordChannelId);
+        if (discordMessageId) {
+          await setMessage(message.key.id, message, discordMessageId);
+      } else {
+          await setMessage(message.key.id, message, null);
+      }
         // Capture interaction time BEFORE processing
         const currentTime = Date.now();
         const previousInteractionTime = await getLastInteraction(sender) || 0;
@@ -157,6 +247,46 @@ async function startBot() {
       }
     }
   });
+
+  client.on('messageCreate', async (message) => {
+    if (message.author.bot) return;
+    
+    const bridge = await BridgeChannel.findOne({ discordChannelId: message.channel.id });
+    if (!bridge) return;
+  
+    try {
+      await sock.sendMessage(bridge.whatsappId, { 
+        text: message.content,
+      });
+
+      await message.react('✅');
+  
+    } catch (error) {
+      console.error("Bridge send error:", error);
+      await message.react('❌');
+    }
+  });
+
+  client.on('messageReactionAdd', async (reaction, user) => {
+    if (user.bot) return;
+    try {
+      if (reaction.partial) await reaction.fetch();
+      const message = await WAMessage.findOne({ discordMessageId: reaction.message.id });
+      if (!message || !message.message?.key?.remoteJid) {
+        console.log(`No linked WhatsApp message found for Discord message ID: ${reaction.message.id}`);
+        const adminChannel = await client.channels.fetch(AdminChannelId);
+        await adminChannel.send(`❗ No linked WhatsApp message found for Discord message ID: ${reaction.message.content} in <#${reaction.message.channel.name}>`);
+        return;
+    }
+
+      await sock.sendMessage(message.message.key.remoteJid,  {react: { text: reaction.emoji.name, key: message.message.key }})
+    } catch (error) {
+      const adminChannel = await client.channels.fetch(AdminChannelId);
+      await adminChannel.send(`❗ Bridge reaction error in <#${reaction.message.channel.name}>: ${error.message}`);
+      console.error("Bridge reaction error:", error);
+    }
+  });
+
 }
 
 function getMessageText(message) {
@@ -177,18 +307,18 @@ async function sendReply(sock, jid, text, originalMessage) {
     }
 }
 
-async function setMessage(messageId, message) {
-    return await withRetry(
-        () => WAMessage.findOneAndUpdate(
-            { messageId },
-            { message },
-            { upsert: true, new: true }
-        ),
-        "setMessage"
-    ).catch(error => {
-        logError("setMessage", error, { messageId });
-        throw error;
-    });
+async function setMessage(messageId, message, discordMessageId) {
+  return await withRetry(
+      () => WAMessage.findOneAndUpdate(
+          { messageId }, // Query filter
+          { message, discordMessageId }, // Update fields
+          { upsert: true, new: true }
+      ),
+      "setMessage"
+  ).catch(error => {
+      logError("setMessage", error, { messageId });
+      throw error;
+  });
 }
 
 async function setLastInteraction(sender, lastInteractionTime) {

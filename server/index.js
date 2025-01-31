@@ -95,14 +95,15 @@ app.listen(3001, async () => {
     await connectDb();
 
     const flagMap = await getFlagMap();
-    startBot();
-      
+    const BridgeCategoryId = "1334811119906328647"
     try {
         
         client.on("ready", () => {
             console.log("Bot is ready!!");
         });
 
+        startBot();
+        
         client.on("guildMemberAdd", async (member) => {
             await onJoin(member);
         });
@@ -128,6 +129,7 @@ app.listen(3001, async () => {
 
         client.on("messageReactionAdd", async (reaction, user) => {
             try {
+                if(reaction.message.channel.parentId === BridgeCategoryId) return;
                 if (flagMap.has(reaction.emoji.name)) {
                     const flag = flagMap.get(reaction.emoji.name);
                     const message = reaction.message.content;

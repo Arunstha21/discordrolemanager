@@ -3,3 +3,4 @@ node_modules
 credentials.json
 helper/sheet/key.json
 translateApiCredentials.json
+auth_info

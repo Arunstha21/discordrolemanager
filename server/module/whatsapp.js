@@ -18,13 +18,23 @@ const messagesSchema = new schema({
         type: String,
         require: true,
     },
+    discordMessageId:{
+        type: String,
+    },
     message:{
         type: Object,
         require: true,
     },
 })
 
+const bridgeChannelSchema = new mongoose.Schema({
+    whatsappId: { type: String, required: true, unique: true },
+    discordChannelId: { type: String, required: true },
+  }, { timestamps: true });
+  
+
 const WALastInteraction = mongoose.model('WALastInteraction', lastInteractionSchema);
 const WAMessage = mongoose.model('WAMessage', messagesSchema);
+const BridgeChannel = mongoose.model('BridgeChannel', bridgeChannelSchema);
 
-module.exports = {WALastInteraction, WAMessage};
+module.exports = {WALastInteraction, WAMessage, BridgeChannel};
