@@ -252,7 +252,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
 
   client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
-    if(message.channel.parentId === CategoryId) return;
+    if(message.channel.parentId != CategoryId) return;
     const bridge = await BridgeChannel.findOne({ discordChannelId: message.channel.id });
     if (!bridge) return;
   
@@ -271,7 +271,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
 
   client.on('messageReactionAdd', async (reaction, user) => {
     if (user.bot) return;
-    if (reaction.message.channel.parentId === CategoryId) return;
+    if (reaction.message.channel.parentId != CategoryId) return;
     try {
       if (reaction.partial) await reaction.fetch();
       const message = await WAMessage.findOne({ discordMessageId: reaction.message.id });
