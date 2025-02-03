@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, ChannelType, PermissionsBitField } = require("discord.js");
+const { Client, GatewayIntentBits, ChannelType, PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, MessageFlags } = require("discord.js");
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -14,6 +14,7 @@ const { makeWASocket, useMultiFileAuthState, DisconnectReason } = require("@whis
 const { WALastInteraction, WAMessage, BridgeChannel } = require("../module/whatsapp");
 const { translateText, getFlagMap } = require("../discord/translate");
 const connectDB = require("../helper/db");
+const { generateTranscript } = require("./transcriptGenerator");
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1500;
@@ -83,9 +84,9 @@ async function startBot() {
     auth: state,
     printQRInTerminal: true,
   });
-  await connectDB();
 
-    await client.login(Token);
+  await connectDB();
+  await client.login(Token);
 
   sock.ev.on("creds.update", saveCreds);
 
@@ -132,7 +133,6 @@ async function startBot() {
     await channel.send(`**Bridge Created**\nLinked to WhatsApp user: \`${whatsappId}\``);
     return await BridgeChannel.create({ whatsappId, discordChannelId: channel.id });
 }
-
 
 async function forwardToDiscordChannel(message, channelId, fromMe) {
     try {
@@ -198,6 +198,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
         } else {
           // Check if user hasn't interacted within expiration period
           if (currentTime - previousInteractionTime > HELP_EXPIRATION_MS) {
+            if(fromMe) return;
             const helpText = COMMANDS.help.replace("{name}", name)+ "\n"+ "This is an automated message.";
             await sendReply(sock, sender, helpText, message);
             console.log(`Sent help to ${sender}`);
@@ -253,7 +254,53 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
   client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
     if(message.channel.parentId != CategoryId) return;
-    const bridge = await BridgeChannel.findOne({ discordChannelId: message.channel.id });
+
+    if(message.content.startsWith('!')){
+      const [command, ...args] = message.content.slice(1).split(' ');
+      if(command === 'WAClose'){
+        const bridge = await BridgeChannel.findOne({ discordChannelId: message.channel.id });
+        if (!bridge) return;
+
+        const row = new ActionRowBuilder().addComponents(
+          new ButtonBuilder().setCustomId('transcript').setLabel('📄 Transcript').setStyle(ButtonStyle.Primary),
+          new ButtonBuilder().setCustomId('reopen').setLabel('🔓 Reopen').setStyle(ButtonStyle.Success),
+          new ButtonBuilder().setCustomId('delete').setLabel('❌ Delete').setStyle(ButtonStyle.Danger)
+      );
+
+      await message.channel.send({
+          content: 'Are you sure you want to close this bridge? Choose an option below:',
+          components: [row],
+          flags: MessageFlags.Ephemeral
+      });
+      }else if(command === 'WAtranslate'){
+        const bridge = await BridgeChannel.findOne({ discordChannelId: message.channel.id });
+        if (!bridge) return;
+
+        const flagMap = await getFlagMap();
+        const emoji = args[0];
+        if (!flagMap.has(emoji)) {
+          console.log(`${emoji} is not a recognized flag`);
+          return;
+        }
+
+        const translated = await translateText(args[2], flagMap.get(emoji).code);
+        console.log("Translated message:", translated);
+        
+        try {
+          await sock.sendMessage(bridge.whatsappId, { 
+            text: translated,
+          });
+          await message.react('✅');
+        } catch (error) {
+          console.error("Bridge send error:", error);
+          await message.react('❌');
+        }
+
+      }else {
+        return;
+      }
+    }else{
+      const bridge = await BridgeChannel.findOne({ discordChannelId: message.channel.id });
     if (!bridge) return;
   
     try {
@@ -266,6 +313,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
     } catch (error) {
       console.error("Bridge send error:", error);
       await message.react('❌');
+    }
     }
   });
 
@@ -290,6 +338,23 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
     }
   });
 
+  client.on(Events.InteractionCreate, async (interaction) => {
+    if(interaction.channel.parentId != CategoryId) return;
+    if (!interaction.isButton()) return;
+
+    const bridge = await BridgeChannel.findOne({ discordChannelId: interaction.channel.id });
+    if (!bridge) return interaction.reply({ content: '❌ Bridge not found.', flags: MessageFlags.Ephemeral });
+
+    const adminChannel = await client.channels.fetch(AdminChannelId);
+
+    const handler = buttonHandlers[interaction.customId];
+    if (handler) {
+        await handler(interaction, adminChannel, bridge);
+    } else {
+        await interaction.reply({ content: '❌ Unknown action.', flags: MessageFlags.Ephemeral });
+    }
+});
+
 }
 
 function getMessageText(message) {
@@ -313,8 +378,8 @@ async function sendReply(sock, jid, text, originalMessage) {
 async function setMessage(messageId, message, discordMessageId) {
   return await withRetry(
       () => WAMessage.findOneAndUpdate(
-          { messageId }, // Query filter
-          { message, discordMessageId }, // Update fields
+          { messageId },
+          { message, discordMessageId },
           { upsert: true, new: true }
       ),
       "setMessage"
@@ -347,5 +412,61 @@ async function getMessage(messageId){
     const message = await WAMessage.findOne({messageId});
     return message.message;
 }
+
+async function fetchAllMessages(channel) {
+    let messages = [];
+    let lastMessageId = null;
+
+    while (true) {
+        const fetchedMessages = await channel.messages.fetch({ 
+            limit: 100, 
+            before: lastMessageId 
+        });
+
+        if (fetchedMessages.size === 0) break;
+
+        messages.push(...fetchedMessages.values());
+        lastMessageId = fetchedMessages.last().id;
+    }
+
+    return messages.reverse();
+}
+
+const buttonHandlers = {
+  transcript: async (interaction, adminChannel, bridge) => {
+      const allMessages = await fetchAllMessages(interaction.channel);
+      const transcriptHTML = generateTranscript(allMessages, interaction.channel.name);
+      const transcriptBuffer = Buffer.from(transcriptHTML, 'utf8');
+
+      await adminChannel.send({
+          content: `📄 Transcript for WhatsApp bridge & Bridge closed: **${interaction.channel.name}**`,
+          files: [{ attachment: transcriptBuffer, name: `transcript-${interaction.channel.name}.html` }]
+      });
+
+      await BridgeChannel.deleteOne({ _id: bridge._id });
+      await interaction.channel.delete();
+  },
+
+  reopen: async (interaction) => {
+    try {
+      await interaction.message.delete();
+  } catch (error) {
+      console.error('Failed to delete the message:', error);
+      await interaction.reply({ content: '⚠️ Could not delete the message. Check permissions.', flags: MessageFlags.Ephemeral });
+      return;
+  }
+  await interaction.reply({ content: '🔓 Bridge reopened!', flags: MessageFlags.Ephemeral });
+  },
+
+  delete: async (interaction, adminChannel, bridge) => {
+      await adminChannel.send({
+          content: `🔗 Bridge closed for WhatsApp user: **${interaction.channel.name}**`,
+      });
+      await BridgeChannel.deleteOne({ _id: bridge._id });
+      await interaction.channel.delete();
+  }
+};
+
+
 
 module.exports = startBot;
