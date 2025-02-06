@@ -96,6 +96,8 @@ app.listen(3001, async () => {
 
     const flagMap = await getFlagMap();
     const BridgeCategoryId = "1334811119906328647"
+    const TicketCategoryId = "1326058681426645084"
+
     try {
         
         client.on("ready", () => {
@@ -159,6 +161,16 @@ app.listen(3001, async () => {
             } catch (error) {
                 logger.error("Error translating message:", error);
                 console.log("Error translating message:", error);
+            }
+        });
+
+        client.on("channelCreate", async (channel) => {
+            if(channel.parentId === TicketCategoryId){
+                try{
+                    await channel.send("Hello, Do you have any question regarding PMGO ? Please ask here. Our support team will help you shortly.");
+                } catch (error) {
+                    console.log("Error sending message to new channel:" + channel.name, error);
+                }
             }
         });
 

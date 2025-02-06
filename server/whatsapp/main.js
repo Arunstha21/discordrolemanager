@@ -76,6 +76,7 @@ setInterval(async () => {
 const GuildId = "1326051754537779260"
 const CategoryId = "1334811119906328647"
 const AdminChannelId = "1334811163455918130"
+const TicketCategoryId = "1326058681426645084"
 const Token = process.env.DISCORD_TOKEN;
 
 async function startBot() {
@@ -253,6 +254,16 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
 
   client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
+    if(message.channel.parentId === TicketCategoryId){
+      const command = message.content.toLowerCase().trim();
+      const user = message.author;
+      if (command in COMMANDS) {
+        const responseText = COMMANDS[command].replace("{name}", `<@${user.id}>`);
+        await message.reply(responseText);
+      }else {
+        return;
+      }
+    }
     if(message.channel.parentId != CategoryId) return;
 
     if(message.content.startsWith('!')){
