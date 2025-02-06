@@ -77,7 +77,6 @@ const GuildId = "1326051754537779260"
 const CategoryId = "1334811119906328647"
 const AdminChannelId = "1334811163455918130"
 const TicketCategoryId = "1326058681426645084"
-const Token = process.env.DISCORD_TOKEN;
 
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState("./auth_info");
@@ -87,7 +86,6 @@ async function startBot() {
   });
 
   await connectDB();
-  await client.login(Token);
 
   sock.ev.on("creds.update", saveCreds);
 
