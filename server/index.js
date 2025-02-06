@@ -167,7 +167,7 @@ app.listen(3001, async () => {
         client.on("channelCreate", async (channel) => {
             if(channel.parentId === TicketCategoryId){
                 try{
-                    setInterval(async () => {
+                    setTimeout(async () => {
                     await channel.send("Hello, Do you have any question regarding PMGO ? Please ask here. Our support team will help you shortly.");
                     }, 1500);
                 } catch (error) {
