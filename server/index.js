@@ -101,10 +101,9 @@ app.listen(3001, async () => {
     try {
         
         client.on("ready", () => {
+            startBot(client);
             console.log("Bot is ready!!");
         });
-
-        startBot(client);
 
         client.on("guildMemberAdd", async (member) => {
             await onJoin(member);
