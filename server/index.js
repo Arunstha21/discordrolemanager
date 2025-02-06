@@ -104,8 +104,8 @@ app.listen(3001, async () => {
             console.log("Bot is ready!!");
         });
 
-        startBot();
-        
+        startBot(client);
+
         client.on("guildMemberAdd", async (member) => {
             await onJoin(member);
         });
@@ -167,7 +167,9 @@ app.listen(3001, async () => {
         client.on("channelCreate", async (channel) => {
             if(channel.parentId === TicketCategoryId){
                 try{
+                    setInterval(async () => {
                     await channel.send("Hello, Do you have any question regarding PMGO ? Please ask here. Our support team will help you shortly.");
+                    }, 1500);
                 } catch (error) {
                     console.log("Error sending message to new channel:" + channel.name, error);
                 }

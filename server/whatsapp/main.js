@@ -1,14 +1,4 @@
-const { Client, GatewayIntentBits, ChannelType, PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, MessageFlags } = require("discord.js");
-const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMessageReactions,
-    ],
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
-});
+const { ChannelType, PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, MessageFlags } = require("discord.js");
 
 const { makeWASocket, useMultiFileAuthState, DisconnectReason } = require("@whiskeysockets/baileys");
 const { WALastInteraction, WAMessage, BridgeChannel } = require("../module/whatsapp");
@@ -78,7 +68,7 @@ const CategoryId = "1334811119906328647"
 const AdminChannelId = "1334811163455918130"
 const TicketCategoryId = "1326058681426645084"
 
-async function startBot() {
+async function startBot(client) {
   const { state, saveCreds } = await useMultiFileAuthState("./auth_info");
   const sock = makeWASocket({
     auth: state,
