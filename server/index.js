@@ -9,7 +9,7 @@ const csaRouter = require('./routes/api/csa');
 const pmncRouter = require('./routes/api/pmnc');
 const registerCommands = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
-const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats } = require('./discord/commands');
+const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind } = require('./discord/commands');
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 const fs = require('fs'); // Ensure fs module is imported
 const client = new Client({
@@ -111,6 +111,9 @@ app.listen(3001, async () => {
 
         client.on("interactionCreate", async (interaction) => {
             if (!interaction.isCommand()) return;
+            if(interaction.channel.parentId === TicketCategoryId){
+                await pmgoFind(interaction);
+            }
 
             const commands = {
                 email: email,
@@ -118,7 +121,7 @@ app.listen(3001, async () => {
                 close: close,
                 playerstats: playerStatsInt,
                 gunslingers: gunslingerStats,
-                grenademaster: grenadeMasterStats
+                grenademaster: grenadeMasterStats,
             };
 
             const { commandName } = interaction;
@@ -209,6 +212,7 @@ app.post('/api/sendResult', async (req, res) => {
 )
 
 const roleManagerActiveStatus = require("./discord/roleManager.json");
+const { log } = require('winston');
 
 app.post('/api/activateRoleManager', (req, res) => {
     const { activate } = req.body;

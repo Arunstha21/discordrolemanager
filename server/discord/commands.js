@@ -1,5 +1,5 @@
 const { userData, guildData, teamData, adminData } = require("../module/user");
-const { EmbedBuilder, AttachmentBuilder, DiscordAPIError } = require("discord.js");
+const { EmbedBuilder, AttachmentBuilder, DiscordAPIError, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require("discord.js");
 const logger = require("../helper/logger");
 const { tickets } = require("./discordTickets");
 const sendEmail = require("../helper/email");
@@ -341,4 +341,110 @@ async function grenadeMasterStats(interaction) {
   }
 }
 
-module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats };
+async function pmgoFind(interaction){
+  try{
+    const adminChannelId = '1337388431734603797';
+    await interaction.deferReply();
+    const region = interaction.options.getString("region");
+    const teamCode = interaction.options.getString("team_code");
+    const inviteLink = interaction.options.getString("invite_link");
+    const playersNeeded = interaction.options.getInteger("players_needed");
+    const preferredLanguage = interaction.options.getString("preferred_language");
+    const contact = interaction.options.getUser("contact");
+    const user = interaction.user;
+
+    const adminChannel = interaction.guild.channels.cache.get(adminChannelId);
+    const regionChannel = interaction.guild.channels.cache.get(region);
+
+    const embed = new EmbedBuilder()
+    .setTitle("New Team Request")
+    .setDescription(
+      `**Team Code:** ${teamCode}\n` +
+      `**Invite Link:** ${inviteLink}\n` +
+      `**Players Needed:** ${playersNeeded}\n` +
+      `**Preferred Language:** ${preferredLanguage}\n` +
+      `**Contact:** ${contact.tag} (<@${contact.id}>)\n\n` +
+      `**Requested by:** ${user.tag} (<@${user.id}>)`
+    )
+    .setColor("#3498db");
+
+    const approveButton = new ButtonBuilder()
+      .setCustomId(`approve_${interaction.id}`)
+      .setLabel("Approve")
+      .setStyle(ButtonStyle.Success);
+
+    const rejectButton = new ButtonBuilder()
+      .setCustomId(`reject_${interaction.id}`)
+      .setLabel("Reject")
+      .setStyle(ButtonStyle.Danger);
+
+    const row = new ActionRowBuilder().addComponents(approveButton, rejectButton);
+
+    const adminMessage = await adminChannel.send({ embeds: [embed], components: [row] });
+    await interaction.editReply("Your request has been sent to the Admin for approval. You will be notified once the request is approved or rejected on DM.");
+
+    const filter = (i) => i.customId.startsWith("approve_") || i.customId.startsWith("reject_");
+    const collector = adminMessage.createMessageComponentCollector({ filter, max: 1, time: 28800000 });
+
+    collector.on("collect", async (buttonInteraction) => {
+      if (!buttonInteraction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+        return buttonInteraction.reply({ content: "Only admins can approve or reject requests!", ephemeral: true });
+      }
+
+      if (buttonInteraction.customId.startsWith("approve_")) {
+        await buttonInteraction.update({ components: [] });
+        await regionChannel.send({ embeds: [embed] });
+
+        const updatedEmbed = EmbedBuilder.from(embed)
+        .setColor("#2ecc71")
+        .setFooter({ text: "✅ Approved by " + buttonInteraction.user.tag })
+        .setDescription(
+          `**Team Code:** ${teamCode}\n` +
+          `**Invite Link:** ${inviteLink}\n\n` +
+          `**Requested by:** ${user.tag} (<@${user.id}>)`
+        );
+
+      await adminMessage.edit({ embeds: [updatedEmbed], components: [] });
+        
+        try {
+          await user.send(`Your team request has been **Approved** by an admin.\n\n**Details:**\nTeam Code: ${teamCode}\nInvite Link: ${inviteLink}\nPreferred Language: ${preferredLanguage}\nPlayers Needed: ${playersNeeded}`);
+        } catch (err) {
+          console.error(`Could not send DM to ${user.tag}:`, err);
+          adminChannel.send(`Could not send DM to ${user.tag}: ${err}`);
+        }
+      } else if (buttonInteraction.customId.startsWith("reject_")) {
+        await buttonInteraction.update({ components: [] });
+
+        const updatedEmbed = EmbedBuilder.from(embed)
+          .setColor("#e74c3c")
+          .setFooter({ text: "❌ Rejected by " + buttonInteraction.user.tag })
+          .setDescription(
+            `**Team Code:** ${teamCode}\n` +
+            `**Invite Link:** ${inviteLink}\n\n` +
+            `**Requested by:** ${user.tag} (<@${user.id}>)`
+          );
+
+        await adminMessage.edit({ embeds: [updatedEmbed], components: [] });
+
+        try {
+          await user.send(`Your team request has been **rejected** by an admin.\n\n**Details:**\nTeam Code: ${teamCode}\nInvite Link: ${inviteLink}\nPreferred Language: ${preferredLanguage}\nPlayers Needed: ${playersNeeded}`);
+        } catch (err) {
+          console.error(`Could not send DM to ${user.tag}:`, err);
+          adminChannel.send(`Could not send DM to ${user.tag}: ${err}`);
+        }
+      }
+    });
+
+    collector.on("end", async (collected, reason) => {
+      if (reason === "time") {
+        await adminMessage.edit({ content: "⏳ **Approval request expired (8 hours).**", components: [] });
+      }
+    });
+
+  }catch(error){
+    console.error(error);
+    await interaction.editReply("An error occurred while sending the request");
+  }
+}
+
+module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind };
