@@ -294,8 +294,6 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
       }else if(command in commands){
         const responseText = commands[command];
         await message.reply(responseText);
-      }else {
-        return;
       }
       
     if(message.channel.parentId != CategoryId) return;
