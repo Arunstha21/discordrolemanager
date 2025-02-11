@@ -80,6 +80,26 @@ async function startBot(client) {
 
   sock.ev.on("creds.update", saveCreds);
 
+  sock.ev.on("connection.update", async (update) => {
+    const { connection, lastDisconnect } = update;
+
+    if (connection === "close") {
+      const errorCode = lastDisconnect?.error?.output?.statusCode;
+
+      if (errorCode === 401) {
+        console.error("🔴 Session expired, re-authentication required.");
+        fs.rmSync("./auth_info", { recursive: true, force: true }); // Delete old session
+        return; // Do not restart, require user re-authentication
+      }
+
+      console.log("⚠️ Disconnected, attempting to reconnect...");
+      await delay(5000); // Wait before reconnecting
+      startBot();
+    } else if (connection === "open") {
+      console.log("Connected to WhatsApp!");
+    }
+  });
+
   // WebSocket Error Handling
   sock.ev.on("error", (err) => {
     console.error("WebSocket Error:", err);
@@ -146,15 +166,6 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
     }
 }
 
-  sock.ev.on("connection.update", (update) => {
-    const { connection, lastDisconnect } = update;
-    if (connection === "close") {
-      const shouldReconnect = lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut;
-      shouldReconnect ? startBot() : console.log("Logged out");
-    } else if (connection === "open") {
-      console.log("Connected to WhatsApp!");
-    }
-  });
 
   sock.ev.on("messages.upsert", async ({ messages }) => {
     for (const message of messages) {
@@ -262,7 +273,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
       }else {
         return;
       }
-
+      
     if(message.channel.parentId != CategoryId) return;
     if(message.content.startsWith('!')){
       const [command, ...args] = message.content.slice(1).split(' ');
