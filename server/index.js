@@ -26,7 +26,7 @@ const logger = require("./helper/logger");
 const { translateText, getFlagMap } = require('./discord/translate');
 require("dotenv").config();
 const startBot = require('./whatsapp/main');
-const connectDiscord = require('./helper/discordConnect');
+const token = process.env.DISCORD_TOKEN;
 
 
 app.use(jsonParser);
@@ -179,7 +179,7 @@ app.listen(3001, async () => {
             }
         });
 
-        const client = await connectDiscord();
+        await client.login(token);
     } catch (error) {
         logger.error("Failed to initialize Discord client", error);
     }
