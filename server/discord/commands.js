@@ -502,4 +502,24 @@ async function listCommands(interaction){
   }
 }
 
-module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, registerCommand, listCommands };
+async function removeCommands(interaction){
+  try {
+    if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+      await interaction.reply("You do not have permission to remove a command");
+      return;
+    }
+    const commandName = interaction.options.getString("command_name");
+    const guildId = interaction.guild.id;
+    const command = await Commands.findOneAndDelete({name: commandName, guildId});
+    if(!command){
+      await interaction.reply("Command not found");
+      return;
+    }
+    await interaction.reply("Command removed successfully");
+  } catch (error) {
+    console.error(error);
+    await interaction.reply("An error occurred while removing the command");
+  }
+}
+
+module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, registerCommand, listCommands, removeCommands };

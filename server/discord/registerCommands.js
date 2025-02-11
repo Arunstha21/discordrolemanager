@@ -71,61 +71,61 @@ const commands = [
     //     name: 'grenademaster',
     //     description: 'Get the top 5 Grenade Master',
     // },
-    {
-        name: 'find',
-        description: 'Find team members',
-        options:[{
-            name: 'region',
-            description: 'Select the region',
-            required: true,
-            choices:[{
-                name: 'Asia',
-                value: '1337386661855629323'
-            },
-            {
-                name: 'Europe',
-                value: '1337386799709945866'
-            },
-            {
-                name: 'North America',
-                value: '1337386876549599283'
-            },
-            {
-                name: 'South America',
-                value: '1337386906052460574'
-            },
-            {
-                name: 'Middle East',
-                value: '1337386747104989184'
-            }],
-            type: ApplicationCommandOptionType.String,
-        },{
-            name: 'team_code',
-            description: 'Enter the team code',
-            required: true,
-            type: ApplicationCommandOptionType.String,
-        },{
-            name: 'invite_link',
-            description: 'Enter the invite link',
-            required: true,
-            type: ApplicationCommandOptionType.String,
-        },{
-            name: 'players_needed',
-            description: 'Enter the number of players needed',
-            required: true,
-            type: ApplicationCommandOptionType.Integer,
-        },{
-            name: 'preferred_language',
-            description: 'Enter the preferred language',
-            required: true,
-            type: ApplicationCommandOptionType.String,
-        },{
-            name: 'contact',
-            description: 'Enter the contact details',
-            required: true,
-            type: ApplicationCommandOptionType.User,
-        }]
-    },
+    // {
+    //     name: 'find',
+    //     description: 'Find team members',
+    //     options:[{
+    //         name: 'region',
+    //         description: 'Select the region',
+    //         required: true,
+    //         choices:[{
+    //             name: 'Asia',
+    //             value: '1337386661855629323'
+    //         },
+    //         {
+    //             name: 'Europe',
+    //             value: '1337386799709945866'
+    //         },
+    //         {
+    //             name: 'North America',
+    //             value: '1337386876549599283'
+    //         },
+    //         {
+    //             name: 'South America',
+    //             value: '1337386906052460574'
+    //         },
+    //         {
+    //             name: 'Middle East',
+    //             value: '1337386747104989184'
+    //         }],
+    //         type: ApplicationCommandOptionType.String,
+    //     },{
+    //         name: 'team_code',
+    //         description: 'Enter the team code',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.String,
+    //     },{
+    //         name: 'invite_link',
+    //         description: 'Enter the invite link',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.String,
+    //     },{
+    //         name: 'players_needed',
+    //         description: 'Enter the number of players needed',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.Integer,
+    //     },{
+    //         name: 'preferred_language',
+    //         description: 'Enter the preferred language',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.String,
+    //     },{
+    //         name: 'contact',
+    //         description: 'Enter the contact details',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.User,
+    //     }]
+    // },
     {
         name: 'registercommand',
         description: 'Register the command',
@@ -147,6 +147,17 @@ const commands = [
         name: 'listcommands',
         default_member_permissions: 8,
         description: 'List all the commands',
+    },
+    {
+        name: 'deletecommand',
+        default_member_permissions: 8,
+        description: 'Delete the command',
+        options:[{
+            name: 'command_name',
+            description: 'Enter the command name',
+            required: true,
+            type: ApplicationCommandOptionType.String,
+        }]
     }
 ];
 

@@ -1,6 +1,6 @@
 const { ChannelType, PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, MessageFlags } = require("discord.js");
 
-const { makeWASocket, useMultiFileAuthState, DisconnectReason } = require("@whiskeysockets/baileys");
+const { makeWASocket, useMultiFileAuthState, DisconnectReason, delay } = require("@whiskeysockets/baileys");
 const { WALastInteraction, WAMessage, BridgeChannel, Commands } = require("../module/whatsapp");
 const { translateText, getFlagMap } = require("../discord/translate");
 const connectDB = require("../helper/db");
@@ -265,11 +265,9 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
 
   client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
-    if(message.channel.parentId === TicketCategoryId){
       const DBCommands = await Commands.find({guildId: message.guild.id});
       const commands = {};
       DBCommands.map(command => commands[command.name] = command.value);
-      console.log(commands);
     
       const command = message.content.toLowerCase().trim();
       const user = message.author;
@@ -282,7 +280,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
       }else {
         return;
       }
-    }
+      
     if(message.channel.parentId != CategoryId) return;
     if(message.content.startsWith('!')){
       const [command, ...args] = message.content.slice(1).split(' ');
