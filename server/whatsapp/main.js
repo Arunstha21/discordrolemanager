@@ -1,7 +1,7 @@
 const { ChannelType, PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, MessageFlags } = require("discord.js");
 
 const { makeWASocket, useMultiFileAuthState, DisconnectReason } = require("@whiskeysockets/baileys");
-const { WALastInteraction, WAMessage, BridgeChannel } = require("../module/whatsapp");
+const { WALastInteraction, WAMessage, BridgeChannel, Commands } = require("../module/whatsapp");
 const { translateText, getFlagMap } = require("../discord/translate");
 const connectDB = require("../helper/db");
 const { generateTranscript } = require("./transcriptGenerator");
@@ -69,6 +69,7 @@ const AdminChannelId = "1334811163455918130"
 const TicketCategoryId = "1326058681426645084"
 
 async function startBot(client) {
+  if(!client) return;
   const { state, saveCreds } = await useMultiFileAuthState("./auth_info");
   const sock = makeWASocket({
     auth: state,
@@ -243,17 +244,24 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
   client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
     if(message.channel.parentId === TicketCategoryId){
+      const DBCommands = await Commands.find({guildId: message.guild.id});
+      const commands = {};
+      DBCommands.map(command => commands[command.name] = command.value);
+      console.log(commands);
+    
       const command = message.content.toLowerCase().trim();
       const user = message.author;
       if (command in COMMANDS) {
         const responseText = COMMANDS[command].replace("{name}", `<@${user.id}>`);
+        await message.reply(responseText);
+      }else if(command in commands){
+        const responseText = commands[command];
         await message.reply(responseText);
       }else {
         return;
       }
     }
     if(message.channel.parentId != CategoryId) return;
-
     if(message.content.startsWith('!')){
       const [command, ...args] = message.content.slice(1).split(' ');
       if(command === 'WAClose'){

@@ -1,5 +1,6 @@
-const {REST, Routes, ApplicationCommandOptionType} = require('discord.js');
+const {REST, Routes, ApplicationCommandOptionType, PermissionFlagsBits} = require('discord.js');
 const logger = require('../helper/logger');
+const { options } = require('../routes/api/members');
 const env = require('dotenv').config();
 
 const commands = [
@@ -124,6 +125,28 @@ const commands = [
             required: true,
             type: ApplicationCommandOptionType.User,
         }]
+    },
+    {
+        name: 'registercommand',
+        description: 'Register the command',
+        default_member_permissions: 8,
+        options:[{
+            name: 'command_name',
+            description: 'Enter the command name',
+            required: true,
+            type: ApplicationCommandOptionType.String,
+        },
+        {
+            name: 'command_value',
+            description: 'Enter the command value',
+            required: true,
+            type: ApplicationCommandOptionType.String,
+        }]
+    },
+    {
+        name: 'listcommands',
+        default_member_permissions: 8,
+        description: 'List all the commands',
     }
 ];
 
@@ -142,4 +165,16 @@ function registerCommands(guildId) {
     }
 }
 
-module.exports = registerCommands;
+function deleteCommand(commandId, guildId){
+    try {
+        rest.delete(
+            Routes.applicationGuildCommand(env.parsed.CLIENT_ID, guildId, commandId),
+        );
+        logger.info('Successfully deleted application command');
+    } catch (error) {
+        logger.error('Failed to delete application command:', error);
+        throw error;
+    }
+}
+
+module.exports = {registerCommands, deleteCommand};

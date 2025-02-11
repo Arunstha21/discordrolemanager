@@ -7,9 +7,9 @@ const cors = require('cors');
 const router = require('./routes/api/members');
 const csaRouter = require('./routes/api/csa');
 const pmncRouter = require('./routes/api/pmnc');
-const registerCommands = require('./discord/registerCommands');
+const {registerCommands, deleteCommand} = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
-const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind } = require('./discord/commands');
+const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, listCommands, registerCommand } = require('./discord/commands');
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 const fs = require('fs'); // Ensure fs module is imported
 const client = new Client({
@@ -112,7 +112,7 @@ app.listen(3001, async () => {
         client.on("interactionCreate", async (interaction) => {
             if (!interaction.isCommand()) return;
             if(interaction.channel.parentId === TicketCategoryId){
-                await pmgoFind(interaction);
+                if(interaction.commandName === 'find') await pmgoFind(interaction);
             }
 
             const commands = {
@@ -122,6 +122,8 @@ app.listen(3001, async () => {
                 playerstats: playerStatsInt,
                 gunslingers: gunslingerStats,
                 grenademaster: grenadeMasterStats,
+                registercommand: registerCommand,
+                listcommands: listCommands,
             };
 
             const { commandName } = interaction;
@@ -189,6 +191,16 @@ app.post('/api/registerCommands', async (req, res) => {
     try {
         registerCommands(guildId);
         res.status(200).json({message: 'Commands registered successfully'});
+    } catch (error) {
+        res.status(500).json({error: error.message});
+        
+    }
+})
+app.post('/api/deleteCommands', async (req, res) => {
+    const {guildId, commandId} = req.body;
+    try {
+        deleteCommand(commandId, guildId);
+        res.status(200).json({message: 'Command deleted successfully'});
     } catch (error) {
         res.status(500).json({error: error.message});
         

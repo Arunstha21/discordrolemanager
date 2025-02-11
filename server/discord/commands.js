@@ -5,7 +5,8 @@ const { tickets } = require("./discordTickets");
 const sendEmail = require("../helper/email");
 const {playerStats, gunslingers, grenadeMaster} = require("../helper/results");
 const createTable = require("../helper/createTable");
-const activeStatus = require("./roleManager.json")
+const activeStatus = require("./roleManager.json");
+const { Commands } = require("../module/whatsapp");
 
 async function email(interaction) {
   const email = interaction.options.getString("email");
@@ -447,4 +448,58 @@ async function pmgoFind(interaction){
   }
 }
 
-module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind };
+async function registerCommand(interaction){
+try {
+    if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+      await interaction.reply("You do not have permission to register a command");
+      return;
+    }
+    const commandName = interaction.options.getString("command_name");
+    const commandValue = interaction.options.getString("command_value");
+    const guildId = interaction.guild.id;
+    const commandExists = await Commands.findOne({name: commandName, guildId: guildId});
+    if(commandExists){
+      await interaction.reply("Command already exists");
+      return;
+    }
+  
+    const newCommand = new Commands({
+      guildId,
+      name: commandName,
+      value: commandValue,
+    });
+  
+    await newCommand.save();
+    await interaction.reply("Command registered successfully");
+} catch (error) {
+    console.error(error);
+    await interaction.reply("An error occurred while registering the command");
+  
+} 
+}
+
+async function listCommands(interaction){
+  try {
+    if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+      await interaction.reply("You do not have permission to list commands");
+      return;
+    }
+    const guildId = interaction.guild.id;
+    const commands = await Commands.find({guildId});
+    if(commands.length === 0){
+      await interaction.reply("No commands registered");
+      return;
+    }
+    const commandList = commands.map(command => `**${command.name}** - ${command.value}`).join("\n");
+    const embed = new EmbedBuilder()
+      .setTitle("Registered Commands")
+      .setDescription(commandList)
+      .setColor("#3498db");
+    await interaction.reply({ embeds: [embed] });
+  } catch (error) {
+    console.error(error);
+    await interaction.reply("An error occurred while fetching the commands");
+  }
+}
+
+module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, registerCommand, listCommands };
