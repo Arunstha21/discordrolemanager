@@ -68,6 +68,7 @@ const CategoryId = "1334811119906328647"
 const AdminChannelId = "1334811163455918130"
 const TicketCategoryId = "1326058681426645084"
 
+
 async function startBot(client) {
   if(!client) return;
   const { state, saveCreds } = await useMultiFileAuthState("./auth_info");
@@ -94,7 +95,7 @@ async function startBot(client) {
 
       console.log("⚠️ Disconnected, attempting to reconnect...");
       await delay(5000); // Wait before reconnecting
-      startBot();
+      startBot(client);
     } else if (connection === "open") {
       console.log("Connected to WhatsApp!");
     }
@@ -104,6 +105,8 @@ async function startBot(client) {
   sock.ev.on("error", (err) => {
     console.error("WebSocket Error:", err);
   });
+
+  client.removeAllListeners("messageCreate", "messageReactionAdd", "interactionCreate");
 
   async function getOrCreateBridgeChannel(whatsappId) {
     const existing = await BridgeChannel.findOne({ whatsappId });
