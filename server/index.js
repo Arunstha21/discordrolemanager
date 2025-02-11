@@ -93,7 +93,6 @@ app.use('/api/pmnc', pmncRouter);
 app.listen(3001, async () => {
     console.log('Server is running on port 3001');
     await connectDb();
-    const client = await connectDiscord();
     const flagMap = await getFlagMap();
     const BridgeCategoryId = "1334811119906328647"
     const TicketCategoryId = "1326058681426645084"
@@ -179,6 +178,8 @@ app.listen(3001, async () => {
                 }
             }
         });
+
+        const client = await connectDiscord();
     } catch (error) {
         logger.error("Failed to initialize Discord client", error);
     }
