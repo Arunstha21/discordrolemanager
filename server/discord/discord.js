@@ -8,8 +8,9 @@ const {
 } = require("discord.js");
 const createTable = require("../helper/createTable");
 
+const client = connectDiscord();
+
 async function deletServer(guildId) {
-  const client = await connectDiscord();
   try {
     const guild = client.guilds.cache.get(guildId);
     if (!guild) {
@@ -25,7 +26,6 @@ async function deletServer(guildId) {
 }
 
 async function provideRole(guildId, userId, roleId) {
-  const client = await connectDiscord();
   try {
     const guild = client.guilds.cache.get(guildId);
     if (!guild) {
@@ -55,7 +55,6 @@ async function provideRole(guildId, userId, roleId) {
 }
 
 async function listServer() {
-  const client = await connectDiscord();
   try {
     const servers = await Promise.all(
       client.guilds.cache.map(async (guild) => {
@@ -89,7 +88,6 @@ async function listServer() {
 }
 
 async function createServer(serverName, templateCode) {
-  const client = await connectDiscord();
   try {
     let newGuild;
     if (templateCode) {
@@ -130,7 +128,6 @@ async function createServer(serverName, templateCode) {
 }
 
 async function listServerData(guildId) {
-  const client = await connectDiscord();
   try {
     const guild = client.guilds.cache.get(guildId);
     if (!guild) {
@@ -176,7 +173,6 @@ function toKebabCase(str) {
 }
 
 async function createChannels(guildId, channelData) {
-  const client = await connectDiscord();
   try {
     const guild = client.guilds.cache.get(guildId);
     if (!guild) {
@@ -262,7 +258,7 @@ async function prodSend(data, messageContent, isOverall) {
 
 async function sendResults(guildId, channelId, data, messageContent) {
   try {
-    const client = await connectDiscord();
+
 
     const guild = client.guilds.cache.get(guildId);
     if (!guild) {

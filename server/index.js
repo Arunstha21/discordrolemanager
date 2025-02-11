@@ -26,8 +26,8 @@ const logger = require("./helper/logger");
 const { translateText, getFlagMap } = require('./discord/translate');
 require("dotenv").config();
 const startBot = require('./whatsapp/main');
+const connectDiscord = require('./helper/discordConnect');
 
-const Token = process.env.DISCORD_TOKEN;
 
 app.use(jsonParser);
 app.use(cors());
@@ -93,7 +93,7 @@ app.use('/api/pmnc', pmncRouter);
 app.listen(3001, async () => {
     console.log('Server is running on port 3001');
     await connectDb();
-
+    const client = await connectDiscord();
     const flagMap = await getFlagMap();
     const BridgeCategoryId = "1334811119906328647"
     const TicketCategoryId = "1326058681426645084"
@@ -179,8 +179,6 @@ app.listen(3001, async () => {
                 }
             }
         });
-
-        await client.login(Token);
     } catch (error) {
         logger.error("Failed to initialize Discord client", error);
     }
@@ -224,7 +222,6 @@ app.post('/api/sendResult', async (req, res) => {
 )
 
 const roleManagerActiveStatus = require("./discord/roleManager.json");
-const { log } = require('winston');
 
 app.post('/api/activateRoleManager', (req, res) => {
     const { activate } = req.body;
