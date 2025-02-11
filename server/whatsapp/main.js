@@ -95,7 +95,7 @@ async function startBot(client) {
 
       console.log("⚠️ Disconnected, attempting to reconnect...");
       await delay(5000); // Wait before reconnecting
-      startBot(client);
+      reconnectWhatsApp();
     } else if (connection === "open") {
       console.log("Connected to WhatsApp!");
     }
@@ -106,7 +106,28 @@ async function startBot(client) {
     console.error("WebSocket Error:", err);
   });
 
-  client.removeAllListeners("messageCreate", "messageReactionAdd", "interactionCreate");
+  async function reconnectWhatsApp() {
+    console.log("♻️ Attempting WhatsApp reconnection...");
+    
+    if (sock) {
+        try {
+            sock.ev.removeAllListeners();
+            sock.ws.close();
+        } catch (err) {
+            console.error("⚠️ Error closing WebSocket:", err);
+        }
+    }
+
+    const { state, saveCreds } = await useMultiFileAuthState("./auth_info");
+
+    sock = makeWASocket({
+        auth: state,
+        printQRInTerminal: true,
+    });
+
+    sock.ev.on("creds.update", saveCreds);
+    console.log("🔄 Reconnected to WhatsApp.");
+}
 
   async function getOrCreateBridgeChannel(whatsappId) {
     const existing = await BridgeChannel.findOne({ whatsappId });
