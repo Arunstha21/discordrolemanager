@@ -534,7 +534,7 @@ const region = {
 
 async function claimGroupRole(interaction){
   try {
-    const user = interaction.user;
+    await interaction.deferReply({ ephemeral: true });
     const userRoles = interaction.member.roles.cache;
     //https://esports.pubgmobile.com/tournaments/web/pubgm_match/match-detail?invite_team_id=50178&match_id=804&c_from=copy
     const inviteLink = interaction.options.getString("invite_link");
@@ -543,7 +543,7 @@ async function claimGroupRole(interaction){
     const matchId = inviteLink.split("match_id=")[1].split("&")[0];
     
     if(!teamId || !matchId){
-      await interaction.reply({
+      await interaction.editReply({
         content: "Invalid invite link",
         ephemeral: true,
       });
@@ -554,14 +554,14 @@ async function claimGroupRole(interaction){
     if(teamIdExists){
       const role = interaction.guild.roles.cache.get(teamIdExists.roleId);
       if(userRoles.has(role.id)){
-        await interaction.reply({
+        await interaction.editReply({
           content: "You have already claimed this role",
           ephemeral: true,
         });
         return;
       }
       await interaction.member.roles.add(role);
-      await interaction.reply({
+      await interaction.editReply({
         content: "Role claimed successfully",
         ephemeral: true,
       });
@@ -570,7 +570,7 @@ async function claimGroupRole(interaction){
 
     const roleId = serverTestRoleIds.find(role => role.matchId === Number(matchId));
     if(!roleId){
-      await interaction.reply({
+      await interaction.editReply({
         content: "match_id invalid",
         ephemeral: true,
       });
@@ -578,7 +578,7 @@ async function claimGroupRole(interaction){
     }
     const teamExistsInResult = roleId.results.find(result => result.teamId === teamId.toString());
     if(!teamExistsInResult){
-      await interaction.reply({
+      await interaction.editReply({
         content: "Team not found in the results",
         ephemeral: true,
       });
@@ -586,25 +586,32 @@ async function claimGroupRole(interaction){
     }
     const userRegion = region[matchId];
 
+    let roleAssigned = false;
+
     for (const role of roleId.roleIds) {
       const existingRoleCount = await PMGOServerTest.countDocuments({ roleId: role });
     
-      if (existingRoleCount < 20) {
-        const serverRole = interaction.guild.roles.cache.get(role);
-        if (!serverRole) continue;
+      if (existingRoleCount <= 18) {
+        const groupRole = interaction.guild.roles.cache.get(role);
+        if (!groupRole) continue;
     
         const newRole = new PMGOServerTest({ teamId, region: userRegion, teamName, roleId: role });
         await newRole.save();
-        await interaction.member.roles.add(serverRole);
+        await interaction.member.roles.add(groupRole);
         
-        await interaction.reply({ content: "Role claimed successfully.", ephemeral: true });
-        return;
+        await interaction.editReply({ content: "Role claimed successfully.", ephemeral: true });
+        
+        roleAssigned = true;
+        break;
       }
     }
     
+    if (!roleAssigned) {
+      await interaction.editReply({ content: "All roles for this group are full.", ephemeral: true });
+    }
   }catch(error){
     console.error(error);
-    await interaction.reply({
+    await interaction.editReply({
       content: "An error occurred while claiming the role, please create a ticket for further assistance.",
       ephemeral: true,
     });
