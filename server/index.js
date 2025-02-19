@@ -116,7 +116,7 @@ app.listen(3001, async () => {
             }
 
             if(interaction.channelId === slashCommandChannel){
-                if(interaction.commandName === 'claim') await claimGroupRole(interaction);
+                if(interaction.commandName === 'roleclaim') await claimGroupRole(interaction);
             }
 
             const commands = {

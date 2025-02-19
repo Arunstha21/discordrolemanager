@@ -160,7 +160,7 @@ const commands = [
     //     }]
     // },
     {
-        name: 'claim',
+        name: 'roleclaim',
         description: 'Claim the group role',
         options:[{
             name: 'invite_link',
