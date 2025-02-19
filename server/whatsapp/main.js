@@ -5,6 +5,7 @@ const { WALastInteraction, WAMessage, BridgeChannel, Commands } = require("../mo
 const { translateText, getFlagMap } = require("../discord/translate");
 const connectDB = require("../helper/db");
 const { generateTranscript } = require("./transcriptGenerator");
+const { content } = require("googleapis/build/src/apis/content");
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1500;
@@ -67,7 +68,7 @@ const GuildId = "1326051754537779260"
 const CategoryId = "1334811119906328647"
 const AdminChannelId = "1334811163455918130"
 const TicketCategoryId = "1326058681426645084"
-
+const slashCommandChannel = "1341067978879406181"
 
 async function startBot(client) {
   if(!client) return;
@@ -270,7 +271,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
 
         const { code } = flagMap.get(emoji);
         const translated = await translateText(text, code);
-        const response = `Translated message (${code}): ${translated}`;
+        const response = `Translated message (${code}): ${translated.translation}`;
 
         await sendReply(sock, originalMessage.key.remoteJid, response, originalMessage);
         console.log("Translation sent for message", reaction.key.id);
@@ -279,9 +280,37 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
       }
     }
   });
-
+  let userMessageOnSlashCommand = [];
   client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
+    //only allow claim command in slashCommandChannel
+    if(message.channel.id === slashCommandChannel){
+      await message.delete().catch(console.error);
+      const user = message.member;
+      const userMessage = userMessageOnSlashCommand.find(userMessage => userMessage.id === user.id);
+      if(!userMessage){
+        userMessageOnSlashCommand.push({id: user.id, count: 1});
+      }else if(userMessage.count >= 4){
+          try {
+            await user.timeout(5 * 60 * 1000, "This channel is only for claiming role! Please use '/claim' commands.");
+          } catch (error) {
+            console.error("Error timing out user:", error);
+          }
+        return;
+      }else{
+        userMessage.count++;
+        userMessageOnSlashCommand.push(userMessage);
+      }
+
+      message.channel.send({
+        content: `Hey ${message.author}, 🚫 This channel is only for claiming role! Please use '/claim' commands.`,
+        allowedMention : {users: [message.author.id]}
+      }).then(async msg =>{
+        setTimeout(() => {
+          msg.delete().catch(console.error);
+        }, 1500);
+      }).catch(console.error);
+    }
       const DBCommands = await Commands.find({guildId: message.guild.id});
       const commands = {};
       DBCommands.map(command => commands[command.name] = command.value);
@@ -326,7 +355,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
         }
 
         const translated = await translateText(args[2], flagMap.get(emoji).code);
-        console.log("Translated message:", translated);
+        console.log("Translated message:", translated.translation);
         
         try {
           await sock.sendMessage(bridge.whatsappId, { 

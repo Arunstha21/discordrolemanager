@@ -7,6 +7,8 @@ const {playerStats, gunslingers, grenadeMaster} = require("../helper/results");
 const createTable = require("../helper/createTable");
 const activeStatus = require("./roleManager.json");
 const { Commands } = require("../module/whatsapp");
+const serverTestRoleIds = require("./serverTestRoleIds.json");
+const { PMGOServerTest } = require("../module/interaction");
 
 async function email(interaction) {
   const email = interaction.options.getString("email");
@@ -522,4 +524,91 @@ async function removeCommands(interaction){
   }
 }
 
-module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, registerCommand, listCommands, removeCommands };
+const region = {
+  804:"Asia",
+  805:"Europe",
+  806:"Middle East",
+  807:"North America",
+  810:"South America"
+}
+
+async function claimGroupRole(interaction){
+  try {
+    const user = interaction.user;
+    const userRoles = interaction.member.roles.cache;
+    //https://esports.pubgmobile.com/tournaments/web/pubgm_match/match-detail?invite_team_id=50178&match_id=804&c_from=copy
+    const inviteLink = interaction.options.getString("invite_link");
+    const teamName = interaction.options.getString("team_name");
+    const teamId = inviteLink.split("invite_team_id=")[1].split("&")[0];
+    const matchId = inviteLink.split("match_id=")[1].split("&")[0];
+    
+    if(!teamId || !matchId){
+      await interaction.reply({
+        content: "Invalid invite link",
+        ephemeral: true,
+      });
+      return;
+    };
+
+    const teamIdExists = await PMGOServerTest.findOne({teamId});
+    if(teamIdExists){
+      const role = interaction.guild.roles.cache.get(teamIdExists.roleId);
+      if(userRoles.has(role.id)){
+        await interaction.reply({
+          content: "You have already claimed this role",
+          ephemeral: true,
+        });
+        return;
+      }
+      await interaction.member.roles.add(role);
+      await interaction.reply({
+        content: "Role claimed successfully",
+        ephemeral: true,
+      });
+      return;
+    }
+
+    const roleId = serverTestRoleIds.find(role => role.matchId === Number(matchId));
+    if(!roleId){
+      await interaction.reply({
+        content: "match_id invalid",
+        ephemeral: true,
+      });
+      return;
+    }
+    const teamExistsInResult = roleId.results.find(result => result.teamId === teamId.toString());
+    if(!teamExistsInResult){
+      await interaction.reply({
+        content: "Team not found in the results",
+        ephemeral: true,
+      });
+      return;
+    }
+    const userRegion = region[matchId];
+
+    for (const role of roleId.roleIds) {
+      const existingRoleCount = await PMGOServerTest.countDocuments({ roleId: role });
+    
+      if (existingRoleCount < 20) {
+        const serverRole = interaction.guild.roles.cache.get(role);
+        if (!serverRole) continue;
+    
+        const newRole = new PMGOServerTest({ teamId, region: userRegion, teamName, roleId: role });
+        await newRole.save();
+        await interaction.member.roles.add(serverRole);
+        
+        await interaction.reply({ content: "Role claimed successfully.", ephemeral: true });
+        return;
+      }
+    }
+    
+  }catch(error){
+    console.error(error);
+    await interaction.reply({
+      content: "An error occurred while claiming the role, please create a ticket for further assistance.",
+      ephemeral: true,
+    });
+  }
+}
+
+module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, registerCommand, listCommands, removeCommands, claimGroupRole };

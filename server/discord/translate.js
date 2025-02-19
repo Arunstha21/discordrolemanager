@@ -28,7 +28,8 @@ async function getSupportedLanguages() {
   
       const options = { model: "nmt", to: targetLanguage };
       const [translation] = await translate.translate(text, options);
-      return translation;
+      const detectedLanguage = await translate.detect(text);
+      return {translation, detectedLanguage};
     } catch (error) {
       console.error("Error translating text:", error.message);
       throw error;

@@ -126,35 +126,50 @@ const commands = [
     //         type: ApplicationCommandOptionType.User,
     //     }]
     // },
+    // {
+    //     name: 'registercommand',
+    //     description: 'Register the command',
+    //     default_member_permissions: 8,
+    //     options:[{
+    //         name: 'command_name',
+    //         description: 'Enter the command name',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.String,
+    //     },
+    //     {
+    //         name: 'command_value',
+    //         description: 'Enter the command value',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.String,
+    //     }]
+    // },
+    // {
+    //     name: 'listcommands',
+    //     default_member_permissions: 8,
+    //     description: 'List all the commands',
+    // },
+    // {
+    //     name: 'deletecommand',
+    //     default_member_permissions: 8,
+    //     description: 'Delete the command',
+    //     options:[{
+    //         name: 'command_name',
+    //         description: 'Enter the command name',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.String,
+    //     }]
+    // },
     {
-        name: 'registercommand',
-        description: 'Register the command',
-        default_member_permissions: 8,
+        name: 'claim',
+        description: 'Claim the group role',
         options:[{
-            name: 'command_name',
-            description: 'Enter the command name',
+            name: 'invite_link',
+            description: 'Enter the invite link',
             required: true,
             type: ApplicationCommandOptionType.String,
-        },
-        {
-            name: 'command_value',
-            description: 'Enter the command value',
-            required: true,
-            type: ApplicationCommandOptionType.String,
-        }]
-    },
-    {
-        name: 'listcommands',
-        default_member_permissions: 8,
-        description: 'List all the commands',
-    },
-    {
-        name: 'deletecommand',
-        default_member_permissions: 8,
-        description: 'Delete the command',
-        options:[{
-            name: 'command_name',
-            description: 'Enter the command name',
+        },{
+            name: 'team_name',
+            description: 'Enter the team name',
             required: true,
             type: ApplicationCommandOptionType.String,
         }]
@@ -169,6 +184,8 @@ function registerCommands(guildId) {
             Routes.applicationGuildCommands(env.parsed.CLIENT_ID, guildId),
             { body: commands },
         );
+        console.log(guildId);
+        
         logger.info('Successfully registered application commands');
     } catch (error) {
         logger.error('Failed to register application commands:', error);

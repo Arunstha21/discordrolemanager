@@ -9,8 +9,8 @@ const csaRouter = require('./routes/api/csa');
 const pmncRouter = require('./routes/api/pmnc');
 const {registerCommands, deleteCommand} = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
-const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, listCommands, registerCommand } = require('./discord/commands');
-const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
+const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, listCommands, registerCommand, claimGroupRole } = require('./discord/commands');
+const { Client, GatewayIntentBits, EmbedBuilder, messageLink } = require("discord.js");
 const fs = require('fs'); // Ensure fs module is imported
 const client = new Client({
     intents: [
@@ -20,7 +20,7 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildMessageReactions,
     ],
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILDMEMBER'],
 });
 const logger = require("./helper/logger");
 const { translateText, getFlagMap } = require('./discord/translate');
@@ -96,6 +96,7 @@ app.listen(3001, async () => {
     const flagMap = await getFlagMap();
     const BridgeCategoryId = "1334811119906328647"
     const TicketCategoryId = "1326058681426645084"
+    const slashCommandChannel = "1341067978879406181"
 
     try {
         
@@ -112,6 +113,10 @@ app.listen(3001, async () => {
             if (!interaction.isCommand()) return;
             if(interaction.channel.parentId === TicketCategoryId){
                 if(interaction.commandName === 'find') await pmgoFind(interaction);
+            }
+
+            if(interaction.channelId === slashCommandChannel){
+                if(interaction.commandName === 'claim') await claimGroupRole(interaction);
             }
 
             const commands = {
@@ -139,22 +144,25 @@ app.listen(3001, async () => {
                     const flag = flagMap.get(reaction.emoji.name);
                     const message = reaction.message.content;
                     const messageUser = reaction.message.author;
-                    const translate = await translateText(message, flag.code);
+                    const {translation, detectedLanguage} = await translateText(message, flag.code);
+                    
                     let embed = new EmbedBuilder()
                         .setColor(0x3498db)
-                        .setDescription(translate);
+                        .setDescription(translation);
     
                     if (messageUser.id === user.id) {
                         embed.setAuthor({
                             name: `${messageUser.username}`,
                             iconURL: messageUser.displayAvatarURL(),
+                        }).setFooter({
+                            text: `Detected Language: ${detectedLanguage[0].language}`,
                         });
                     } else {
                         embed.setAuthor({
                             name: `${messageUser.username}`,
                             iconURL: messageUser.displayAvatarURL(),
                         }).setFooter({
-                            text: `Requested by ${user.username}`,
+                            text: `Requested by ${user.username}\n Detected Language: ${detectedLanguage[0].language}`,
                         });
                     }
                     reaction.message.channel.send({ embeds: [embed] });

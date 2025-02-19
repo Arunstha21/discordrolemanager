@@ -1,0 +1,4380 @@
+[{
+    "matchId": 804,
+    "roleIds": ["1341719642200342618","1341719843598237746","1341719879887228959","1341719909406605312"],
+    "results": [
+        {
+            "teamId": "23989",
+            "team": "GLU SQUAD",
+            "rank": 1,
+            "totalPoints": 192
+        },
+        {
+            "teamId": "29928",
+            "team": "GDE",
+            "rank": 2,
+            "totalPoints": 172
+        },
+        {
+            "teamId": "49222",
+            "team": "CLAW ESPORT",
+            "rank": 3,
+            "totalPoints": 169
+        },
+        {
+            "teamId": "26523",
+            "team": "Dewa united Helios",
+            "rank": 4,
+            "totalPoints": 167
+        },
+        {
+            "teamId": "25324",
+            "team": "SOLTI SQUAD",
+            "rank": 5,
+            "totalPoints": 166
+        },
+        {
+            "teamId": "26450",
+            "team": "Haina Esport",
+            "rank": 6,
+            "totalPoints": 165
+        },
+        {
+            "teamId": "35619",
+            "team": "NEPX ESPORTS",
+            "rank": 7,
+            "totalPoints": 163
+        },
+        {
+            "teamId": "47464",
+            "team": "Team Knockout Esports",
+            "rank": 8,
+            "totalPoints": 160
+        },
+        {
+            "teamId": "48580",
+            "team": "SECRET WAY",
+            "rank": 9,
+            "totalPoints": 160
+        },
+        {
+            "teamId": "50490",
+            "team": "Vampire Academy",
+            "rank": 10,
+            "totalPoints": 159
+        },
+        {
+            "teamId": "47667",
+            "team": "OLD GEEK",
+            "rank": 11,
+            "totalPoints": 157
+        },
+        {
+            "teamId": "50970",
+            "team": "PALLA GRANTHA ",
+            "rank": 12,
+            "totalPoints": 155
+        },
+        {
+            "teamId": "38237",
+            "team": "Star x Red Death ",
+            "rank": 13,
+            "totalPoints": 154
+        },
+        {
+            "teamId": "26911",
+            "team": "GOLDEN TICKET",
+            "rank": 14,
+            "totalPoints": 154
+        },
+        {
+            "teamId": "23413",
+            "team": "ROLEX ESPORTS",
+            "rank": 15,
+            "totalPoints": 148
+        },
+        {
+            "teamId": "25445",
+            "team": "CBI Esports",
+            "rank": 16,
+            "totalPoints": 148
+        },
+        {
+            "teamId": "35865",
+            "team": "MEC ACADEMY",
+            "rank": 17,
+            "totalPoints": 148
+        },
+        {
+            "teamId": "30836",
+            "team": "ABC",
+            "rank": 18,
+            "totalPoints": 147
+        },
+        {
+            "teamId": "35200",
+            "team": "JUTTI SQUAD",
+            "rank": 19,
+            "totalPoints": 146
+        },
+        {
+            "teamId": "45505",
+            "team": "ASTRA ESPORT",
+            "rank": 20,
+            "totalPoints": 145
+        },
+        {
+            "teamId": "44799",
+            "team": "FW ESPORTS ",
+            "rank": 21,
+            "totalPoints": 143
+        },
+        {
+            "teamId": "44727",
+            "team": "ViperxSuper1",
+            "rank": 22,
+            "totalPoints": 143
+        },
+        {
+            "teamId": "42369",
+            "team": "Aminz x Xotics Esports ",
+            "rank": 23,
+            "totalPoints": 143
+        },
+        {
+            "teamId": "25216",
+            "team": "METERSHOT xTKS",
+            "rank": 24,
+            "totalPoints": 142
+        },
+        {
+            "teamId": "28296",
+            "team": "BNDT ARJUNA",
+            "rank": 25,
+            "totalPoints": 142
+        },
+        {
+            "teamId": "42845",
+            "team": "CMF ESPORTS",
+            "rank": 26,
+            "totalPoints": 141
+        },
+        {
+            "teamId": "45652",
+            "team": "Inimical Monk Esports",
+            "rank": 27,
+            "totalPoints": 137
+        },
+        {
+            "teamId": "27370",
+            "team": "4 OF A KIND",
+            "rank": 28,
+            "totalPoints": 136
+        },
+        {
+            "teamId": "25177",
+            "team": "GENERALS ESPORTS",
+            "rank": 29,
+            "totalPoints": 136
+        },
+        {
+            "teamId": "41967",
+            "team": "Champions Esports",
+            "rank": 30,
+            "totalPoints": 135
+        },
+        {
+            "teamId": "25256",
+            "team": "ADA APA",
+            "rank": 31,
+            "totalPoints": 135
+        },
+        {
+            "teamId": "33835",
+            "team": "Ratez esports",
+            "rank": 32,
+            "totalPoints": 134
+        },
+        {
+            "teamId": "23905",
+            "team": "MADDOG",
+            "rank": 33,
+            "totalPoints": 134
+        },
+        {
+            "teamId": "50753",
+            "team": "Future alliance ",
+            "rank": 34,
+            "totalPoints": 134
+        },
+        {
+            "teamId": "33801",
+            "team": "4K ESPORTS",
+            "rank": 35,
+            "totalPoints": 134
+        },
+        {
+            "teamId": "48852",
+            "team": "SAM YANNA PH",
+            "rank": 36,
+            "totalPoints": 133
+        },
+        {
+            "teamId": "48731",
+            "team": "TNS  ESPORTS ",
+            "rank": 37,
+            "totalPoints": 133
+        },
+        {
+            "teamId": "26285",
+            "team": "AGY",
+            "rank": 38,
+            "totalPoints": 133
+        },
+        {
+            "teamId": "36864",
+            "team": "Royal Dragon Esports ",
+            "rank": 39,
+            "totalPoints": 133
+        },
+        {
+            "teamId": "40536",
+            "team": "7up",
+            "rank": 40,
+            "totalPoints": 132
+        },
+        {
+            "teamId": "25929",
+            "team": "4 PHOENIX",
+            "rank": 41,
+            "totalPoints": 131
+        },
+        {
+            "teamId": "31798",
+            "team": "DEUCES LAYLA ",
+            "rank": 42,
+            "totalPoints": 131
+        },
+        {
+            "teamId": "46238",
+            "team": "HVN ESPORTS",
+            "rank": 43,
+            "totalPoints": 131
+        },
+        {
+            "teamId": "44888",
+            "team": "AE DP ESPORTS ",
+            "rank": 44,
+            "totalPoints": 131
+        },
+        {
+            "teamId": "36360",
+            "team": "4 Death Machines",
+            "rank": 45,
+            "totalPoints": 131
+        },
+        {
+            "teamId": "49351",
+            "team": "TRIBE AEROMACY ",
+            "rank": 46,
+            "totalPoints": 131
+        },
+        {
+            "teamId": "48196",
+            "team": "MCJOE BABYLEANS ",
+            "rank": 47,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "33081",
+            "team": "V1 ESPORT",
+            "rank": 48,
+            "totalPoints": 129
+        },
+        {
+            "teamId": "23840",
+            "team": "OVERSELF ESPORTS",
+            "rank": 49,
+            "totalPoints": 129
+        },
+        {
+            "teamId": "45620",
+            "team": "Silent crew",
+            "rank": 50,
+            "totalPoints": 129
+        },
+        {
+            "teamId": "24696",
+            "team": "LIMITLESS LYMA",
+            "rank": 51,
+            "totalPoints": 128
+        },
+        {
+            "teamId": "45909",
+            "team": "ALPACE ALLSTAR",
+            "rank": 52,
+            "totalPoints": 128
+        },
+        {
+            "teamId": "26923",
+            "team": "SATU ESPORTS",
+            "rank": 53,
+            "totalPoints": 128
+        },
+        {
+            "teamId": "29448",
+            "team": "Rise Up Esports",
+            "rank": 54,
+            "totalPoints": 127
+        },
+        {
+            "teamId": "29930",
+            "team": "Team DS",
+            "rank": 55,
+            "totalPoints": 127
+        },
+        {
+            "teamId": "35248",
+            "team": "THE REAL SPARK ",
+            "rank": 56,
+            "totalPoints": 127
+        },
+        {
+            "teamId": "25920",
+            "team": "ZEX ESPORTS ",
+            "rank": 57,
+            "totalPoints": 127
+        },
+        {
+            "teamId": "24664",
+            "team": "Team CLOUD8",
+            "rank": 58,
+            "totalPoints": 127
+        },
+        {
+            "teamId": "29950",
+            "team": "NO FEAR SOCIETY ",
+            "rank": 59,
+            "totalPoints": 126
+        },
+        {
+            "teamId": "36753",
+            "team": "E4C",
+            "rank": 60,
+            "totalPoints": 126
+        },
+        {
+            "teamId": "44926",
+            "team": "EVIL BOYZ VIKING",
+            "rank": 61,
+            "totalPoints": 125
+        },
+        {
+            "teamId": "24585",
+            "team": "MUGIWARA AKAGAMI",
+            "rank": 62,
+            "totalPoints": 125
+        },
+        {
+            "teamId": "48577",
+            "team": "Team9ties",
+            "rank": 63,
+            "totalPoints": 125
+        },
+        {
+            "teamId": "47437",
+            "team": "TEAM OXY",
+            "rank": 64,
+            "totalPoints": 125
+        },
+        {
+            "teamId": "43689",
+            "team": "ISSL Noob Alliance ",
+            "rank": 65,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "31343",
+            "team": "Team Disband",
+            "rank": 66,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "38021",
+            "team": "KSG B2R ESPORT",
+            "rank": 67,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "39359",
+            "team": "Team XIVIT",
+            "rank": 68,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "47325",
+            "team": "TEAM PANDUM",
+            "rank": 69,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "48751",
+            "team": "1HITxTK TGR",
+            "rank": 70,
+            "totalPoints": 123
+        },
+        {
+            "teamId": "50310",
+            "team": "TEAM DNA",
+            "rank": 71,
+            "totalPoints": 123
+        },
+        {
+            "teamId": "40053",
+            "team": "Shreepech Esports",
+            "rank": 72,
+            "totalPoints": 123
+        },
+        {
+            "teamId": "26894",
+            "team": "Abrupt Slayers",
+            "rank": 73,
+            "totalPoints": 123
+        },
+        {
+            "teamId": "38106",
+            "team": "THE BROTHERHOOD",
+            "rank": 74,
+            "totalPoints": 123
+        },
+        {
+            "teamId": "49357",
+            "team": "PMK VA ESPORTS",
+            "rank": 75,
+            "totalPoints": 122
+        },
+        {
+            "teamId": "26822",
+            "team": "Born To Glow",
+            "rank": 76,
+            "totalPoints": 122
+        },
+        {
+            "teamId": "43028",
+            "team": "TOYS GANG",
+            "rank": 77,
+            "totalPoints": 121
+        },
+        {
+            "teamId": "50004",
+            "team": "DABALU",
+            "rank": 78,
+            "totalPoints": 121
+        },
+        {
+            "teamId": "51426",
+            "team": "Savage esport",
+            "rank": 79,
+            "totalPoints": 121
+        },
+        {
+            "teamId": "30614",
+            "team": "AMIGOS ESPORTS",
+            "rank": 80,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "23652",
+            "team": "vip E-Sports",
+            "rank": 81,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "49521",
+            "team": "XENESIS ESPORTS ",
+            "rank": 82,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "45279",
+            "team": "RH X NEWHOPE",
+            "rank": 83,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "35428",
+            "team": "4yeglct",
+            "rank": 84,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "46867",
+            "team": "ROCKET ACADEMY",
+            "rank": 85,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "37989",
+            "team": "214 KAIZEN",
+            "rank": 86,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "23692",
+            "team": "VE NRC",
+            "rank": 87,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "45845",
+            "team": "STORM AXETRON",
+            "rank": 88,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "48346",
+            "team": "Chill guys",
+            "rank": 89,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "35807",
+            "team": "RC32 ESPORTS",
+            "rank": 90,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "28198",
+            "team": "Crimson Carnage",
+            "rank": 91,
+            "totalPoints": 118
+        },
+        {
+            "teamId": "26667",
+            "team": "4TZ ANTASENA",
+            "rank": 92,
+            "totalPoints": 118
+        },
+        {
+            "teamId": "38738",
+            "team": "Point Zero",
+            "rank": 93,
+            "totalPoints": 117
+        },
+        {
+            "teamId": "39352",
+            "team": "Team SP",
+            "rank": 94,
+            "totalPoints": 117
+        },
+        {
+            "teamId": "37458",
+            "team": "HYPER ESPORT",
+            "rank": 95,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "26819",
+            "team": "KcN OFFICIAL ",
+            "rank": 96,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "43586",
+            "team": "FZTH LECAK",
+            "rank": 97,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "36585",
+            "team": "KZE UNDERAGE",
+            "rank": 98,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "32335",
+            "team": "Question One Esports",
+            "rank": 99,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "24065",
+            "team": "DIMAN ",
+            "rank": 100,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "26291",
+            "team": "FreeSlot",
+            "rank": 101,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "37238",
+            "team": "Max4",
+            "rank": 102,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "25902",
+            "team": "AR GANG",
+            "rank": 103,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "51018",
+            "team": "PREDATOR ESPORTS",
+            "rank": 104,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "43608",
+            "team": "TWD ESPORTS",
+            "rank": 105,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "27347",
+            "team": "Wodaa 8 Esports",
+            "rank": 106,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "36085",
+            "team": "Trained 2 kill",
+            "rank": 107,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "23449",
+            "team": "ZONE PREDATORS ",
+            "rank": 108,
+            "totalPoints": 114
+        },
+        {
+            "teamId": "48578",
+            "team": "RISE OF RAVEN",
+            "rank": 109,
+            "totalPoints": 114
+        },
+        {
+            "teamId": "48409",
+            "team": "INFECTED WARRIORS ",
+            "rank": 110,
+            "totalPoints": 114
+        },
+        {
+            "teamId": "35806",
+            "team": "ILLUMINOS ESPORTS",
+            "rank": 111,
+            "totalPoints": 114
+        },
+        {
+            "teamId": "23305",
+            "team": "UNDERDOGS SAGA ",
+            "rank": 112,
+            "totalPoints": 114
+        },
+        {
+            "teamId": "50694",
+            "team": "See for the future",
+            "rank": 113,
+            "totalPoints": 114
+        },
+        {
+            "teamId": "43175",
+            "team": "SECRET PROJECT P2K",
+            "rank": 114,
+            "totalPoints": 113
+        },
+        {
+            "teamId": "35857",
+            "team": "one8 esports official ",
+            "rank": 115,
+            "totalPoints": 113
+        },
+        {
+            "teamId": "38574",
+            "team": "ROCKET ASTRA",
+            "rank": 116,
+            "totalPoints": 113
+        },
+        {
+            "teamId": "49455",
+            "team": "CS6 ESPORTS",
+            "rank": 117,
+            "totalPoints": 113
+        },
+        {
+            "teamId": "37104",
+            "team": "SGW KIMREN",
+            "rank": 118,
+            "totalPoints": 113
+        },
+        {
+            "teamId": "26041",
+            "team": "PINAS TOO SOON",
+            "rank": 119,
+            "totalPoints": 112
+        },
+        {
+            "teamId": "38005",
+            "team": "GOLDEN LUXURY MAVIS",
+            "rank": 120,
+            "totalPoints": 112
+        },
+        {
+            "teamId": "25789",
+            "team": "Four Babies",
+            "rank": 121,
+            "totalPoints": 112
+        },
+        {
+            "teamId": "24393",
+            "team": "PROLEGAZ INTL",
+            "rank": 122,
+            "totalPoints": 112
+        },
+        {
+            "teamId": "45991",
+            "team": "NORMIES ESPORTS",
+            "rank": 123,
+            "totalPoints": 111
+        },
+        {
+            "teamId": "33736",
+            "team": "SD INT'L MAINTEAM",
+            "rank": 124,
+            "totalPoints": 111
+        },
+        {
+            "teamId": "26063",
+            "team": "Dream To Destination ",
+            "rank": 125,
+            "totalPoints": 111
+        },
+        {
+            "teamId": "35318",
+            "team": "KAAON E-SPORT",
+            "rank": 126,
+            "totalPoints": 110
+        },
+        {
+            "teamId": "24031",
+            "team": "DS GANG",
+            "rank": 127,
+            "totalPoints": 110
+        },
+        {
+            "teamId": "41008",
+            "team": "FSE DREAMTEAM",
+            "rank": 128,
+            "totalPoints": 110
+        },
+        {
+            "teamId": "29961",
+            "team": "SHADOW KNIGHT",
+            "rank": 129,
+            "totalPoints": 109
+        },
+        {
+            "teamId": "30133",
+            "team": "Velvet esport",
+            "rank": 130,
+            "totalPoints": 109
+        },
+        {
+            "teamId": "35329",
+            "team": "NBesport",
+            "rank": 131,
+            "totalPoints": 109
+        },
+        {
+            "teamId": "32174",
+            "team": "Valyrian x Red saints",
+            "rank": 132,
+            "totalPoints": 109
+        },
+        {
+            "teamId": "29820",
+            "team": "IMPROVAL ESPORT ",
+            "rank": 133,
+            "totalPoints": 109
+        }
+    ]
+},
+{
+    "matchId": 805,
+    "roleIds": ["1341720118987591680","1341720164588326965","1341720177821220906","1341720195844280321"],
+    "results": [
+        {
+            "teamId": "44355",
+            "team": "BRX MUMIA",
+            "rank": 1,
+            "totalPoints": 201
+        },
+        {
+            "teamId": "49055",
+            "team": "Getso Esports",
+            "rank": 2,
+            "totalPoints": 196
+        },
+        {
+            "teamId": "49160",
+            "team": "Black Talent",
+            "rank": 3,
+            "totalPoints": 193
+        },
+        {
+            "teamId": "50971",
+            "team": "6X Under State",
+            "rank": 4,
+            "totalPoints": 188
+        },
+        {
+            "teamId": "47640",
+            "team": "Digital Athletics",
+            "rank": 5,
+            "totalPoints": 187
+        },
+        {
+            "teamId": "48626",
+            "team": "Mtx esports",
+            "rank": 6,
+            "totalPoints": 183
+        },
+        {
+            "teamId": "47556",
+            "team": "CAVE ESPORTS",
+            "rank": 7,
+            "totalPoints": 179
+        },
+        {
+            "teamId": "24260",
+            "team": "NAIXGAMING",
+            "rank": 8,
+            "totalPoints": 179
+        },
+        {
+            "teamId": "28654",
+            "team": "SCREEWED ESPORTS",
+            "rank": 9,
+            "totalPoints": 178
+        },
+        {
+            "teamId": "41943",
+            "team": "Mvp Esportssss",
+            "rank": 10,
+            "totalPoints": 176
+        },
+        {
+            "teamId": "47665",
+            "team": "One For All",
+            "rank": 11,
+            "totalPoints": 170
+        },
+        {
+            "teamId": "31016",
+            "team": "Eight 8 ACADEMY ",
+            "rank": 12,
+            "totalPoints": 168
+        },
+        {
+            "teamId": "44255",
+            "team": "JETGO ESPORTS",
+            "rank": 13,
+            "totalPoints": 168
+        },
+        {
+            "teamId": "47724",
+            "team": "FUT Esports",
+            "rank": 14,
+            "totalPoints": 167
+        },
+        {
+            "teamId": "28519",
+            "team": "Reapers Esports",
+            "rank": 15,
+            "totalPoints": 166
+        },
+        {
+            "teamId": "23646",
+            "team": "Vatangame Esports",
+            "rank": 16,
+            "totalPoints": 166
+        },
+        {
+            "teamId": "24776",
+            "team": "TOP TEAM",
+            "rank": 17,
+            "totalPoints": 164
+        },
+        {
+            "teamId": "35564",
+            "team": "MAD ESPORTS KZ",
+            "rank": 18,
+            "totalPoints": 163
+        },
+        {
+            "teamId": "48068",
+            "team": "Tier ",
+            "rank": 19,
+            "totalPoints": 162
+        },
+        {
+            "teamId": "31875",
+            "team": "Team Ego",
+            "rank": 20,
+            "totalPoints": 161
+        },
+        {
+            "teamId": "25460",
+            "team": "İda Esports",
+            "rank": 21,
+            "totalPoints": 161
+        },
+        {
+            "teamId": "30336",
+            "team": "Fenerbahce Esport",
+            "rank": 22,
+            "totalPoints": 157
+        },
+        {
+            "teamId": "38281",
+            "team": "ENERGY GAMING",
+            "rank": 23,
+            "totalPoints": 156
+        },
+        {
+            "teamId": "37517",
+            "team": "1971 GR ESPORTS ",
+            "rank": 24,
+            "totalPoints": 155
+        },
+        {
+            "teamId": "36231",
+            "team": "THE ROYALS",
+            "rank": 25,
+            "totalPoints": 155
+        },
+        {
+            "teamId": "50279",
+            "team": "ONE REPUBLIC ESPORTS ",
+            "rank": 26,
+            "totalPoints": 155
+        },
+        {
+            "teamId": "45900",
+            "team": "Boars Academy ",
+            "rank": 27,
+            "totalPoints": 154
+        },
+        {
+            "teamId": "32674",
+            "team": "Goat Quality ",
+            "rank": 28,
+            "totalPoints": 154
+        },
+        {
+            "teamId": "37405",
+            "team": "ES ESPORTS",
+            "rank": 29,
+            "totalPoints": 153
+        },
+        {
+            "teamId": "46594",
+            "team": "Papara SuperMassive",
+            "rank": 30,
+            "totalPoints": 153
+        },
+        {
+            "teamId": "25624",
+            "team": "zLAND",
+            "rank": 31,
+            "totalPoints": 152
+        },
+        {
+            "teamId": "36031",
+            "team": "Rental Killers",
+            "rank": 32,
+            "totalPoints": 151
+        },
+        {
+            "teamId": "48919",
+            "team": "Surreal espor",
+            "rank": 33,
+            "totalPoints": 151
+        },
+        {
+            "teamId": "49076",
+            "team": "ngg",
+            "rank": 34,
+            "totalPoints": 149
+        },
+        {
+            "teamId": "34904",
+            "team": "PMCS ESPORTS ",
+            "rank": 35,
+            "totalPoints": 149
+        },
+        {
+            "teamId": "37525",
+            "team": "Warm ",
+            "rank": 36,
+            "totalPoints": 149
+        },
+        {
+            "teamId": "38117",
+            "team": "SWAT EUROPA",
+            "rank": 37,
+            "totalPoints": 148
+        },
+        {
+            "teamId": "45094",
+            "team": "1337HUANIA",
+            "rank": 38,
+            "totalPoints": 148
+        },
+        {
+            "teamId": "50809",
+            "team": "RAWENS",
+            "rank": 39,
+            "totalPoints": 147
+        },
+        {
+            "teamId": "29358",
+            "team": "Blue Tiam DX",
+            "rank": 40,
+            "totalPoints": 147
+        },
+        {
+            "teamId": "45016",
+            "team": "TEAM DIZZY",
+            "rank": 41,
+            "totalPoints": 147
+        },
+        {
+            "teamId": "44418",
+            "team": "VOOV TEAM",
+            "rank": 42,
+            "totalPoints": 147
+        },
+        {
+            "teamId": "23706",
+            "team": "Galatasaray Espor ",
+            "rank": 43,
+            "totalPoints": 145
+        },
+        {
+            "teamId": "48901",
+            "team": "KG ESPORT",
+            "rank": 44,
+            "totalPoints": 145
+        },
+        {
+            "teamId": "39299",
+            "team": "7r Esports",
+            "rank": 45,
+            "totalPoints": 145
+        },
+        {
+            "teamId": "36959",
+            "team": "ROY esport Eu",
+            "rank": 46,
+            "totalPoints": 145
+        },
+        {
+            "teamId": "35676",
+            "team": "NO MERCY WARRIORS ",
+            "rank": 47,
+            "totalPoints": 144
+        },
+        {
+            "teamId": "48277",
+            "team": "Hell Empire ",
+            "rank": 48,
+            "totalPoints": 144
+        },
+        {
+            "teamId": "36790",
+            "team": "VIOLENT FURY",
+            "rank": 49,
+            "totalPoints": 143
+        },
+        {
+            "teamId": "45166",
+            "team": "KURD FIRE21",
+            "rank": 50,
+            "totalPoints": 142
+        },
+        {
+            "teamId": "44974",
+            "team": "DOMINANT PLAYERS",
+            "rank": 51,
+            "totalPoints": 141
+        },
+        {
+            "teamId": "24225",
+            "team": "FAR2EASY",
+            "rank": 52,
+            "totalPoints": 140
+        },
+        {
+            "teamId": "37307",
+            "team": "UNINVITED ",
+            "rank": 53,
+            "totalPoints": 140
+        },
+        {
+            "teamId": "50820",
+            "team": "Synergy Esports",
+            "rank": 53,
+            "totalPoints": 140
+        },
+        {
+            "teamId": "45357",
+            "team": "ExEcution",
+            "rank": 55,
+            "totalPoints": 140
+        },
+        {
+            "teamId": "39038",
+            "team": "God Hell Star",
+            "rank": 56,
+            "totalPoints": 139
+        },
+        {
+            "teamId": "48714",
+            "team": "Team Modern",
+            "rank": 57,
+            "totalPoints": 139
+        },
+        {
+            "teamId": "48348",
+            "team": "Team 6",
+            "rank": 58,
+            "totalPoints": 139
+        },
+        {
+            "teamId": "50318",
+            "team": "NH EU",
+            "rank": 59,
+            "totalPoints": 138
+        },
+        {
+            "teamId": "49228",
+            "team": "REVENGE7",
+            "rank": 60,
+            "totalPoints": 137
+        },
+        {
+            "teamId": "50838",
+            "team": "DIA ESPORTS",
+            "rank": 61,
+            "totalPoints": 137
+        },
+        {
+            "teamId": "37311",
+            "team": "X FORCE",
+            "rank": 62,
+            "totalPoints": 137
+        },
+        {
+            "teamId": "37907",
+            "team": "BULLY LOBBY",
+            "rank": 63,
+            "totalPoints": 136
+        },
+        {
+            "teamId": "23976",
+            "team": "MELS ESPORTS",
+            "rank": 64,
+            "totalPoints": 136
+        },
+        {
+            "teamId": "39620",
+            "team": "GOLD SEVEN ESPORTS",
+            "rank": 65,
+            "totalPoints": 136
+        },
+        {
+            "teamId": "37532",
+            "team": "INCREDIBLE",
+            "rank": 66,
+            "totalPoints": 136
+        },
+        {
+            "teamId": "36448",
+            "team": "TGM Team",
+            "rank": 67,
+            "totalPoints": 136
+        },
+        {
+            "teamId": "24505",
+            "team": "Rush Team",
+            "rank": 68,
+            "totalPoints": 136
+        },
+        {
+            "teamId": "43714",
+            "team": "Kam Army",
+            "rank": 69,
+            "totalPoints": 135
+        },
+        {
+            "teamId": "51399",
+            "team": "Pubg Georgia",
+            "rank": 70,
+            "totalPoints": 135
+        },
+        {
+            "teamId": "34717",
+            "team": "ZETA GAMING ",
+            "rank": 71,
+            "totalPoints": 134
+        },
+        {
+            "teamId": "49025",
+            "team": "PMCS TEAM ",
+            "rank": 72,
+            "totalPoints": 134
+        },
+        {
+            "teamId": "43131",
+            "team": "UNIQUE TEAM",
+            "rank": 73,
+            "totalPoints": 133
+        },
+        {
+            "teamId": "39162",
+            "team": "Lewwit",
+            "rank": 74,
+            "totalPoints": 133
+        },
+        {
+            "teamId": "49211",
+            "team": "Team Patron esports ",
+            "rank": 75,
+            "totalPoints": 133
+        },
+        {
+            "teamId": "44658",
+            "team": "Script Esports",
+            "rank": 76,
+            "totalPoints": 132
+        },
+        {
+            "teamId": "37749",
+            "team": "TRACTOR1970",
+            "rank": 77,
+            "totalPoints": 132
+        },
+        {
+            "teamId": "25444",
+            "team": "TheNoisyBoys",
+            "rank": 78,
+            "totalPoints": 132
+        },
+        {
+            "teamId": "31142",
+            "team": "CHERIK ",
+            "rank": 79,
+            "totalPoints": 132
+        },
+        {
+            "teamId": "48694",
+            "team": "ART ESPORTS",
+            "rank": 80,
+            "totalPoints": 132
+        },
+        {
+            "teamId": "50514",
+            "team": "Barsay",
+            "rank": 81,
+            "totalPoints": 132
+        },
+        {
+            "teamId": "43855",
+            "team": "LAS Esports",
+            "rank": 82,
+            "totalPoints": 131
+        },
+        {
+            "teamId": "25622",
+            "team": "KZ esports",
+            "rank": 83,
+            "totalPoints": 131
+        },
+        {
+            "teamId": "32806",
+            "team": "Don team",
+            "rank": 84,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "26629",
+            "team": "X Boys",
+            "rank": 85,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "24610",
+            "team": "Just Universe",
+            "rank": 86,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "23887",
+            "team": "GLITCH ESPORTS ",
+            "rank": 87,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "39689",
+            "team": "V1OLENT ESPORTS ",
+            "rank": 88,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "46481",
+            "team": "FIDAIN TEAM",
+            "rank": 89,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "50719",
+            "team": "SHEF GAMES",
+            "rank": 90,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "28338",
+            "team": "MORTEM SMOKERS",
+            "rank": 91,
+            "totalPoints": 129
+        },
+        {
+            "teamId": "26771",
+            "team": "HEAVEN TEAM ",
+            "rank": 92,
+            "totalPoints": 129
+        },
+        {
+            "teamId": "35247",
+            "team": "FarVoice Gaming",
+            "rank": 93,
+            "totalPoints": 129
+        },
+        {
+            "teamId": "23526",
+            "team": "OLDSKOOL",
+            "rank": 94,
+            "totalPoints": 128
+        },
+        {
+            "teamId": "24611",
+            "team": "Unwanted Company",
+            "rank": 95,
+            "totalPoints": 128
+        },
+        {
+            "teamId": "38202",
+            "team": "GodOfAnarchy",
+            "rank": 96,
+            "totalPoints": 128
+        },
+        {
+            "teamId": "51020",
+            "team": "LASTSUMMERRR",
+            "rank": 97,
+            "totalPoints": 128
+        },
+        {
+            "teamId": "48600",
+            "team": "monaspa",
+            "rank": 98,
+            "totalPoints": 127
+        },
+        {
+            "teamId": "38820",
+            "team": "PUNK ESPORTS ",
+            "rank": 99,
+            "totalPoints": 127
+        },
+        {
+            "teamId": "27505",
+            "team": "SY",
+            "rank": 100,
+            "totalPoints": 126
+        },
+        {
+            "teamId": "45169",
+            "team": "SHOCKWAVE",
+            "rank": 101,
+            "totalPoints": 126
+        },
+        {
+            "teamId": "43755",
+            "team": "TEAM GOATS",
+            "rank": 102,
+            "totalPoints": 126
+        },
+        {
+            "teamId": "50367",
+            "team": "Takeda esports ",
+            "rank": 103,
+            "totalPoints": 125
+        },
+        {
+            "teamId": "25594",
+            "team": "EXORCIST ESP",
+            "rank": 104,
+            "totalPoints": 125
+        },
+        {
+            "teamId": "36049",
+            "team": "VINDICTUS AF",
+            "rank": 105,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "23497",
+            "team": "Tango Gülü Esports",
+            "rank": 106,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "31474",
+            "team": "BX BROTHERS",
+            "rank": 107,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "36905",
+            "team": "Unidentified",
+            "rank": 108,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "42228",
+            "team": "M2  ESPORT",
+            "rank": 109,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "42311",
+            "team": "ELMAJD MORROCO",
+            "rank": 110,
+            "totalPoints": 123
+        },
+        {
+            "teamId": "48514",
+            "team": "Rebel Esports",
+            "rank": 111,
+            "totalPoints": 122
+        },
+        {
+            "teamId": "37984",
+            "team": "Cest ESPORTS",
+            "rank": 112,
+            "totalPoints": 122
+        },
+        {
+            "teamId": "39401",
+            "team": "zLAND QZ",
+            "rank": 113,
+            "totalPoints": 122
+        },
+        {
+            "teamId": "49539",
+            "team": "Dirty Anarchy ",
+            "rank": 114,
+            "totalPoints": 122
+        },
+        {
+            "teamId": "24572",
+            "team": "CHICKEN RUN ",
+            "rank": 115,
+            "totalPoints": 121
+        },
+        {
+            "teamId": "24548",
+            "team": "REDSO",
+            "rank": 116,
+            "totalPoints": 121
+        },
+        {
+            "teamId": "50082",
+            "team": "AGS Esports",
+            "rank": 117,
+            "totalPoints": 121
+        },
+        {
+            "teamId": "26363",
+            "team": "Nasty Bullets",
+            "rank": 118,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "24066",
+            "team": "Melise Esports",
+            "rank": 119,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "51283",
+            "team": "VDV TEAM",
+            "rank": 120,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "42235",
+            "team": "North’s Warriors OF Albania ",
+            "rank": 121,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "34710",
+            "team": "Godlike Esports",
+            "rank": 122,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "25414",
+            "team": "Wild Esports",
+            "rank": 123,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "37073",
+            "team": "W W team",
+            "rank": 124,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "49537",
+            "team": "SHIIIDA GANG",
+            "rank": 125,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "48847",
+            "team": "Horror ",
+            "rank": 126,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "38125",
+            "team": "DRAGO",
+            "rank": 127,
+            "totalPoints": 117
+        },
+        {
+            "teamId": "28635",
+            "team": "NEW REPUBLİC ARMY ",
+            "rank": 128,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "49943",
+            "team": "No Body",
+            "rank": 129,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "27803",
+            "team": "VXE ",
+            "rank": 130,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "36981",
+            "team": "Nova 7",
+            "rank": 131,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "51262",
+            "team": "SUNRISE ",
+            "rank": 132,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "23199",
+            "team": "TGF ESPORTS",
+            "rank": 133,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "48589",
+            "team": "Prestige7 esports",
+            "rank": 134,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "26058",
+            "team": "Falcon esports ",
+            "rank": 135,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "41170",
+            "team": "4 Rame Bolnavioare",
+            "rank": 136,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "43526",
+            "team": "MANDJIKI",
+            "rank": 137,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "49144",
+            "team": "HAIKU",
+            "rank": 138,
+            "totalPoints": 114
+        }
+    ]
+},
+{
+    "matchId": 806,
+    "roleIds": ["1341720484512923659","1341720635130380308","1341720719163133982","1341720802961133608"],
+    "results": [
+        {
+            "teamId": "45197",
+            "team": "Ven Esport",
+            "rank": 1,
+            "totalPoints": 166
+        },
+        {
+            "teamId": "34639",
+            "team": "GS TEAM",
+            "rank": 2,
+            "totalPoints": 166
+        },
+        {
+            "teamId": "49384",
+            "team": " ZNTRX ESPORTS ",
+            "rank": 3,
+            "totalPoints": 162
+        },
+        {
+            "teamId": "51232",
+            "team": "Suicide Squad X",
+            "rank": 4,
+            "totalPoints": 154
+        },
+        {
+            "teamId": "28584",
+            "team": "R8 ESPORTS",
+            "rank": 5,
+            "totalPoints": 153
+        },
+        {
+            "teamId": "47845",
+            "team": "X Esport Team",
+            "rank": 6,
+            "totalPoints": 153
+        },
+        {
+            "teamId": "34258",
+            "team": "AKMxESPORT",
+            "rank": 7,
+            "totalPoints": 152
+        },
+        {
+            "teamId": "26989",
+            "team": "Z51 Esports",
+            "rank": 8,
+            "totalPoints": 148
+        },
+        {
+            "teamId": "38017",
+            "team": "JUNIOR LIZARD ",
+            "rank": 9,
+            "totalPoints": 147
+        },
+        {
+            "teamId": "44901",
+            "team": "TGxESPORT",
+            "rank": 10,
+            "totalPoints": 144
+        },
+        {
+            "teamId": "48893",
+            "team": "25 ESPORT ",
+            "rank": 11,
+            "totalPoints": 141
+        },
+        {
+            "teamId": "49597",
+            "team": "PRIDE IRAQ",
+            "rank": 12,
+            "totalPoints": 137
+        },
+        {
+            "teamId": "48797",
+            "team": "NASR ESPORTS",
+            "rank": 13,
+            "totalPoints": 137
+        },
+        {
+            "teamId": "49413",
+            "team": "DR3 iQ",
+            "rank": 14,
+            "totalPoints": 137
+        },
+        {
+            "teamId": "38038",
+            "team": "KURD SQUAD ",
+            "rank": 15,
+            "totalPoints": 135
+        },
+        {
+            "teamId": "24327",
+            "team": "ORCA ESPORTS",
+            "rank": 16,
+            "totalPoints": 134
+        },
+        {
+            "teamId": "42745",
+            "team": "GAMAX ESPORT",
+            "rank": 17,
+            "totalPoints": 131
+        },
+        {
+            "teamId": "26872",
+            "team": "FLANKATO",
+            "rank": 18,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "38129",
+            "team": "KURD96 ESPORT",
+            "rank": 19,
+            "totalPoints": 129
+        },
+        {
+            "teamId": "39519",
+            "team": "Nobles ",
+            "rank": 20,
+            "totalPoints": 129
+        },
+        {
+            "teamId": "44215",
+            "team": "X Force Rejects",
+            "rank": 21,
+            "totalPoints": 127
+        },
+        {
+            "teamId": "49022",
+            "team": "EL MAJD ESPORT ",
+            "rank": 22,
+            "totalPoints": 127
+        },
+        {
+            "teamId": "51176",
+            "team": "LIBYANO HOUSE ",
+            "rank": 23,
+            "totalPoints": 126
+        },
+        {
+            "teamId": "51104",
+            "team": "BLACK LIST",
+            "rank": 24,
+            "totalPoints": 125
+        },
+        {
+            "teamId": "29332",
+            "team": "Best Brother Squad ",
+            "rank": 25,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "26034",
+            "team": "xXx E-Sports Knights",
+            "rank": 26,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "51134",
+            "team": "K23 ESPORT",
+            "rank": 27,
+            "totalPoints": 122
+        },
+        {
+            "teamId": "41643",
+            "team": "SEVENTEEN ESPORT",
+            "rank": 28,
+            "totalPoints": 121
+        },
+        {
+            "teamId": "50799",
+            "team": "THE MONSTER",
+            "rank": 29,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "43241",
+            "team": "Erbil Esports",
+            "rank": 30,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "37500",
+            "team": "RA'AD",
+            "rank": 31,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "38253",
+            "team": "Fox ESPORTS",
+            "rank": 32,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "24614",
+            "team": "iKURD ESPORTS",
+            "rank": 33,
+            "totalPoints": 120
+        },
+        {
+            "teamId": "36537",
+            "team": "Team Legion",
+            "rank": 34,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "42660",
+            "team": "KLR ESPORTS",
+            "rank": 35,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "51122",
+            "team": "IRAQ LIONS",
+            "rank": 36,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "23207",
+            "team": "3OO TEAM",
+            "rank": 37,
+            "totalPoints": 116
+        },
+        {
+            "teamId": "50807",
+            "team": "TEAM AKAINU",
+            "rank": 38,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "25934",
+            "team": "Storm Legend ",
+            "rank": 39,
+            "totalPoints": 114
+        },
+        {
+            "teamId": "49311",
+            "team": "46 LOOT",
+            "rank": 40,
+            "totalPoints": 114
+        },
+        {
+            "teamId": "42468",
+            "team": "POV COMMANDOS",
+            "rank": 41,
+            "totalPoints": 113
+        },
+        {
+            "teamId": "51226",
+            "team": "FOUR AGGRESSIVE",
+            "rank": 42,
+            "totalPoints": 113
+        },
+        {
+            "teamId": "44860",
+            "team": "KURD 69 Esport ",
+            "rank": 43,
+            "totalPoints": 112
+        },
+        {
+            "teamId": "47883",
+            "team": "Retired team ",
+            "rank": 44,
+            "totalPoints": 112
+        },
+        {
+            "teamId": "25172",
+            "team": "CIAx",
+            "rank": 45,
+            "totalPoints": 111
+        },
+        {
+            "teamId": "50756",
+            "team": "iDOLS BML",
+            "rank": 46,
+            "totalPoints": 111
+        },
+        {
+            "teamId": "24326",
+            "team": "Team Myths",
+            "rank": 47,
+            "totalPoints": 111
+        },
+        {
+            "teamId": "50741",
+            "team": "XO ESPORT",
+            "rank": 48,
+            "totalPoints": 110
+        },
+        {
+            "teamId": "47619",
+            "team": "ARAB CHAMPIONS",
+            "rank": 49,
+            "totalPoints": 110
+        },
+        {
+            "teamId": "50699",
+            "team": "DNA ESPORTS ",
+            "rank": 50,
+            "totalPoints": 109
+        },
+        {
+            "teamId": "41749",
+            "team": "nvr E-sport",
+            "rank": 51,
+            "totalPoints": 108
+        },
+        {
+            "teamId": "23179",
+            "team": "GALAXY POWER ",
+            "rank": 52,
+            "totalPoints": 107
+        },
+        {
+            "teamId": "39568",
+            "team": "DG E-SPORTS",
+            "rank": 53,
+            "totalPoints": 107
+        },
+        {
+            "teamId": "48771",
+            "team": "T2S ESPORT",
+            "rank": 54,
+            "totalPoints": 107
+        },
+        {
+            "teamId": "35889",
+            "team": "96 TEAM",
+            "rank": 55,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "49432",
+            "team": "Twisted minds",
+            "rank": 56,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "36196",
+            "team": "Misters Esports",
+            "rank": 57,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "38222",
+            "team": "DIJLAH ESPORTS",
+            "rank": 58,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "28545",
+            "team": "SxESPORT",
+            "rank": 59,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "36243",
+            "team": "FORZA TEAM",
+            "rank": 60,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "23876",
+            "team": "VIO SQUAD ",
+            "rank": 61,
+            "totalPoints": 105
+        },
+        {
+            "teamId": "26529",
+            "team": "inferno squad",
+            "rank": 62,
+            "totalPoints": 103
+        },
+        {
+            "teamId": "23941",
+            "team": "EAGLES ESPORTS YYY",
+            "rank": 63,
+            "totalPoints": 103
+        },
+        {
+            "teamId": "37514",
+            "team": "Team Spectres ",
+            "rank": 64,
+            "totalPoints": 103
+        },
+        {
+            "teamId": "25791",
+            "team": "Trap Lions",
+            "rank": 65,
+            "totalPoints": 102
+        },
+        {
+            "teamId": "25987",
+            "team": "Casablanca",
+            "rank": 66,
+            "totalPoints": 102
+        },
+        {
+            "teamId": "24795",
+            "team": "BML GLADIATORS ",
+            "rank": 67,
+            "totalPoints": 101
+        },
+        {
+            "teamId": "51160",
+            "team": "MK4 ESPORT",
+            "rank": 68,
+            "totalPoints": 101
+        },
+        {
+            "teamId": "25637",
+            "team": "ELMAJD IRAQ",
+            "rank": 69,
+            "totalPoints": 100
+        },
+        {
+            "teamId": "50558",
+            "team": "Exotic alliance inv",
+            "rank": 70,
+            "totalPoints": 100
+        },
+        {
+            "teamId": "49632",
+            "team": "25x9 IKURD",
+            "rank": 71,
+            "totalPoints": 97
+        },
+        {
+            "teamId": "47807",
+            "team": "WIZMACHIN 4W",
+            "rank": 72,
+            "totalPoints": 97
+        },
+        {
+            "teamId": "49503",
+            "team": "FUTURE ESPORTS",
+            "rank": 73,
+            "totalPoints": 96
+        },
+        {
+            "teamId": "28225",
+            "team": "SHL",
+            "rank": 74,
+            "totalPoints": 95
+        },
+        {
+            "teamId": "41516",
+            "team": "S11 E-SPORTS",
+            "rank": 75,
+            "totalPoints": 95
+        },
+        {
+            "teamId": "34463",
+            "team": "‏RUTHLESS SOULS LYB",
+            "rank": 76,
+            "totalPoints": 95
+        },
+        {
+            "teamId": "48752",
+            "team": "face to face",
+            "rank": 77,
+            "totalPoints": 95
+        },
+        {
+            "teamId": "34585",
+            "team": "T7",
+            "rank": 78,
+            "totalPoints": 94
+        },
+        {
+            "teamId": "26303",
+            "team": "SEE ESPORT ",
+            "rank": 79,
+            "totalPoints": 94
+        },
+        {
+            "teamId": "50508",
+            "team": "POV ESPORTS",
+            "rank": 80,
+            "totalPoints": 93
+        },
+        {
+            "teamId": "32027",
+            "team": "4AM TEAM",
+            "rank": 81,
+            "totalPoints": 93
+        },
+        {
+            "teamId": "23208",
+            "team": "Kurds Esport",
+            "rank": 82,
+            "totalPoints": 93
+        },
+        {
+            "teamId": "38231",
+            "team": "Black Light Team",
+            "rank": 83,
+            "totalPoints": 93
+        },
+        {
+            "teamId": "39670",
+            "team": "POWER EGYPT",
+            "rank": 84,
+            "totalPoints": 92
+        },
+        {
+            "teamId": "47604",
+            "team": "JORDANIAN SQUAD ",
+            "rank": 85,
+            "totalPoints": 92
+        },
+        {
+            "teamId": "44338",
+            "team": "RED DEATH EGYPT ",
+            "rank": 86,
+            "totalPoints": 92
+        },
+        {
+            "teamId": "26767",
+            "team": "TEAM ALNSOR",
+            "rank": 87,
+            "totalPoints": 92
+        },
+        {
+            "teamId": "25672",
+            "team": "IRAQ ELITE",
+            "rank": 88,
+            "totalPoints": 91
+        },
+        {
+            "teamId": "25681",
+            "team": "Team MYS Officials ",
+            "rank": 89,
+            "totalPoints": 91
+        },
+        {
+            "teamId": "42883",
+            "team": "RØCKS ESPORTS ",
+            "rank": 90,
+            "totalPoints": 90
+        },
+        {
+            "teamId": "23586",
+            "team": "AFSANA RED ESPORTS ",
+            "rank": 91,
+            "totalPoints": 90
+        },
+        {
+            "teamId": "39169",
+            "team": "Good Luck",
+            "rank": 92,
+            "totalPoints": 90
+        },
+        {
+            "teamId": "45154",
+            "team": "REAL THE MEN",
+            "rank": 93,
+            "totalPoints": 90
+        },
+        {
+            "teamId": "37897",
+            "team": "PAIN ESPORT",
+            "rank": 94,
+            "totalPoints": 90
+        },
+        {
+            "teamId": "23223",
+            "team": "Not Tough",
+            "rank": 95,
+            "totalPoints": 89
+        },
+        {
+            "teamId": "26164",
+            "team": "SPECIAL TEAM ",
+            "rank": 96,
+            "totalPoints": 89
+        },
+        {
+            "teamId": "48848",
+            "team": "77K",
+            "rank": 97,
+            "totalPoints": 89
+        },
+        {
+            "teamId": "47294",
+            "team": "BACK TO LIFE",
+            "rank": 98,
+            "totalPoints": 88
+        },
+        {
+            "teamId": "45451",
+            "team": "REDZ 77K ",
+            "rank": 99,
+            "totalPoints": 88
+        },
+        {
+            "teamId": "40755",
+            "team": "Eightxacademy",
+            "rank": 100,
+            "totalPoints": 88
+        },
+        {
+            "teamId": "38075",
+            "team": "ONExROCK",
+            "rank": 101,
+            "totalPoints": 88
+        },
+        {
+            "teamId": "50216",
+            "team": "AV Esports",
+            "rank": 102,
+            "totalPoints": 87
+        },
+        {
+            "teamId": "29140",
+            "team": "GLORY 4 KNIGHTS",
+            "rank": 103,
+            "totalPoints": 87
+        },
+        {
+            "teamId": "34738",
+            "team": "nashama",
+            "rank": 104,
+            "totalPoints": 87
+        },
+        {
+            "teamId": "24813",
+            "team": "Elite Esport ",
+            "rank": 105,
+            "totalPoints": 87
+        },
+        {
+            "teamId": "24217",
+            "team": "One Bullet Esports",
+            "rank": 106,
+            "totalPoints": 87
+        },
+        {
+            "teamId": "41020",
+            "team": "HellRaisers HR",
+            "rank": 107,
+            "totalPoints": 87
+        },
+        {
+            "teamId": "48535",
+            "team": "T9x",
+            "rank": 108,
+            "totalPoints": 87
+        },
+        {
+            "teamId": "49005",
+            "team": "TWELVE ESPORTS ",
+            "rank": 109,
+            "totalPoints": 87
+        },
+        {
+            "teamId": "37355",
+            "team": "old ESPORTS ",
+            "rank": 110,
+            "totalPoints": 87
+        },
+        {
+            "teamId": "24435",
+            "team": "LEB ESPORTS49",
+            "rank": 111,
+            "totalPoints": 86
+        },
+        {
+            "teamId": "29194",
+            "team": "KHK ESPORTS",
+            "rank": 112,
+            "totalPoints": 86
+        },
+        {
+            "teamId": "36395",
+            "team": "SAVAGESPORT",
+            "rank": 113,
+            "totalPoints": 85
+        },
+        {
+            "teamId": "31369",
+            "team": "THE POWER DEMONS -ONS",
+            "rank": 114,
+            "totalPoints": 85
+        },
+        {
+            "teamId": "31286",
+            "team": "MT10 ESPORTS",
+            "rank": 115,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "24698",
+            "team": "RED NIGHT WOLF",
+            "rank": 116,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "49475",
+            "team": "25 Attacks 🇸🇦",
+            "rank": 117,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "48708",
+            "team": "KURD23 ESPORTS",
+            "rank": 118,
+            "totalPoints": 83
+        },
+        {
+            "teamId": "50818",
+            "team": "Dali Squad",
+            "rank": 119,
+            "totalPoints": 83
+        },
+        {
+            "teamId": "50717",
+            "team": "7C ESPORTS",
+            "rank": 120,
+            "totalPoints": 83
+        },
+        {
+            "teamId": "24163",
+            "team": "Pm esport",
+            "rank": 121,
+            "totalPoints": 83
+        },
+        {
+            "teamId": "34663",
+            "team": "Zeus Moris",
+            "rank": 122,
+            "totalPoints": 82
+        },
+        {
+            "teamId": "44580",
+            "team": "25TISHRIN ",
+            "rank": 123,
+            "totalPoints": 82
+        },
+        {
+            "teamId": "42301",
+            "team": "MOST WANTED BRAVE",
+            "rank": 124,
+            "totalPoints": 82
+        },
+        {
+            "teamId": "47410",
+            "team": "Bye E-Sport",
+            "rank": 125,
+            "totalPoints": 82
+        },
+        {
+            "teamId": "45204",
+            "team": "Pride 56",
+            "rank": 126,
+            "totalPoints": 82
+        },
+        {
+            "teamId": "46379",
+            "team": "fr esports",
+            "rank": 127,
+            "totalPoints": 82
+        },
+        {
+            "teamId": "38060",
+            "team": "STRIKE E-SPORTS ",
+            "rank": 128,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "38332",
+            "team": "RiT E-SPORTS ",
+            "rank": 129,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "47735",
+            "team": "UNIVERSE OF CRABSSSS",
+            "rank": 130,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "25945",
+            "team": "Battle Egales",
+            "rank": 131,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "23218",
+            "team": "777 TEAM",
+            "rank": 132,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "39559",
+            "team": "ONE DREAM E sports",
+            "rank": 133,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "48953",
+            "team": "ARAB MADNESS",
+            "rank": 134,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "23934",
+            "team": "NEXUS  ESPORTS",
+            "rank": 135,
+            "totalPoints": 80
+        },
+        {
+            "teamId": "39082",
+            "team": "Back to revenge",
+            "rank": 136,
+            "totalPoints": 80
+        },
+        {
+            "teamId": "26168",
+            "team": "Dark Shadows 53",
+            "rank": 137,
+            "totalPoints": 80
+        },
+        {
+            "teamId": "24609",
+            "team": "NUMBERSEVEN ESPORTS",
+            "rank": 138,
+            "totalPoints": 80
+        },
+        {
+            "teamId": "49545",
+            "team": "SILENT HELL 11 ",
+            "rank": 139,
+            "totalPoints": 80
+        },
+        {
+            "teamId": "35060",
+            "team": "TSS Eaports",
+            "rank": 140,
+            "totalPoints": 80
+        },
+        {
+            "teamId": "30357",
+            "team": "NeverAtPeace",
+            "rank": 141,
+            "totalPoints": 79
+        },
+        {
+            "teamId": "30962",
+            "team": "REBEL WILD X",
+            "rank": 142,
+            "totalPoints": 78
+        },
+        {
+            "teamId": "31606",
+            "team": "STAR⁵¹¹ attackers",
+            "rank": 143,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "24043",
+            "team": "VIP WANTED ",
+            "rank": 144,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "25333",
+            "team": "player.killers",
+            "rank": 145,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "23232",
+            "team": "KNOCK OUT E-SPORTS",
+            "rank": 146,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "35438",
+            "team": "ROYAL ESPORTS ",
+            "rank": 147,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "38007",
+            "team": "S2 ESPORT",
+            "rank": 148,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "41048",
+            "team": "The Fighters",
+            "rank": 149,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "24114",
+            "team": "4Hw ESPORTS",
+            "rank": 150,
+            "totalPoints": 76
+        },
+        {
+            "teamId": "39708",
+            "team": "Evil One",
+            "rank": 151,
+            "totalPoints": 76
+        },
+        {
+            "teamId": "35899",
+            "team": "دوانية",
+            "rank": 152,
+            "totalPoints": 76
+        },
+        {
+            "teamId": "25184",
+            "team": "国王",
+            "rank": 153,
+            "totalPoints": 76
+        },
+        {
+            "teamId": "42254",
+            "team": "Power",
+            "rank": 154,
+            "totalPoints": 75
+        },
+        {
+            "teamId": "23236",
+            "team": "Soer Esports",
+            "rank": 155,
+            "totalPoints": 74
+        },
+        {
+            "teamId": "24829",
+            "team": "São PAULO77",
+            "rank": 156,
+            "totalPoints": 74
+        },
+        {
+            "teamId": "50673",
+            "team": "Seventy seven esport",
+            "rank": 157,
+            "totalPoints": 74
+        },
+        {
+            "teamId": "26856",
+            "team": "PRIDE E-SPORTS",
+            "rank": 158,
+            "totalPoints": 73
+        },
+        {
+            "teamId": "35666",
+            "team": "VIPEx2EZ4",
+            "rank": 159,
+            "totalPoints": 73
+        },
+        {
+            "teamId": "45150",
+            "team": "DPL ESPORTS",
+            "rank": 160,
+            "totalPoints": 73
+        }
+    ]
+},
+{
+    "matchId": 807,
+    "roleIds": ["1341719711607554070", "1341719749243179112", "1341719768368943157", "1341719788506054668"],
+    "results": [
+        {
+            "teamId": "51413",
+            "team": "Sailing Pro",
+            "rank": 1,
+            "totalPoints": 151
+        },
+        {
+            "teamId": "24589",
+            "team": "Exceed",
+            "rank": 2,
+            "totalPoints": 141
+        },
+        {
+            "teamId": "25585",
+            "team": "Ballas Esports ",
+            "rank": 3,
+            "totalPoints": 124
+        },
+        {
+            "teamId": "36281",
+            "team": "DarK",
+            "rank": 4,
+            "totalPoints": 122
+        },
+        {
+            "teamId": "23378",
+            "team": "Miami Dolphins",
+            "rank": 5,
+            "totalPoints": 118
+        },
+        {
+            "teamId": "47627",
+            "team": "Latin Kings Gold",
+            "rank": 6,
+            "totalPoints": 115
+        },
+        {
+            "teamId": "49770",
+            "team": "HRK ESPORTS",
+            "rank": 7,
+            "totalPoints": 112
+        },
+        {
+            "teamId": "47830",
+            "team": "Black Mamba",
+            "rank": 8,
+            "totalPoints": 109
+        },
+        {
+            "teamId": "23434",
+            "team": "EMPEROR ESPORTS",
+            "rank": 9,
+            "totalPoints": 109
+        },
+        {
+            "teamId": "49729",
+            "team": "Team Rayo",
+            "rank": 10,
+            "totalPoints": 108
+        },
+        {
+            "teamId": "49531",
+            "team": "Olympia esports",
+            "rank": 11,
+            "totalPoints": 108
+        },
+        {
+            "teamId": "23175",
+            "team": "Boss Esports",
+            "rank": 12,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "23245",
+            "team": "Lions",
+            "rank": 13,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "49707",
+            "team": "Men of Four",
+            "rank": 14,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "26643",
+            "team": "MANIC",
+            "rank": 15,
+            "totalPoints": 105
+        },
+        {
+            "teamId": "43426",
+            "team": "BANANA ESPORTS",
+            "rank": 16,
+            "totalPoints": 105
+        },
+        {
+            "teamId": "28632",
+            "team": "MASATOS ESPORTS",
+            "rank": 17,
+            "totalPoints": 104
+        },
+        {
+            "teamId": "38521",
+            "team": "Dauntless",
+            "rank": 18,
+            "totalPoints": 104
+        },
+        {
+            "teamId": "24511",
+            "team": "4 Sexy Frogs",
+            "rank": 19,
+            "totalPoints": 104
+        },
+        {
+            "teamId": "36341",
+            "team": "Righteous",
+            "rank": 20,
+            "totalPoints": 103
+        },
+        {
+            "teamId": "26130",
+            "team": "Sinners-sir",
+            "rank": 21,
+            "totalPoints": 101
+        },
+        {
+            "teamId": "26574",
+            "team": "RICH ESPORTS ",
+            "rank": 22,
+            "totalPoints": 100
+        },
+        {
+            "teamId": "35845",
+            "team": "YOUNGEST IN CHARGE",
+            "rank": 23,
+            "totalPoints": 100
+        },
+        {
+            "teamId": "25702",
+            "team": "Stoned falcons",
+            "rank": 24,
+            "totalPoints": 99
+        },
+        {
+            "teamId": "45425",
+            "team": "Heaven Esport ",
+            "rank": 25,
+            "totalPoints": 99
+        },
+        {
+            "teamId": "37172",
+            "team": "THE 4 SLAYERS ",
+            "rank": 26,
+            "totalPoints": 98
+        },
+        {
+            "teamId": "24941",
+            "team": "Blood esports ",
+            "rank": 27,
+            "totalPoints": 96
+        },
+        {
+            "teamId": "36614",
+            "team": "The Falcons",
+            "rank": 28,
+            "totalPoints": 96
+        },
+        {
+            "teamId": "36357",
+            "team": "Next Element ",
+            "rank": 29,
+            "totalPoints": 94
+        },
+        {
+            "teamId": "35548",
+            "team": "ZOOesports",
+            "rank": 30,
+            "totalPoints": 93
+        },
+        {
+            "teamId": "36276",
+            "team": "ILLUSION_TEAM",
+            "rank": 31,
+            "totalPoints": 92
+        },
+        {
+            "teamId": "44793",
+            "team": "Vila Nova ",
+            "rank": 32,
+            "totalPoints": 91
+        },
+        {
+            "teamId": "35010",
+            "team": "Tarn taran ",
+            "rank": 33,
+            "totalPoints": 91
+        },
+        {
+            "teamId": "51231",
+            "team": "Team control star",
+            "rank": 34,
+            "totalPoints": 91
+        },
+        {
+            "teamId": "24817",
+            "team": "JUST 4 FUN",
+            "rank": 35,
+            "totalPoints": 91
+        },
+        {
+            "teamId": "49470",
+            "team": "Beleza Esports",
+            "rank": 36,
+            "totalPoints": 90
+        },
+        {
+            "teamId": "32349",
+            "team": "ROAD2DEATH",
+            "rank": 37,
+            "totalPoints": 89
+        },
+        {
+            "teamId": "47958",
+            "team": "Hard to kill.",
+            "rank": 38,
+            "totalPoints": 89
+        },
+        {
+            "teamId": "26249",
+            "team": "Real X Gaming ",
+            "rank": 39,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "26239",
+            "team": "kings Esports ",
+            "rank": 40,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "24854",
+            "team": "THE FINEST ",
+            "rank": 41,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "23323",
+            "team": "Unique Legacy",
+            "rank": 42,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "24689",
+            "team": "Golden Phyra",
+            "rank": 43,
+            "totalPoints": 82
+        },
+        {
+            "teamId": "48035",
+            "team": "Love Dope ",
+            "rank": 44,
+            "totalPoints": 82
+        },
+        {
+            "teamId": "27644",
+            "team": "BRICSESPORTS",
+            "rank": 45,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "25394",
+            "team": "Fearless Four",
+            "rank": 46,
+            "totalPoints": 80
+        },
+        {
+            "teamId": "26532",
+            "team": "NINE ZONE ESPORTS",
+            "rank": 47,
+            "totalPoints": 79
+        },
+        {
+            "teamId": "32951",
+            "team": "Retired Boys",
+            "rank": 48,
+            "totalPoints": 79
+        },
+        {
+            "teamId": "24657",
+            "team": "Swifties Four Rulers",
+            "rank": 49,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "26219",
+            "team": "FORCE TIJUANA",
+            "rank": 50,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "35128",
+            "team": "STELLAR SHADOWS ",
+            "rank": 51,
+            "totalPoints": 76
+        },
+        {
+            "teamId": "24985",
+            "team": "TEAM FUEGO",
+            "rank": 52,
+            "totalPoints": 75
+        },
+        {
+            "teamId": "49615",
+            "team": "World Player",
+            "rank": 53,
+            "totalPoints": 75
+        },
+        {
+            "teamId": "49289",
+            "team": "LOW INFAMOUS",
+            "rank": 54,
+            "totalPoints": 74
+        },
+        {
+            "teamId": "32386",
+            "team": "TRINITY",
+            "rank": 55,
+            "totalPoints": 74
+        },
+        {
+            "teamId": "49529",
+            "team": "Nameless",
+            "rank": 56,
+            "totalPoints": 74
+        },
+        {
+            "teamId": "23322",
+            "team": "CELEBRITY KILLERS",
+            "rank": 57,
+            "totalPoints": 73
+        },
+        {
+            "teamId": "28956",
+            "team": "The Fierce",
+            "rank": 58,
+            "totalPoints": 73
+        },
+        {
+            "teamId": "42665",
+            "team": "VRZ Esports",
+            "rank": 59,
+            "totalPoints": 73
+        },
+        {
+            "teamId": "47304",
+            "team": "Blizzard NA",
+            "rank": 60,
+            "totalPoints": 73
+        },
+        {
+            "teamId": "26673",
+            "team": "Zero To Win",
+            "rank": 61,
+            "totalPoints": 72
+        },
+        {
+            "teamId": "35792",
+            "team": "JUST4 ESPORTS",
+            "rank": 62,
+            "totalPoints": 72
+        },
+        {
+            "teamId": "27129",
+            "team": "inmortal Sport ",
+            "rank": 63,
+            "totalPoints": 71
+        },
+        {
+            "teamId": "24771",
+            "team": "Golden Eagles Latam",
+            "rank": 64,
+            "totalPoints": 71
+        },
+        {
+            "teamId": "24602",
+            "team": "NONSTOP",
+            "rank": 65,
+            "totalPoints": 71
+        },
+        {
+            "teamId": "37060",
+            "team": "Tisikos",
+            "rank": 66,
+            "totalPoints": 71
+        },
+        {
+            "teamId": "32431",
+            "team": "TRY MORE",
+            "rank": 67,
+            "totalPoints": 70
+        },
+        {
+            "teamId": "39961",
+            "team": "Team FrØsT",
+            "rank": 68,
+            "totalPoints": 70
+        },
+        {
+            "teamId": "24343",
+            "team": "Xo Assassins ",
+            "rank": 69,
+            "totalPoints": 70
+        },
+        {
+            "teamId": "28683",
+            "team": "Reality",
+            "rank": 70,
+            "totalPoints": 70
+        },
+        {
+            "teamId": "49342",
+            "team": "Empire of Gods",
+            "rank": 71,
+            "totalPoints": 69
+        },
+        {
+            "teamId": "49312",
+            "team": "The Hawk Esports",
+            "rank": 72,
+            "totalPoints": 69
+        },
+        {
+            "teamId": "24929",
+            "team": "MEMENTO MORI",
+            "rank": 73,
+            "totalPoints": 69
+        },
+        {
+            "teamId": "51156",
+            "team": "CP9 esport",
+            "rank": 74,
+            "totalPoints": 69
+        },
+        {
+            "teamId": "25625",
+            "team": "Rising Star",
+            "rank": 75,
+            "totalPoints": 69
+        },
+        {
+            "teamId": "25983",
+            "team": "Fuego",
+            "rank": 76,
+            "totalPoints": 69
+        },
+        {
+            "teamId": "39742",
+            "team": "DARK SOULS ",
+            "rank": 77,
+            "totalPoints": 69
+        },
+        {
+            "teamId": "41143",
+            "team": "DESI •",
+            "rank": 78,
+            "totalPoints": 68
+        },
+        {
+            "teamId": "38272",
+            "team": "Resilience Esports",
+            "rank": 79,
+            "totalPoints": 68
+        },
+        {
+            "teamId": "26682",
+            "team": "Team Gapagap",
+            "rank": 80,
+            "totalPoints": 67
+        },
+        {
+            "teamId": "40395",
+            "team": "Vikings Esports",
+            "rank": 81,
+            "totalPoints": 67
+        },
+        {
+            "teamId": "23249",
+            "team": "MARIPOSA ELITES",
+            "rank": 82,
+            "totalPoints": 66
+        },
+        {
+            "teamId": "43001",
+            "team": "ACBC ESPORTS ",
+            "rank": 83,
+            "totalPoints": 66
+        },
+        {
+            "teamId": "23297",
+            "team": "Sinners Esports",
+            "rank": 84,
+            "totalPoints": 66
+        },
+        {
+            "teamId": "28953",
+            "team": "Game Over Esports ",
+            "rank": 85,
+            "totalPoints": 66
+        },
+        {
+            "teamId": "27764",
+            "team": " Homies ",
+            "rank": 86,
+            "totalPoints": 65
+        },
+        {
+            "teamId": "32916",
+            "team": "4 REAL",
+            "rank": 87,
+            "totalPoints": 65
+        },
+        {
+            "teamId": "40742",
+            "team": "TEAM BTOWN ",
+            "rank": 88,
+            "totalPoints": 65
+        },
+        {
+            "teamId": "43262",
+            "team": " RED WARRIORS ESPORTS",
+            "rank": 89,
+            "totalPoints": 64
+        },
+        {
+            "teamId": "36273",
+            "team": "sin ReaPers",
+            "rank": 90,
+            "totalPoints": 64
+        },
+        {
+            "teamId": "37144",
+            "team": "Team im",
+            "rank": 91,
+            "totalPoints": 64
+        },
+        {
+            "teamId": "24482",
+            "team": "Brick by Brick",
+            "rank": 92,
+            "totalPoints": 64
+        },
+        {
+            "teamId": "42612",
+            "team": "Team Force ",
+            "rank": 93,
+            "totalPoints": 63
+        },
+        {
+            "teamId": "29574",
+            "team": "COMANDO CM²",
+            "rank": 94,
+            "totalPoints": 63
+        },
+        {
+            "teamId": "43136",
+            "team": "V8• Officials ",
+            "rank": 95,
+            "totalPoints": 63
+        },
+        {
+            "teamId": "24390",
+            "team": "Infinity Reapers ",
+            "rank": 96,
+            "totalPoints": 63
+        },
+        {
+            "teamId": "42857",
+            "team": "ERIE PA TEAM PUBG MOBILE",
+            "rank": 97,
+            "totalPoints": 62
+        },
+        {
+            "teamId": "47936",
+            "team": "ATG ESPORTS - ATG",
+            "rank": 98,
+            "totalPoints": 62
+        },
+        {
+            "teamId": "49362",
+            "team": "LETAL 7",
+            "rank": 99,
+            "totalPoints": 62
+        },
+        {
+            "teamId": "36943",
+            "team": "PurgeEsportsX",
+            "rank": 100,
+            "totalPoints": 62
+        },
+        {
+            "teamId": "44868",
+            "team": "Cruelty on top",
+            "rank": 101,
+            "totalPoints": 62
+        },
+        {
+            "teamId": "31534",
+            "team": "The Boyz",
+            "rank": 102,
+            "totalPoints": 61
+        },
+        {
+            "teamId": "49751",
+            "team": "BAPExESPORTS",
+            "rank": 103,
+            "totalPoints": 61
+        },
+        {
+            "teamId": "38159",
+            "team": "TGAMES",
+            "rank": 104,
+            "totalPoints": 61
+        },
+        {
+            "teamId": "28832",
+            "team": "Rest In Peace department ",
+            "rank": 105,
+            "totalPoints": 60
+        },
+        {
+            "teamId": "49479",
+            "team": "Trouble Gaming ",
+            "rank": 106,
+            "totalPoints": 60
+        },
+        {
+            "teamId": "31452",
+            "team": "Death Machine",
+            "rank": 107,
+            "totalPoints": 59
+        },
+        {
+            "teamId": "26201",
+            "team": "GXr",
+            "rank": 108,
+            "totalPoints": 59
+        },
+        {
+            "teamId": "25678",
+            "team": "New Expedition ",
+            "rank": 109,
+            "totalPoints": 59
+        },
+        {
+            "teamId": "38263",
+            "team": "LAST X ESPORTS",
+            "rank": 110,
+            "totalPoints": 59
+        },
+        {
+            "teamId": "24940",
+            "team": "TGOAL",
+            "rank": 111,
+            "totalPoints": 59
+        },
+        {
+            "teamId": "49826",
+            "team": "BXA",
+            "rank": 112,
+            "totalPoints": 58
+        },
+        {
+            "teamId": "28739",
+            "team": "JAYNEPAL ",
+            "rank": 113,
+            "totalPoints": 58
+        },
+        {
+            "teamId": "44631",
+            "team": "INTIMIDATORS",
+            "rank": 114,
+            "totalPoints": 57
+        },
+        {
+            "teamId": "27367",
+            "team": "Chronic esport",
+            "rank": 115,
+            "totalPoints": 57
+        },
+        {
+            "teamId": "36972",
+            "team": "ROW WHITE",
+            "rank": 116,
+            "totalPoints": 57
+        },
+        {
+            "teamId": "23230",
+            "team": "Not Gonna Lie",
+            "rank": 117,
+            "totalPoints": 57
+        },
+        {
+            "teamId": "28535",
+            "team": "Kittyboys Team",
+            "rank": 118,
+            "totalPoints": 57
+        },
+        {
+            "teamId": "36693",
+            "team": "Peak Esports",
+            "rank": 119,
+            "totalPoints": 56
+        },
+        {
+            "teamId": "23258",
+            "team": "X Prisoners ",
+            "rank": 120,
+            "totalPoints": 55
+        },
+        {
+            "teamId": "24900",
+            "team": "SONIQS ESPORT",
+            "rank": 121,
+            "totalPoints": 54
+        },
+        {
+            "teamId": "39534",
+            "team": "Marxa RagoLe",
+            "rank": 122,
+            "totalPoints": 54
+        },
+        {
+            "teamId": "28961",
+            "team": "Reborn Entity",
+            "rank": 123,
+            "totalPoints": 54
+        },
+        {
+            "teamId": "50953",
+            "team": "Hooligans Esports ",
+            "rank": 124,
+            "totalPoints": 53
+        },
+        {
+            "teamId": "42204",
+            "team": "NFG",
+            "rank": 125,
+            "totalPoints": 52
+        },
+        {
+            "teamId": "38217",
+            "team": "Zeta Family sports ",
+            "rank": 126,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "47157",
+            "team": "INFAMOUS",
+            "rank": 127,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "23549",
+            "team": "Four Kings Regen Fem",
+            "rank": 128,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "23444",
+            "team": "Team BAT",
+            "rank": 129,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "35565",
+            "team": "Xo Elites ",
+            "rank": 130,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "37752",
+            "team": "BORN TO DIE ",
+            "rank": 131,
+            "totalPoints": 50
+        },
+        {
+            "teamId": "24566",
+            "team": "BOSS eSports NA",
+            "rank": 132,
+            "totalPoints": 50
+        },
+        {
+            "teamId": "28849",
+            "team": "Team TBDx",
+            "rank": 133,
+            "totalPoints": 49
+        },
+        {
+            "teamId": "24726",
+            "team": "SIGNED TO GOD(STGx)",
+            "rank": 134,
+            "totalPoints": 49
+        },
+        {
+            "teamId": "50929",
+            "team": "JB",
+            "rank": 135,
+            "totalPoints": 49
+        },
+        {
+            "teamId": "50260",
+            "team": "W4iT",
+            "rank": 136,
+            "totalPoints": 48
+        },
+        {
+            "teamId": "45252",
+            "team": "LUXURY SUPER ",
+            "rank": 137,
+            "totalPoints": 48
+        },
+        {
+            "teamId": "35788",
+            "team": "T4SxMAFIA",
+            "rank": 138,
+            "totalPoints": 48
+        },
+        {
+            "teamId": "45217",
+            "team": "LASTxx 2",
+            "rank": 139,
+            "totalPoints": 47
+        },
+        {
+            "teamId": "43428",
+            "team": "Infinity skills",
+            "rank": 140,
+            "totalPoints": 47
+        },
+        {
+            "teamId": "31383",
+            "team": "ZephyrEZ ",
+            "rank": 141,
+            "totalPoints": 47
+        },
+        {
+            "teamId": "24405",
+            "team": "NEXGEN",
+            "rank": 142,
+            "totalPoints": 47
+        },
+        {
+            "teamId": "23238",
+            "team": "STRONGER TEAM",
+            "rank": 143,
+            "totalPoints": 47
+        },
+        {
+            "teamId": "49788",
+            "team": "ORIGIN ESPORTS",
+            "rank": 144,
+            "totalPoints": 47
+        },
+        {
+            "teamId": "47940",
+            "team": "Suix Elites",
+            "rank": 145,
+            "totalPoints": 46
+        },
+        {
+            "teamId": "29666",
+            "team": "6ex",
+            "rank": 146,
+            "totalPoints": 46
+        },
+        {
+            "teamId": "37958",
+            "team": "HARD TO KILL CASE",
+            "rank": 147,
+            "totalPoints": 45
+        },
+        {
+            "teamId": "37093",
+            "team": "BEER ESOPRTS",
+            "rank": 148,
+            "totalPoints": 45
+        },
+        {
+            "teamId": "45158",
+            "team": "GLx",
+            "rank": 149,
+            "totalPoints": 45
+        },
+        {
+            "teamId": "32923",
+            "team": "Team Thunders",
+            "rank": 150,
+            "totalPoints": 45
+        },
+        {
+            "teamId": "27047",
+            "team": "El Tío Solo",
+            "rank": 151,
+            "totalPoints": 45
+        },
+        {
+            "teamId": "36298",
+            "team": "THUGNATION YT",
+            "rank": 152,
+            "totalPoints": 45
+        }
+    ]
+},
+{
+    "matchId": 810,
+    "roleIds": ["1341720226529542194","1341720307848712192","1341720326580469781","1341720341487157248"],
+    "results": [
+        {
+            "teamId": "25466",
+            "team": "SMOKE GAMING",
+            "rank": 1,
+            "totalPoints": 179
+        },
+        {
+            "teamId": "36891",
+            "team": "MARYLAND ESPORTS",
+            "rank": 2,
+            "totalPoints": 155
+        },
+        {
+            "teamId": "24737",
+            "team": "TRIC ESPORTS",
+            "rank": 3,
+            "totalPoints": 144
+        },
+        {
+            "teamId": "36969",
+            "team": "ACTION E-SPORTS ",
+            "rank": 4,
+            "totalPoints": 139
+        },
+        {
+            "teamId": "49135",
+            "team": "BURN IN SILENCE",
+            "rank": 5,
+            "totalPoints": 135
+        },
+        {
+            "teamId": "48622",
+            "team": "BELLATRIX ESPORTS ",
+            "rank": 6,
+            "totalPoints": 133
+        },
+        {
+            "teamId": "44933",
+            "team": "Savage Esports ",
+            "rank": 7,
+            "totalPoints": 130
+        },
+        {
+            "teamId": "29986",
+            "team": "HELLS SPORTS ",
+            "rank": 8,
+            "totalPoints": 123
+        },
+        {
+            "teamId": "51029",
+            "team": "Razer Esports BR",
+            "rank": 9,
+            "totalPoints": 123
+        },
+        {
+            "teamId": "37385",
+            "team": "ETERNIA GAMING",
+            "rank": 10,
+            "totalPoints": 122
+        },
+        {
+            "teamId": "49036",
+            "team": "BRK GAMING",
+            "rank": 11,
+            "totalPoints": 119
+        },
+        {
+            "teamId": "48776",
+            "team": "DEMONS KILLERS",
+            "rank": 12,
+            "totalPoints": 113
+        },
+        {
+            "teamId": "48733",
+            "team": "KONG BRASIL",
+            "rank": 13,
+            "totalPoints": 107
+        },
+        {
+            "teamId": "51390",
+            "team": "I GOT A GUN",
+            "rank": 14,
+            "totalPoints": 107
+        },
+        {
+            "teamId": "49761",
+            "team": "RAZER SPORTS SA",
+            "rank": 15,
+            "totalPoints": 106
+        },
+        {
+            "teamId": "36806",
+            "team": "EMBOSCADA E-SPORTS",
+            "rank": 16,
+            "totalPoints": 104
+        },
+        {
+            "teamId": "50940",
+            "team": "BELLATOR 4 EVER",
+            "rank": 17,
+            "totalPoints": 103
+        },
+        {
+            "teamId": "47647",
+            "team": "INVICTUS TEAM",
+            "rank": 18,
+            "totalPoints": 99
+        },
+        {
+            "teamId": "39667",
+            "team": "STOMP TOP TEAM - STT",
+            "rank": 19,
+            "totalPoints": 97
+        },
+        {
+            "teamId": "46741",
+            "team": "United Winners",
+            "rank": 20,
+            "totalPoints": 96
+        },
+        {
+            "teamId": "48959",
+            "team": "Artic Gaming",
+            "rank": 21,
+            "totalPoints": 92
+        },
+        {
+            "teamId": "47768",
+            "team": "EXTREME SPORTS",
+            "rank": 22,
+            "totalPoints": 91
+        },
+        {
+            "teamId": "47317",
+            "team": "TICA TEAM",
+            "rank": 23,
+            "totalPoints": 89
+        },
+        {
+            "teamId": "26971",
+            "team": "OVERPOWER E-SPORTS",
+            "rank": 24,
+            "totalPoints": 89
+        },
+        {
+            "teamId": "47863",
+            "team": "JRZ ESPORTS ",
+            "rank": 25,
+            "totalPoints": 89
+        },
+        {
+            "teamId": "32356",
+            "team": "POCO STORE",
+            "rank": 26,
+            "totalPoints": 86
+        },
+        {
+            "teamId": "49131",
+            "team": "BIRICO TEAM",
+            "rank": 27,
+            "totalPoints": 85
+        },
+        {
+            "teamId": "49066",
+            "team": "SUPRA Sprt",
+            "rank": 28,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "49701",
+            "team": "KNIFE iN SKULL",
+            "rank": 29,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "24838",
+            "team": "Nekro sport",
+            "rank": 30,
+            "totalPoints": 84
+        },
+        {
+            "teamId": "24730",
+            "team": "Pacífic Esports Oficial ",
+            "rank": 31,
+            "totalPoints": 83
+        },
+        {
+            "teamId": "24247",
+            "team": "Trovão Gaming",
+            "rank": 32,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "50689",
+            "team": "Atomx esports ",
+            "rank": 33,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "37479",
+            "team": "ZONA ROJA ",
+            "rank": 34,
+            "totalPoints": 81
+        },
+        {
+            "teamId": "50847",
+            "team": "STEALTH GAMING",
+            "rank": 35,
+            "totalPoints": 80
+        },
+        {
+            "teamId": "24419",
+            "team": "Demônios Da Tasmânia ",
+            "rank": 36,
+            "totalPoints": 79
+        },
+        {
+            "teamId": "32888",
+            "team": "MAD E-Sports",
+            "rank": 37,
+            "totalPoints": 78
+        },
+        {
+            "teamId": "35134",
+            "team": "BRD ACADEMY",
+            "rank": 38,
+            "totalPoints": 78
+        },
+        {
+            "teamId": "24853",
+            "team": "300 E-SPORTS",
+            "rank": 39,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "26229",
+            "team": "THUNDER FURY",
+            "rank": 40,
+            "totalPoints": 77
+        },
+        {
+            "teamId": "26934",
+            "team": "StarGaming",
+            "rank": 41,
+            "totalPoints": 76
+        },
+        {
+            "teamId": "46831",
+            "team": "BRAZILIAN KILLERS E-SPORTS",
+            "rank": 42,
+            "totalPoints": 75
+        },
+        {
+            "teamId": "37493",
+            "team": "NEPTUNE ESPORTS",
+            "rank": 43,
+            "totalPoints": 75
+        },
+        {
+            "teamId": "51252",
+            "team": "Trouble Gaming ",
+            "rank": 44,
+            "totalPoints": 74
+        },
+        {
+            "teamId": "24933",
+            "team": "PEGASUS ELITE",
+            "rank": 45,
+            "totalPoints": 73
+        },
+        {
+            "teamId": "49783",
+            "team": "TEAM SOULS ",
+            "rank": 46,
+            "totalPoints": 72
+        },
+        {
+            "teamId": "44998",
+            "team": "SKYLINE",
+            "rank": 47,
+            "totalPoints": 71
+        },
+        {
+            "teamId": "24694",
+            "team": "Yakkuza E-esports ",
+            "rank": 48,
+            "totalPoints": 70
+        },
+        {
+            "teamId": "24527",
+            "team": "I FORCE BRIGADE",
+            "rank": 49,
+            "totalPoints": 67
+        },
+        {
+            "teamId": "28996",
+            "team": "SHOW NO FEAR",
+            "rank": 50,
+            "totalPoints": 67
+        },
+        {
+            "teamId": "24716",
+            "team": "Pacific Latam",
+            "rank": 51,
+            "totalPoints": 67
+        },
+        {
+            "teamId": "39676",
+            "team": "Yasuke E-sports ",
+            "rank": 52,
+            "totalPoints": 66
+        },
+        {
+            "teamId": "24319",
+            "team": "PARADOX E-Sports ",
+            "rank": 53,
+            "totalPoints": 65
+        },
+        {
+            "teamId": "24134",
+            "team": "MostHated ",
+            "rank": 54,
+            "totalPoints": 65
+        },
+        {
+            "teamId": "28964",
+            "team": "Insany Rush",
+            "rank": 55,
+            "totalPoints": 65
+        },
+        {
+            "teamId": "24926",
+            "team": "INSANUS VINCERE",
+            "rank": 56,
+            "totalPoints": 65
+        },
+        {
+            "teamId": "49415",
+            "team": "Team Six",
+            "rank": 57,
+            "totalPoints": 65
+        },
+        {
+            "teamId": "37341",
+            "team": "SINGGRI ESPORTS",
+            "rank": 58,
+            "totalPoints": 65
+        },
+        {
+            "teamId": "29732",
+            "team": "PLAYERS UNKNOWS",
+            "rank": 59,
+            "totalPoints": 64
+        },
+        {
+            "teamId": "27327",
+            "team": "ATL ESPORTS ",
+            "rank": 60,
+            "totalPoints": 63
+        },
+        {
+            "teamId": "25343",
+            "team": "NEWNIGHT E-SPORTS ",
+            "rank": 61,
+            "totalPoints": 62
+        },
+        {
+            "teamId": "35602",
+            "team": "Escócia Esports",
+            "rank": 62,
+            "totalPoints": 59
+        },
+        {
+            "teamId": "50380",
+            "team": "Thekillers.tk",
+            "rank": 63,
+            "totalPoints": 59
+        },
+        {
+            "teamId": "47918",
+            "team": "YOUNG KINGS ",
+            "rank": 64,
+            "totalPoints": 59
+        },
+        {
+            "teamId": "49046",
+            "team": "CRONOS GAMING  CRG",
+            "rank": 65,
+            "totalPoints": 57
+        },
+        {
+            "teamId": "25347",
+            "team": "RAGE ESPORTS",
+            "rank": 66,
+            "totalPoints": 57
+        },
+        {
+            "teamId": "49766",
+            "team": "Polaris Sport",
+            "rank": 67,
+            "totalPoints": 57
+        },
+        {
+            "teamId": "25680",
+            "team": "EN LA TECLA",
+            "rank": 68,
+            "totalPoints": 55
+        },
+        {
+            "teamId": "49807",
+            "team": "FKeSports",
+            "rank": 69,
+            "totalPoints": 55
+        },
+        {
+            "teamId": "25545",
+            "team": "Brazilians E-Sports",
+            "rank": 70,
+            "totalPoints": 54
+        },
+        {
+            "teamId": "49768",
+            "team": "JUVENTUS ESPORTS/juve",
+            "rank": 71,
+            "totalPoints": 54
+        },
+        {
+            "teamId": "37922",
+            "team": "THUNDER LEGION E-SPORTS",
+            "rank": 72,
+            "totalPoints": 52
+        },
+        {
+            "teamId": "25606",
+            "team": "VULTURE PRIDE ",
+            "rank": 73,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "44171",
+            "team": "BRAZILIAN STORM ",
+            "rank": 74,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "39696",
+            "team": "Team Nexa ",
+            "rank": 75,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "40105",
+            "team": "PRO FURIA E-SPORTS",
+            "rank": 76,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "35706",
+            "team": "GOTHAMCITY ESPORTS",
+            "rank": 77,
+            "totalPoints": 51
+        },
+        {
+            "teamId": "47803",
+            "team": "Fantoche eSports ",
+            "rank": 78,
+            "totalPoints": 50
+        },
+        {
+            "teamId": "42034",
+            "team": "GOLDEN BOYS",
+            "rank": 79,
+            "totalPoints": 50
+        },
+        {
+            "teamId": "44551",
+            "team": "SPETSNAZ E-SPORTS",
+            "rank": 80,
+            "totalPoints": 50
+        },
+        {
+            "teamId": "50680",
+            "team": "Exiled Gaming",
+            "rank": 81,
+            "totalPoints": 49
+        },
+        {
+            "teamId": "24054",
+            "team": "CONNECT TEAM",
+            "rank": 82,
+            "totalPoints": 49
+        },
+        {
+            "teamId": "31025",
+            "team": "Athos esports",
+            "rank": 83,
+            "totalPoints": 48
+        },
+        {
+            "teamId": "49747",
+            "team": "AXS VÍRUS",
+            "rank": 84,
+            "totalPoints": 48
+        },
+        {
+            "teamId": "27009",
+            "team": "ANBUesports",
+            "rank": 85,
+            "totalPoints": 48
+        },
+        {
+            "teamId": "47663",
+            "team": "BLOOD ZONE",
+            "rank": 86,
+            "totalPoints": 48
+        },
+        {
+            "teamId": "24522",
+            "team": "ASUNCIÓN TEAM",
+            "rank": 87,
+            "totalPoints": 47
+        },
+        {
+            "teamId": "37972",
+            "team": "1fps team",
+            "rank": 88,
+            "totalPoints": 47
+        },
+        {
+            "teamId": "38260",
+            "team": "X7SEVEN",
+            "rank": 89,
+            "totalPoints": 47
+        },
+        {
+            "teamId": "37935",
+            "team": "X7 E-SPORTS",
+            "rank": 90,
+            "totalPoints": 46
+        },
+        {
+            "teamId": "45514",
+            "team": "Suix Oficial",
+            "rank": 91,
+            "totalPoints": 46
+        },
+        {
+            "teamId": "29164",
+            "team": "ÓBITO GAMING",
+            "rank": 92,
+            "totalPoints": 46
+        },
+        {
+            "teamId": "37867",
+            "team": "TEAM COTA BRASIL",
+            "rank": 93,
+            "totalPoints": 44
+        },
+        {
+            "teamId": "26089",
+            "team": "STEEL SPORT",
+            "rank": 94,
+            "totalPoints": 44
+        },
+        {
+            "teamId": "36876",
+            "team": "XXT GAMING ",
+            "rank": 95,
+            "totalPoints": 44
+        },
+        {
+            "teamId": "24469",
+            "team": "L7 SPORTS ",
+            "rank": 96,
+            "totalPoints": 44
+        },
+        {
+            "teamId": "41455",
+            "team": "time occ",
+            "rank": 97,
+            "totalPoints": 43
+        },
+        {
+            "teamId": "50661",
+            "team": "No Tiene Org ",
+            "rank": 98,
+            "totalPoints": 42
+        },
+        {
+            "teamId": "26182",
+            "team": "Galaxy Esports ",
+            "rank": 99,
+            "totalPoints": 39
+        },
+        {
+            "teamId": "24062",
+            "team": "TEAM GUAMPA ",
+            "rank": 100,
+            "totalPoints": 39
+        },
+        {
+            "teamId": "24155",
+            "team": "Angels Esports",
+            "rank": 101,
+            "totalPoints": 38
+        },
+        {
+            "teamId": "39455",
+            "team": "Ixxxquadi das Louc4s",
+            "rank": 102,
+            "totalPoints": 37
+        },
+        {
+            "teamId": "44872",
+            "team": "IBs ",
+            "rank": 103,
+            "totalPoints": 37
+        },
+        {
+            "teamId": "50739",
+            "team": "iDROP GAMING ",
+            "rank": 104,
+            "totalPoints": 37
+        },
+        {
+            "teamId": "49737",
+            "team": "KINGS NEVER DIE",
+            "rank": 105,
+            "totalPoints": 37
+        },
+        {
+            "teamId": "49017",
+            "team": "TALENT E-SPORTS",
+            "rank": 106,
+            "totalPoints": 37
+        },
+        {
+            "teamId": "24500",
+            "team": "TPs",
+            "rank": 107,
+            "totalPoints": 37
+        },
+        {
+            "teamId": "24849",
+            "team": "TFT E-SPORT",
+            "rank": 108,
+            "totalPoints": 37
+        },
+        {
+            "teamId": "46458",
+            "team": "Seal's",
+            "rank": 109,
+            "totalPoints": 36
+        },
+        {
+            "teamId": "49270",
+            "team": "SEVEN SINS E-SPORTS ",
+            "rank": 110,
+            "totalPoints": 36
+        },
+        {
+            "teamId": "25443",
+            "team": "SEVEN LUCK Team ",
+            "rank": 111,
+            "totalPoints": 35
+        },
+        {
+            "teamId": "26452",
+            "team": "FIVE KING NOTORIOUS",
+            "rank": 112,
+            "totalPoints": 35
+        },
+        {
+            "teamId": "47045",
+            "team": "BAD BUNNY E-SPORTS ",
+            "rank": 113,
+            "totalPoints": 35
+        },
+        {
+            "teamId": "49616",
+            "team": "Estorm",
+            "rank": 114,
+            "totalPoints": 34
+        },
+        {
+            "teamId": "36708",
+            "team": "4 Karas Sport Club",
+            "rank": 115,
+            "totalPoints": 34
+        },
+        {
+            "teamId": "29641",
+            "team": "TEAM BRASIL ",
+            "rank": 116,
+            "totalPoints": 34
+        },
+        {
+            "teamId": "51421",
+            "team": "ASPEN E-SPORT",
+            "rank": 117,
+            "totalPoints": 33
+        },
+        {
+            "teamId": "28471",
+            "team": "The Killers",
+            "rank": 118,
+            "totalPoints": 33
+        },
+        {
+            "teamId": "48544",
+            "team": "AWM E-SPORTS",
+            "rank": 119,
+            "totalPoints": 33
+        },
+        {
+            "teamId": "25021",
+            "team": "GOLD TITANS",
+            "rank": 120,
+            "totalPoints": 32
+        },
+        {
+            "teamId": "29956",
+            "team": "Killzone E-sports ",
+            "rank": 121,
+            "totalPoints": 32
+        },
+        {
+            "teamId": "26853",
+            "team": "SÓ CLASSE A",
+            "rank": 122,
+            "totalPoints": 32
+        },
+        {
+            "teamId": "46752",
+            "team": "World Players Evolution",
+            "rank": 123,
+            "totalPoints": 32
+        },
+        {
+            "teamId": "31585",
+            "team": "HYDRA ESPORTS",
+            "rank": 124,
+            "totalPoints": 32
+        },
+        {
+            "teamId": "44756",
+            "team": "NOCAUTE ONE",
+            "rank": 125,
+            "totalPoints": 32
+        },
+        {
+            "teamId": "23348",
+            "team": "INS E-SPORTS",
+            "rank": 126,
+            "totalPoints": 31
+        },
+        {
+            "teamId": "24939",
+            "team": "Giants Esports",
+            "rank": 127,
+            "totalPoints": 31
+        },
+        {
+            "teamId": "35555",
+            "team": "BOOM E-sports",
+            "rank": 128,
+            "totalPoints": 31
+        },
+        {
+            "teamId": "35729",
+            "team": "CLAN TULCINGO ",
+            "rank": 129,
+            "totalPoints": 30
+        },
+        {
+            "teamId": "35137",
+            "team": "7SONSS ",
+            "rank": 130,
+            "totalPoints": 30
+        },
+        {
+            "teamId": "37407",
+            "team": "Good of war",
+            "rank": 131,
+            "totalPoints": 30
+        },
+        {
+            "teamId": "36539",
+            "team": "Hype",
+            "rank": 132,
+            "totalPoints": 30
+        },
+        {
+            "teamId": "24445",
+            "team": "UNCHAINED ESPORTS",
+            "rank": 133,
+            "totalPoints": 29
+        },
+        {
+            "teamId": "24946",
+            "team": "ASSASSIN'S KILLERS ",
+            "rank": 134,
+            "totalPoints": 29
+        },
+        {
+            "teamId": "49696",
+            "team": "NAIK NO DESTIÑE",
+            "rank": 135,
+            "totalPoints": 28
+        },
+        {
+            "teamId": "33812",
+            "team": "NoSy",
+            "rank": 136,
+            "totalPoints": 28
+        },
+        {
+            "teamId": "24444",
+            "team": "SÓ TRETA ESPORTS",
+            "rank": 137,
+            "totalPoints": 28
+        },
+        {
+            "teamId": "47756",
+            "team": "Team Cuervo",
+            "rank": 138,
+            "totalPoints": 26
+        },
+        {
+            "teamId": "37924",
+            "team": "77K",
+            "rank": 139,
+            "totalPoints": 26
+        },
+        {
+            "teamId": "51194",
+            "team": "THE KILLERS attack ",
+            "rank": 140,
+            "totalPoints": 26
+        },
+        {
+            "teamId": "51148",
+            "team": "Dragons Chaos ",
+            "rank": 141,
+            "totalPoints": 26
+        },
+        {
+            "teamId": "31042",
+            "team": "Akatsuki AK",
+            "rank": 142,
+            "totalPoints": 25
+        }
+    ]
+}]
