@@ -292,7 +292,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
         userMessageOnSlashCommand.push({id: user.id, count: 1});
       }else if(userMessage.count >= 4){
           try {
-            await user.timeout(5 * 60 * 1000, "This channel is only for claiming role! Please use '/claim' commands.");
+            await user.timeout(5 * 60 * 1000, "This channel is only for claiming role! Please use '/roleclaim' commands.");
           } catch (error) {
             console.error("Error timing out user:", error);
           }
@@ -303,7 +303,7 @@ async function forwardToDiscordChannel(message, channelId, fromMe) {
       }
 
       message.channel.send({
-        content: `Hey ${message.author}, 🚫 This channel is only for claiming role! Please use '/claim' commands.`,
+        content: `Hey ${message.author}, 🚫 This channel is only for claiming role! Please use '/roleclaim' commands.`,
         allowedMention : {users: [message.author.id]}
       }).then(async msg =>{
         setTimeout(() => {
