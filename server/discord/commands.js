@@ -539,10 +539,15 @@ async function claimGroupRole(interaction){
     //https://esports.pubgmobile.com/tournaments/web/pubgm_match/match-detail?invite_team_id=50178&match_id=804&c_from=copy
     const inviteLink = interaction.options.getString("invite_link");
     const teamName = interaction.options.getString("team_name");
+    const region = interaction.options.getString("region");
     const teamId = inviteLink.split("invite_team_id=")[1].split("&")[0];
-    const matchId = inviteLink.split("match_id=")[1].split("&")[0];
-    
-    if(!teamId || !matchId){
+    const match = inviteLink.split("match_id=")[1].split("&")[0];
+    let matchId = 0;
+    if(!match){
+      matchId = region;
+    }
+    matchId = Number(match);
+    if(!teamId){
       await interaction.editReply({
         content: "Invalid invite link",
         ephemeral: true,
@@ -568,7 +573,7 @@ async function claimGroupRole(interaction){
       return;
     }
 
-    const roleId = serverTestRoleIds.find(role => role.matchId === Number(matchId));
+    const roleId = serverTestRoleIds.find(role => role.matchId === matchId);
     if(!roleId){
       await interaction.editReply({
         content: "match_id invalid",
@@ -610,7 +615,7 @@ async function claimGroupRole(interaction){
       await interaction.editReply({ content: "All roles for this group are full.", ephemeral: true });
     }
   }catch(error){
-    console.error(error);
+    console.log(error);
     await interaction.editReply({
       content: "An error occurred while claiming the role, please create a ticket for further assistance.",
       ephemeral: true,

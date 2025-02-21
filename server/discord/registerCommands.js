@@ -172,7 +172,29 @@ const commands = [
             description: 'Enter the team name',
             required: true,
             type: ApplicationCommandOptionType.String,
-        }]
+        },{
+            name: 'region',
+            description: 'Enter the region',
+            required: true,
+            choices:[{
+                name:"Asia",
+                value: 804
+                },{
+                name:"Europe",
+                value: 805
+                },{
+                name:"Middle East",
+                value: 806
+                },{
+                name:"North America",
+                value: 807
+                },{
+                name:"South America",
+                value: 810
+                }],
+            type: ApplicationCommandOptionType.Integer,
+        }
+    ]
     }
 ];
 

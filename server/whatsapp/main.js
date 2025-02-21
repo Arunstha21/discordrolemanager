@@ -73,7 +73,8 @@ const slashCommandChannel = "1341067978879406181"
 async function startBot(client) {
   if(!client) return;
   const { state, saveCreds } = await useMultiFileAuthState("./auth_info");
-  const sock = makeWASocket({
+  
+  let sock = makeWASocket({
     auth: state,
     printQRInTerminal: true,
   });
