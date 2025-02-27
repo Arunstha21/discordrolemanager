@@ -146,7 +146,10 @@ async function verify(interaction) {
       .setColor("#00FF00");
   }
   await interaction.reply({ embeds: [MessageEmbed] });
-  interaction.channel.delete();
+  
+  setTimeout(() => {
+    interaction.channel?.delete().catch(console.error);
+}, 2000);
 }
 
 async function onJoin(member) {
