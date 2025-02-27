@@ -1,10 +1,7 @@
 const {PermissionsBitField} = require("discord.js");
 const logger = require("../helper/logger");
 
-const connectDiscord = require("../helper/discordConnect");
-const client = connectDiscord();
-
-async function createServerWithTemplate(serverName, templateCode, channelAndRoleData) {
+async function createServerWithTemplate(client, serverName, templateCode, channelAndRoleData) {
     try {
         const template = await client.fetchGuildTemplate(templateCode);
 

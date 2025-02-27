@@ -28,20 +28,22 @@ require("dotenv").config();
 const startBot = require('./whatsapp/main');
 const token = process.env.DISCORD_TOKEN;
 
-
 app.use(jsonParser);
 app.use(cors());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
 
 
 app.post('/api/createServerWithTemplate', async (req, res) => {
     const { name, templateCode, roles } = req.body;
-    const inviteLink = await createServerWithTemplate(name, templateCode, roles);
+    const inviteLink = await createServerWithTemplate(client, name, templateCode, roles);
     res.json({ inviteLink });
 });
 
 app.post('/api/provideRole', async (req, res) => {
     const { guildId, userId, roleId } = req.body;
-    const role = await provideRole(guildId, userId, roleId);
+    const role = await provideRole(client, guildId, userId, roleId);
     res.json({ role });
 });
 
@@ -50,7 +52,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.get('/api/serverList', async (req, res) => {
-    const server = await listServer();
+    const server = await listServer(client);
     res.status(200).json(server);
 });
 
@@ -67,7 +69,7 @@ app.delete('/api/server/:id', async (req, res) => {
 app.post('/api/createServer', async (req, res) => {
     const { serverName, templateCode } = req.body;
     try {
-        const inviteLink = await createServer(serverName, templateCode);
+        const inviteLink = await createServer(client, serverName, templateCode);
         res.status(200).json({ inviteLink });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -76,19 +78,36 @@ app.post('/api/createServer', async (req, res) => {
 
 app.get('/api/serverData/:guildId', async (req, res) => {
     const guildId = req.params.guildId
-    const roles = await listServerData(guildId);
+    const roles = await listServerData(client, guildId);
     res.status(200).json(roles);
 });
 
 app.post('/api/createChannels', async (req, res) => {
     const { guildId, channels } = req.body;
-    const channel = await createChannels(guildId, channels);
+    const channel = await createChannels(client, guildId, channels);
     res.json({ channel });
 });
 
 app.use('/api/members', router);
 app.use('/api/csa', csaRouter);
 app.use('/api/pmnc', pmncRouter);
+
+
+const COMMANDS = {
+    "faq": "Hello {name}, below is the list of FAQ's: https://docs.google.com/document/d/1mMHGkiFFlG3lH-I4qg86cxSOOB35tCmicU35lleY7T0/edit?tab=t.0",
+  //   "How to register": "Hello {name}, below is the steps to register:",
+    "roadmap": "Hello {name}, below is the roadmap: https://www.youtube.com/watch?v=kG9O9RM9Qrc",
+    "timeline": "Hello {name}, below is the timeline: https://www.instagram.com/p/DEziKMpyroE/",
+    "register": "Hello {name}, below is the registration link: https://esports.pubgmobile.com/tournaments/web/pubgm_match/brand-detail?brand_id=14",
+    "calendar": "Hello {name}, below is the calendar: https://www.instagram.com/p/DFCxNRUyvnr",
+    "help": `Hello {name}, please reply with one of the following keywords to get more information:\n\n` +
+    `- "FAQ" for the FAQ Document 📄\n` +
+    `- "Roadmap" for the Roadmap 🗺️\n` +
+    `- "Timeline" for the Timeline 📅\n` +
+    `- "Calendar" for the Calendar\n` +
+    `- "Register" for the Registration Link\n\n` +
+    `Looking forward to assisting you!`
+  };
 
 app.listen(3001, async () => {
     console.log('Server is running on port 3001');
@@ -101,11 +120,12 @@ app.listen(3001, async () => {
     try {
         
         client.on("ready", () => {
-            startBot(client);
+            // startBot(client);
             console.log("Bot is ready!!");
         });
 
         client.on("guildMemberAdd", async (member) => {
+            if(member.guild.id != "1344495827086872681") return;
             await onJoin(member);
         });
 
@@ -187,6 +207,24 @@ app.listen(3001, async () => {
             }
         });
 
+        client.on('messageCreate', async (message) => {
+            if (message.author.bot) return;
+            //only allow claim command in slashCommandChannel
+              const DBCommands = await Commands.find({guildId: message.guild.id});
+              const commands = {};
+              DBCommands.map(command => commands[command.name] = command.value);
+            
+              const command = message.content.toLowerCase().trim();
+              const user = message.author;
+              if (command in COMMANDS) {
+                const responseText = COMMANDS[command].replace("{name}", `<@${user.id}>`);
+                await message.reply(responseText);
+              }else if(command in commands){
+                const responseText = commands[command];
+                await message.reply(responseText);
+              }
+          });
+
         await client.login(token);
     } catch (error) {
         logger.error("Failed to initialize Discord client", error);
@@ -231,6 +269,7 @@ app.post('/api/sendResult', async (req, res) => {
 )
 
 const roleManagerActiveStatus = require("./discord/roleManager.json");
+const { Commands } = require('./module/whatsapp');
 
 app.post('/api/activateRoleManager', (req, res) => {
     const { activate } = req.body;

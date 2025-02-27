@@ -2057,3 +2057,48 @@
 18:13:42 19/02/2025 - info: Successfully registered application commands
 18:13:59 19/02/2025 - info: Connected to Discord
 18:14:02 19/02/2025 - info: Successfully registered application commands
+00:17:24 28/02/2025 - info: Connected to Discord
+00:18:14 28/02/2025 - error: Error: Cannot read properties of undefined (reading 'cache')
+00:18:14 28/02/2025 - error: Error: Cannot read properties of undefined (reading 'cache')
+00:21:31 28/02/2025 - info: Connected to Discord
+00:21:44 28/02/2025 - info: Connected to Discord
+00:41:54 28/02/2025 - info: Connected to Discord
+00:44:42 28/02/2025 - info: Connected to Discord
+00:44:47 28/02/2025 - info: Connected to Discord
+00:45:28 28/02/2025 - info: Connected to Discord
+00:46:06 28/02/2025 - info: Connected to Discord
+00:46:33 28/02/2025 - info: Connected to Discord
+00:57:30 28/02/2025 - info: Connected to Discord
+00:57:36 28/02/2025 - info: Connected to Discord
+00:57:43 28/02/2025 - info: Connected to Discord
+00:57:47 28/02/2025 - info: Connected to Discord
+00:57:53 28/02/2025 - info: Connected to Discord
+00:58:00 28/02/2025 - info: Connected to Discord
+00:58:06 28/02/2025 - info: Connected to Discord
+00:58:27 28/02/2025 - info: Connected to Discord
+00:58:32 28/02/2025 - info: Connected to Discord
+00:58:43 28/02/2025 - info: Connected to Discord
+00:58:49 28/02/2025 - info: Connected to Discord
+02:27:36 28/02/2025 - info: Data imported successfully
+02:28:52 28/02/2025 - info: Data imported successfully
+02:29:27 28/02/2025 - info: Data imported successfully
+02:35:37 28/02/2025 - info: New member joined: some0neanyone
+02:35:37 28/02/2025 - info: There is no Ticket Category, creating Ticket Category
+02:35:38 28/02/2025 - info: Ticket Category Created, now creating channel
+02:35:39 28/02/2025 - info: Ticket Channel Created
+02:36:49 28/02/2025 - info: Successfully registered application commands
+02:46:44 28/02/2025 - info: Data imported successfully
+02:48:03 28/02/2025 - info: Data imported successfully
+02:54:26 28/02/2025 - error: Failed to refresh access token
+02:54:26 28/02/2025 - error: Error sending email to: prakassapkota123@gmail.com
+03:09:28 28/02/2025 - info: Mail successfully sent to: prakassapkota123@gmail.com, Subject: OTP for Discord Verification, Message: Your OTP for Discord Verification is: 193899
+03:09:55 28/02/2025 - info: Role Player added to some0neanyone
+03:09:55 28/02/2025 - info: Role Owner added to some0neanyone
+03:09:56 28/02/2025 - info: Role North America added to some0neanyone
+03:09:57 28/02/2025 - info: Role MANIC added to some0neanyone
+03:09:57 28/02/2025 - info: User some0neanyone verified successfully
+03:15:54 28/02/2025 - info: New member joined: some0neanyone
+03:15:56 28/02/2025 - info: Role Player added to some0neanyone
+03:15:56 28/02/2025 - info: Role Owner added to some0neanyone
+03:15:57 28/02/2025 - info: Role North America added to some0neanyone
+03:15:58 28/02/2025 - info: Role MANIC added to some0neanyone

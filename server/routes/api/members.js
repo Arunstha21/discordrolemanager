@@ -56,6 +56,7 @@ router.post("/import", async (req, res) => {
       const roles = [
         data.rolePlayer ? 'Player' : '', 
         data.roleOwner ? 'Owner' : '', 
+        data.roleExtra,
         data.teamName
       ].filter(Boolean);
        

@@ -1,5 +1,4 @@
 const logger = require("../helper/logger");
-const connectDiscord = require("../helper/discordConnect");
 const decimalToHexColor = require("../helper/decimalToHexColor");
 const {
   PermissionFlagsBits,
@@ -8,7 +7,6 @@ const {
 } = require("discord.js");
 const createTable = require("../helper/createTable");
 
-const client = connectDiscord();
 
 async function deletServer(guildId) {
   try {
@@ -25,7 +23,7 @@ async function deletServer(guildId) {
   }
 }
 
-async function provideRole(guildId, userId, roleId) {
+async function provideRole(client, guildId, userId, roleId) {
   try {
     const guild = client.guilds.cache.get(guildId);
     if (!guild) {
@@ -54,7 +52,7 @@ async function provideRole(guildId, userId, roleId) {
   }
 }
 
-async function listServer() {
+async function listServer(client) {
   try {
     const servers = await Promise.all(
       client.guilds.cache.map(async (guild) => {
@@ -87,7 +85,7 @@ async function listServer() {
   }
 }
 
-async function createServer(serverName, templateCode) {
+async function createServer(client, serverName, templateCode) {
   try {
     let newGuild;
     if (templateCode) {
@@ -127,7 +125,7 @@ async function createServer(serverName, templateCode) {
   }
 }
 
-async function listServerData(guildId) {
+async function listServerData(client, guildId) {
   try {
     const guild = client.guilds.cache.get(guildId);
     if (!guild) {
@@ -172,7 +170,7 @@ function toKebabCase(str) {
   return str.toLowerCase().replace(/\s+/g, "-");
 }
 
-async function createChannels(guildId, channelData) {
+async function createChannels(client, guildId, channelData) {
   try {
     const guild = client.guilds.cache.get(guildId);
     if (!guild) {
@@ -231,61 +229,61 @@ async function createChannels(guildId, channelData) {
   }
 }
 
-async function sendResult(tableData, headers, messageContent, isOverall) {
-  const data = {
-    headers,
-    rows: tableData,
-  };
-  const guildId = "1262366878530015274";
-  const channelId = "1262366879159156782";
+// async function sendResult(tableData, headers, messageContent, isOverall) {
+//   const data = {
+//     headers,
+//     rows: tableData,
+//   };
+//   const guildId = "1262366878530015274";
+//   const channelId = "1262366879159156782";
 
-  sendResults(guildId, channelId, data, messageContent);
+//   sendResults(client, guildId, channelId, data, messageContent);
 
-  setTimeout(() => {
-    prodSend(data, messageContent, isOverall);
-  }, 1000 * 60 * 11);
-}
+//   setTimeout(() => {
+//     prodSend(data, messageContent, isOverall);
+//   }, 1000 * 60 * 11);
+// }
 
-async function prodSend(data, messageContent, isOverall) {
-  const guildId = "1240885607010406470";
-  const channelIds = {
-    matchWise: "1240886332058767381",
-    overall: "1240886390938669116",
-  };
-  const channelId = isOverall ? channelIds.overall : channelIds.matchWise;
-  sendResults(guildId, channelId, data, messageContent);
-}
+// async function prodSend(data, messageContent, isOverall) {
+//   const guildId = "1240885607010406470";
+//   const channelIds = {
+//     matchWise: "1240886332058767381",
+//     overall: "1240886390938669116",
+//   };
+//   const channelId = isOverall ? channelIds.overall : channelIds.matchWise;
+//   sendResults(client, guildId, channelId, data, messageContent);
+// }
 
-async function sendResults(guildId, channelId, data, messageContent) {
-  try {
+// async function sendResults(client, guildId, channelId, data, messageContent) {
+//   try {
 
 
-    const guild = client.guilds.cache.get(guildId);
-    if (!guild) {
-      logger.error("Guild not found");
-      throw new Error("Guild not found");
-    }
-    const channel = guild.channels.cache.get(channelId);
-    if (!channel) {
-      logger.error("Channel not found");
-      throw new Error("Channel not found");
-    }
+//     const guild = client.guilds.cache.get(guildId);
+//     if (!guild) {
+//       logger.error("Guild not found");
+//       throw new Error("Guild not found");
+//     }
+//     const channel = guild.channels.cache.get(channelId);
+//     if (!channel) {
+//       logger.error("Channel not found");
+//       throw new Error("Channel not found");
+//     }
 
-    const buffer = createTable(data);
-    const attachment = new AttachmentBuilder(buffer, {
-      name: "teamResult.png",
-    });
-    const messagePayload = MessagePayload.create(channel, {
-      content: messageContent,
-      files: [attachment],
-    });
-    await channel.send(messagePayload);
-    logger.info(`Result sent to ${guild.name}`);
-  } catch (error) {
-    logger.error("Error:", error);
-    throw new Error(error);
-  }
-}
+//     const buffer = createTable(data);
+//     const attachment = new AttachmentBuilder(buffer, {
+//       name: "teamResult.png",
+//     });
+//     const messagePayload = MessagePayload.create(channel, {
+//       content: messageContent,
+//       files: [attachment],
+//     });
+//     await channel.send(messagePayload);
+//     logger.info(`Result sent to ${guild.name}`);
+//   } catch (error) {
+//     logger.error("Error:", error);
+//     throw new Error(error);
+//   }
+// }
 
 module.exports = {
   deletServer,
@@ -294,5 +292,5 @@ module.exports = {
   createServer,
   listServerData,
   createChannels,
-  sendResult,
+  // sendResult,
 };

@@ -5,34 +5,34 @@ const env = require('dotenv').config();
 
 const commands = [
 
-    // {
-    //     name: 'email',
-    //     description: 'Takes an email input and sends a verification code to that email',
-    //     options: [
-    //         {
-    //             name: 'email',
-    //             description: 'Email to send the verification code',
-    //             required: true,
-    //             type: ApplicationCommandOptionType.String,
-    //         },
-    //     ],
-    // },
-    // {
-    //     name: 'verify',
-    //     description: 'Takes an otp input and verifies the user',
-    //     options: [
-    //         {
-    //             name: 'otp',
-    //             description: 'OTP sent to the email',
-    //             required: true,
-    //             type: ApplicationCommandOptionType.Number,
-    //         },
-    //     ],
-    // },
-    // {
-    //     name: 'close',
-    //     description: 'Closes the ticket channel and deletes it, by the admins',
-    // },
+    {
+        name: 'email',
+        description: 'Takes an email input and sends a verification code to that email',
+        options: [
+            {
+                name: 'email',
+                description: 'Email to send the verification code',
+                required: true,
+                type: ApplicationCommandOptionType.String,
+            },
+        ],
+    },
+    {
+        name: 'verify',
+        description: 'Takes an otp input and verifies the user',
+        options: [
+            {
+                name: 'otp',
+                description: 'OTP sent to the email',
+                required: true,
+                type: ApplicationCommandOptionType.Number,
+            },
+        ],
+    },
+    {
+        name: 'close',
+        description: 'Closes the ticket channel and deletes it, by the admins',
+    },
     // {
     //     name: 'playerstats',
     //     description: 'Get the stats of the players',
@@ -159,43 +159,43 @@ const commands = [
     //         type: ApplicationCommandOptionType.String,
     //     }]
     // },
-    {
-        name: 'roleclaim',
-        description: 'Claim the group role',
-        options:[{
-            name: 'invite_link',
-            description: 'Enter the invite link',
-            required: true,
-            type: ApplicationCommandOptionType.String,
-        },{
-            name: 'team_name',
-            description: 'Enter the team name',
-            required: true,
-            type: ApplicationCommandOptionType.String,
-        },{
-            name: 'region',
-            description: 'Enter the region',
-            required: true,
-            choices:[{
-                name:"Asia",
-                value: 804
-                },{
-                name:"Europe",
-                value: 805
-                },{
-                name:"Middle East",
-                value: 806
-                },{
-                name:"North America",
-                value: 807
-                },{
-                name:"South America",
-                value: 810
-                }],
-            type: ApplicationCommandOptionType.Integer,
-        }
-    ]
-    }
+    // {
+    //     name: 'roleclaim',
+    //     description: 'Claim the group role',
+    //     options:[{
+    //         name: 'invite_link',
+    //         description: 'Enter the invite link',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.String,
+    //     },{
+    //         name: 'team_name',
+    //         description: 'Enter the team name',
+    //         required: true,
+    //         type: ApplicationCommandOptionType.String,
+    //     },{
+    //         name: 'region',
+    //         description: 'Enter the region',
+    //         required: true,
+    //         choices:[{
+    //             name:"Asia",
+    //             value: 804
+    //             },{
+    //             name:"Europe",
+    //             value: 805
+    //             },{
+    //             name:"Middle East",
+    //             value: 806
+    //             },{
+    //             name:"North America",
+    //             value: 807
+    //             },{
+    //             name:"South America",
+    //             value: 810
+    //             }],
+    //         type: ApplicationCommandOptionType.Integer,
+    //     }
+    // ]
+    // }
 ];
 
 const rest = new REST({ version: '10' }).setToken(env.parsed.DISCORD_TOKEN);

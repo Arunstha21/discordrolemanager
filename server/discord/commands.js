@@ -24,6 +24,9 @@ async function email(interaction) {
     options: { strictPopulate: false },
         
     });
+    
+    console.log(interaction.guildId);
+    
 
   const correctUser = users.find(user => user.guild.guildId == interaction.guildId);
   if (!correctUser) {
@@ -141,16 +144,12 @@ async function verify(interaction) {
       .setTitle("Verification Successful")
       .setDescription("You have been successfully verified.")
       .setColor("#00FF00");
-
-    interaction.channel.delete();
   }
   await interaction.reply({ embeds: [MessageEmbed] });
+  interaction.channel.delete();
 }
 
 async function onJoin(member) {
-  if(activeStatus.active === false){
-    return;
-  }
   logger.info(`New member joined: ${member.user.username}`);
   const guildCheck = await checkGuild(member);
   const userAuthorized = await checkUser(member);
