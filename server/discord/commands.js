@@ -89,6 +89,8 @@ async function email(interaction) {
 
 async function verify(interaction) {
   try {
+      await interaction.deferReply();
+
       const otp = interaction.options.getNumber("otp");
       const user = await userData.findOne({ sender: interaction.user.username });
 
@@ -100,7 +102,7 @@ async function verify(interaction) {
               )
               .setColor("#FF0000");
 
-          await interaction.reply({ embeds: [messageEmbed] });
+          await interaction.editReply({ embeds: [messageEmbed] });
           return;
       }
 
@@ -130,11 +132,13 @@ async function verify(interaction) {
 
           const team = await teamData.findById(user.teamId);
 
-          if (interaction.member.user.globalName.length !== 28) {
-              interaction.member.setNickname(
-                  team.teamTag + " | " + interaction.member.user.globalName
-              );
-          }
+          if (interaction.member.user.globalName && interaction.member.user.globalName.length !== 28) {
+            interaction.member.setNickname(
+                team.teamTag + " | " + interaction.member.user.globalName
+            ).catch(err => {
+                console.error("Failed to set nickname:", err);
+            });
+        }
 
           user.discordTag = interaction.user.tag;
           user.serverJoined = true;
@@ -149,7 +153,6 @@ async function verify(interaction) {
               .setColor("#00FF00");
       }
 
-      await interaction.deferReply();
       await interaction.editReply({ embeds: [MessageEmbed] });
       setTimeout(() => {
           interaction.channel?.delete().catch(console.error);
@@ -162,6 +165,7 @@ async function verify(interaction) {
       }
   }
 }
+
 
 
 async function onJoin(member) {
