@@ -160,9 +160,6 @@ async function verify(interaction) {
 
   } catch (error) {
       console.error("Error during verification:", error);
-      if (!interaction.replied) {
-          await interaction.reply({ content: 'An error occurred while processing your request.', ephemeral: true });
-      }
   }
 }
 
