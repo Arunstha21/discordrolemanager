@@ -88,71 +88,81 @@ async function email(interaction) {
 }
 
 async function verify(interaction) {
-  const otp = interaction.options.getNumber("otp");
-  const user = await userData.findOne({sender: interaction.user.username});
-  if (!user) {
-    const messageEmbed = new EmbedBuilder()
-      .setTitle("Verification Failed")
-      .setDescription(
-        "No OTP has been sent to you. Please use the command /email to get the OTP."
-      )
-      .setColor("#FF0000");
-  
-    await interaction.reply({ embeds: [messageEmbed] });
-    return;
-  }
-  let MessageEmbed;
-  if (otp !== user.otp) {
-    MessageEmbed = new EmbedBuilder()
-      .setTitle("Verification Failed")
-      .setDescription("Invalid OTP provided. Please try again.")
-      .setColor("#FF0000");
-  } else {
-    const roles = user.role;
-    for (const role of roles) {
-      const serverRole = interaction.guild.roles.cache.find(
-        (r) => r.name === role
-      );
-      if (serverRole) {
-        try {
-          await interaction.member.roles.add(serverRole);
-          logger.info(
-            `Role ${role} added to ${interaction.member.user.username}`
-          );
-        } catch (error) {
-          logger.error(
-            `Failed to add role ${role} to ${interaction.member.user.username}:`,
-            error
-          );
-        }
-      } else {
-        logger.info(`Role ${role} not found in the guild`);
+  try {
+      const otp = interaction.options.getNumber("otp");
+      const user = await userData.findOne({ sender: interaction.user.username });
+
+      if (!user) {
+          const messageEmbed = new EmbedBuilder()
+              .setTitle("Verification Failed")
+              .setDescription(
+                  "No OTP has been sent to you. Please use the command /email to get the OTP."
+              )
+              .setColor("#FF0000");
+
+          await interaction.reply({ embeds: [messageEmbed] });
+          return;
       }
-    }
-    const team = await teamData.findById(user.teamId);
-    if (interaction.member.user.globalName.length != 28) {
-      interaction.member.setNickname(
-        team.teamTag + " | " + interaction.member.user.globalName
-      );
-    }
 
-    user.discordTag = interaction.user.tag;
-    user.serverJoined = true;
-    user.otp = null;
-    await user.save();
+      let MessageEmbed;
+      if (otp !== user.otp) {
+          MessageEmbed = new EmbedBuilder()
+              .setTitle("Verification Failed")
+              .setDescription("Invalid OTP provided. Please try again.")
+              .setColor("#FF0000");
+      } else {
+          const roles = user.role;
+          for (const role of roles) {
+              const serverRole = interaction.guild.roles.cache.find(
+                  (r) => r.name === role
+              );
+              if (serverRole) {
+                  try {
+                      await interaction.member.roles.add(serverRole);
+                      logger.info(`Role ${role} added to ${interaction.member.user.username}`);
+                  } catch (error) {
+                      logger.error(`Failed to add role ${role} to ${interaction.member.user.username}:`, error);
+                  }
+              } else {
+                  logger.info(`Role ${role} not found in the guild`);
+              }
+          }
 
-    logger.info(`User ${user.discordTag} verified successfully`);
-    MessageEmbed = new EmbedBuilder()
-      .setTitle("Verification Successful")
-      .setDescription("You have been successfully verified.")
-      .setColor("#00FF00");
+          const team = await teamData.findById(user.teamId);
+
+          if (interaction.member.user.globalName.length !== 28) {
+              interaction.member.setNickname(
+                  team.teamTag + " | " + interaction.member.user.globalName
+              );
+          }
+
+          user.discordTag = interaction.user.tag;
+          user.serverJoined = true;
+          user.otp = null;
+          await user.save();
+
+          logger.info(`User ${user.discordTag} verified successfully`);
+
+          MessageEmbed = new EmbedBuilder()
+              .setTitle("Verification Successful")
+              .setDescription("You have been successfully verified.")
+              .setColor("#00FF00");
+      }
+
+      await interaction.deferReply();
+      await interaction.editReply({ embeds: [MessageEmbed] });
+      setTimeout(() => {
+          interaction.channel?.delete().catch(console.error);
+      }, 2000);
+
+  } catch (error) {
+      console.error("Error during verification:", error);
+      if (!interaction.replied) {
+          await interaction.reply({ content: 'An error occurred while processing your request.', ephemeral: true });
+      }
   }
-  await interaction.reply({ embeds: [MessageEmbed] });
-
-  setTimeout(() => {
-    interaction.channel?.delete().catch(console.error);
-}, 2000);
 }
+
 
 async function onJoin(member) {
   logger.info(`New member joined: ${member.user.username}`);
