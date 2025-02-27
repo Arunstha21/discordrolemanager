@@ -130,9 +130,11 @@ async function verify(interaction) {
       }
     }
     const team = await teamData.findById(user.teamId);
-    interaction.member.setNickname(
-      team.teamTag + " | " + interaction.member.user.globalName
-    );
+    if (interaction.member.user.globalName.length != 28) {
+      interaction.member.setNickname(
+        team.teamTag + " | " + interaction.member.user.globalName
+      );
+    }
 
     user.discordTag = interaction.user.tag;
     user.serverJoined = true;
@@ -146,7 +148,7 @@ async function verify(interaction) {
       .setColor("#00FF00");
   }
   await interaction.reply({ embeds: [MessageEmbed] });
-  
+
   setTimeout(() => {
     interaction.channel?.delete().catch(console.error);
 }, 2000);
