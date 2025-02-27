@@ -132,7 +132,7 @@ async function verify(interaction) {
 
           const team = await teamData.findById(user.teamId);
 
-          if (interaction.member.user.globalName && interaction.member.user.globalName.length !== 28) {
+          if (interaction.member.user.globalName && interaction.member.user.globalName.length !== 22) {
             interaction.member.setNickname(
                 team.teamTag + " | " + interaction.member.user.globalName
             ).catch(err => {
