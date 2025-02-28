@@ -99,9 +99,37 @@ const adminDataSchema = new schema({
     }
 });
 
+const gacCredentials = new schema({
+    team : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'teamData',
+    },
+    guild : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'guildData',
+    },
+    userName : {
+        type: String,
+        require: true,
+    },
+    password : {
+        type: String,
+        require: true,
+    },
+    inGameName : {
+        type: String,
+        require: true,
+    },
+    uid: {
+        type: String,
+        require: true,
+    }
+})
+
 const teamData = mongoose.model('teamData', teamDataSchema);
 const userData = mongoose.model('userData', userDataSchema);
 const guildData = mongoose.model('guildData', guildDataSchema);
 const adminData = mongoose.model('adminData', adminDataSchema);
+const gacData = mongoose.model('gacData', gacCredentials);
 
-module.exports = {teamData, userData, guildData, adminData};
+module.exports = {teamData, userData, guildData, adminData, gacData};

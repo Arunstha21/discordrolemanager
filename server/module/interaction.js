@@ -24,7 +24,6 @@ roleId: {
 }
 })
   
-
 const PMGOServerTest = mongoose.model('pmgoServerTest', pmgoServerTestRole);
 
 module.exports = {PMGOServerTest};

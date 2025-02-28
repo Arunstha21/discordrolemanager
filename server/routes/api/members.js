@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { teamData, userData, guildData, adminData } = require("../../module/user");
 const logger = require("../../helper/logger");
+const { importGacData } = require("../../discord/gacCreds");
 
 router.post('/admin/import', async (req, res) => {
     const datas = req.body;
@@ -52,7 +53,7 @@ router.post("/import", async (req, res) => {
   for (const data of datas) {
     try {
       const team = await findOrCreateTeam(data.teamName, data.teamTag);
-      const guild = await findOrCreateGuild(data.guildId, data.guildName);
+      const guild = await findOrCreateGuild(data.guildId);
       const roles = [
         data.rolePlayer ? 'Player' : '', 
         data.roleOwner ? 'Owner' : '', 
@@ -191,5 +192,16 @@ router.get("/guild/:id", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+// import data for GAC creds
+router.post("/gac/import", async (req, res) => {
+  const datas = req.body;
+  await importGacData(datas).catch((error) => {
+    res.status(500).json({ error: error.message });
+  }
+  );
+  res.status(200).json({ message: "Data imported successfully" });
+}
+);
 
 module.exports = router;

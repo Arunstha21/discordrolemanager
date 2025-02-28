@@ -209,20 +209,9 @@ app.listen(3001, async () => {
 
         client.on('messageCreate', async (message) => {
             if (message.author.bot) return;
-            //only allow claim command in slashCommandChannel
-              const DBCommands = await Commands.find({guildId: message.guild.id});
-              const commands = {};
-              DBCommands.map(command => commands[command.name] = command.value);
-            
-              const command = message.content.toLowerCase().trim();
-              const user = message.author;
-              if (command in COMMANDS) {
-                const responseText = COMMANDS[command].replace("{name}", `<@${user.id}>`);
-                await message.reply(responseText);
-              }else if(command in commands){
-                const responseText = commands[command];
-                await message.reply(responseText);
-              }
+            if(message.content === "GAC Credentials"){
+                await sendGACData(message);
+            } 
           });
 
         await client.login(token);
@@ -270,6 +259,7 @@ app.post('/api/sendResult', async (req, res) => {
 
 const roleManagerActiveStatus = require("./discord/roleManager.json");
 const { Commands } = require('./module/whatsapp');
+const { sendGACData } = require('./discord/gacCreds');
 
 app.post('/api/activateRoleManager', (req, res) => {
     const { activate } = req.body;

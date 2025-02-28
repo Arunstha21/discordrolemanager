@@ -50,8 +50,6 @@ async function playerStats(stage) {
     }
 }
 
-
-
 async function gunslingers(){
     try {
         const stageWithMatchIds = await getMatchIds();
