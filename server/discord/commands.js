@@ -233,6 +233,11 @@ async function close(interaction){
         return;
     }
     const ticketCategory = interaction.guild.channels.cache.find(c => c.type === 4 && c.name.toLowerCase() === 'tickets')
+    if (interaction.channel.name.startsWith("ticket-") && !interaction.channel.parent) {
+      await interaction.channel.delete();
+      logger.info(`Ticket channel closed by ${interaction.user.username}`);
+      return;
+  }
     if(ticketCategory.id !== interaction.channel.parent.id){
         await interaction.reply("This is not a ticket channel, You can't delete this channel");
         return;
