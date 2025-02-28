@@ -1,13 +1,10 @@
-const decimalToHexColor = require("../helper/decimalToHexColor");
 const { gacData, teamData, guildData } = require("../module/user");
-const { EmbedBuilder } = require("discord.js");
 
 async function sendGACData(message) {
     try {
         const teamName = message.channel.name.replaceAll('-', ' ');
         const team = await teamData.findOne(
-            { teamName },
-            { collation: { locale: 'en', strength: 2 } }
+            { teamName: { $regex: new RegExp('^' + teamName.toLowerCase() + '$', 'i') } }
         );
 
         if (!team) {
