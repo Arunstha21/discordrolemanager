@@ -23,10 +23,39 @@ async function tickets(member){
         }
 }
 
+function getDateBasedTicketNumber() {
+    const datePart = new Date().toISOString().slice(5, 10).replace('-', ''); // MMDD
+    const paddedCount = count.toString().padStart(2, '0');
+    count++;
+    return `${datePart}${paddedCount}`;
+}
+
 async function ticketCreator(member, category){
         // Create a new ticket channel
-        const channel = await member.guild.channels.create({
-            name: `ticket-${count++}`,
+        const channelCount = category.children.size;
+        let channel;
+        const ticketNumber = getDateBasedTicketNumber();
+        if(channelCount >= 50){
+            channel = await member.guild.channels.create({
+                name: `ticket-${ticketNumber}`,
+                type: 0,
+                parent: null,
+                permissionOverwrites: [
+                    {
+                        id: member.guild.roles.everyone.id,
+                        deny: [PermissionFlagsBits.ViewChannel],
+                    },
+                    {
+                        id: member.user.id,
+                        allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages, PermissionFlagsBits.MentionEveryone, PermissionFlagsBits.ReadMessageHistory, PermissionFlagsBits.AddReactions]
+                    }
+                ],
+                reason: 'Creating a Ticket channel for the user'
+            });
+            logger.info("Ticket Channel Created");
+        }else {
+        channel = await member.guild.channels.create({
+            name: `ticket-${ticketNumber}`,
             type: 0,
             parent: category,
             permissionOverwrites: [
@@ -42,7 +71,7 @@ async function ticketCreator(member, category){
             reason: 'Creating a Ticket channel for the user'
         });
         logger.info("Ticket Channel Created");
-
+    }
         const embed = new EmbedBuilder()
             .setTitle('Verification Under Process')
             .setDescription(`${member}, we couldn't find you in the list of registered users. Enter your email address used during registration after the command \`/email\``)
