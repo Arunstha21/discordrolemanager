@@ -18,15 +18,13 @@ async function email(interaction) {
     return;
   }
   let MessageEmbed;
-  const users = await userData.find({ emailId: email })
-  .populate({
+  const users = await userData.find({
+    emailId: { $regex: new RegExp(`^${email}$`, 'i') }
+  }).populate({
     path: "guild",
     options: { strictPopulate: false },
-        
-    });
-    
-    console.log(interaction.guildId);
-    
+  });
+  
 
   const correctUser = users.find(user => user.guild.guildId == interaction.guildId);
   if (!correctUser) {
