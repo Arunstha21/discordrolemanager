@@ -32,7 +32,9 @@ function getDateBasedTicketNumber() {
 
 async function ticketCreator(member, category){
         // Create a new ticket channel
-        const channelCount = category.children.size;
+        const channelCount = category.children.cache.size;
+        console.log(channelCount);
+        
         let channel;
         const ticketNumber = getDateBasedTicketNumber();
         if(channelCount >= 50){
