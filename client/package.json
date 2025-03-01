@@ -5,7 +5,7 @@
   "scripts": {
     "build:next": "next build",
     "build": "npm run build-backend && npm run build-frontend",
-    "start:server": "cd ../server && npm start",
+    "start:server": "cd ../server && node index.js",
     "start": "concurrently \"npm run start:server\" \"next start\"",
     "build-frontend": "npm install && npm run build:next",
     "build-backend": "cd ../server && npm install"
