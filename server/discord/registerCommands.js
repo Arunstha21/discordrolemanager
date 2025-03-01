@@ -33,6 +33,54 @@ const commands = [
         name: 'close',
         description: 'Closes the ticket channel and deletes it, by the admins',
     },
+    {
+        name: 'matchlog',
+        description: 'Log match details including region, type, and player count',
+        options: [
+            {
+                name: 'match_id',
+                description: 'Enter the match ID',
+                required: true,
+                type: ApplicationCommandOptionType.String,
+            },
+            {
+                name: 'region',
+                description: 'Select the region',
+                required: true,
+                type: ApplicationCommandOptionType.String,
+                choices: [
+                    { name: 'Asia', value: 'asia' },
+                    { name: 'Europe', value: 'europe' },
+                    { name: 'Middle East', value: 'middle_east' },
+                    { name: 'North America', value: 'north_america' },
+                    { name: 'South America', value: 'south_america' },
+                ],
+            },
+            {
+                name: 'log_type',
+                description: 'Select the type of log',
+                required: true,
+                type: ApplicationCommandOptionType.String,
+                choices: [
+                    { name: 'Match Start', value: 'match_start' },
+                    { name: 'Match End', value: 'match_end' },
+                    { name: 'Issue', value: 'issue' },
+                ],
+            },
+            {
+                name: 'no_of_players',
+                description: 'Enter the number of players',
+                required: true,
+                type: ApplicationCommandOptionType.Integer,
+            },
+            {
+                name: 'log',
+                description: 'Optional log message (additional details)',
+                required: false,
+                type: ApplicationCommandOptionType.String,
+            },
+        ]
+    },    
     // {
     //     name: 'playerstats',
     //     description: 'Get the stats of the players',

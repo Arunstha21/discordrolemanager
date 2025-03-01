@@ -9,7 +9,7 @@ const csaRouter = require('./routes/api/csa');
 const pmncRouter = require('./routes/api/pmnc');
 const {registerCommands, deleteCommand} = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
-const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, listCommands, registerCommand, claimGroupRole } = require('./discord/commands');
+const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, listCommands, registerCommand, claimGroupRole, matchLogger } = require('./discord/commands');
 const { Client, GatewayIntentBits, EmbedBuilder, messageLink } = require("discord.js");
 const fs = require('fs'); // Ensure fs module is imported
 const client = new Client({
@@ -143,6 +143,7 @@ app.listen(3001, async () => {
                 email: email,
                 verify: verify,
                 close: close,
+                matchlog : matchLogger,
                 playerstats: playerStatsInt,
                 gunslingers: gunslingerStats,
                 grenademaster: grenadeMasterStats,

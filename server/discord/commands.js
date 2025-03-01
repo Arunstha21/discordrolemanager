@@ -8,7 +8,7 @@ const createTable = require("../helper/createTable");
 const activeStatus = require("./roleManager.json");
 const { Commands } = require("../module/whatsapp");
 const serverTestRoleIds = require("./serverTestRoleIds.json");
-const { PMGOServerTest } = require("../module/interaction");
+const { PMGOServerTest, MatchLog } = require("../module/interaction");
 
 async function email(interaction) {
   const email = interaction.options.getString("email");
@@ -160,8 +160,6 @@ async function verify(interaction) {
       console.error("Error during verification:", error);
   }
 }
-
-
 
 async function onJoin(member) {
   logger.info(`New member joined: ${member.user.username}`);
@@ -641,4 +639,43 @@ async function claimGroupRole(interaction){
   }
 }
 
-module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, registerCommand, listCommands, removeCommands, claimGroupRole };
+async function matchLogger(interaction) {
+  try {
+      await interaction.deferReply();
+
+      const matchId = interaction.options.getString("match_id");
+      const region = interaction.options.getString("region");
+      const logType = interaction.options.getString("log_type");
+      const noOfPlayers = interaction.options.getInteger("no_of_players");
+      const log = interaction.options.getString("log");
+
+      const newLog = new MatchLog({ matchId, region, logType, noOfPlayers, log });
+      await newLog.save();
+
+      await interaction.editReply("Match log saved successfully");
+
+      const matchLogChannel = interaction.guild.channels.cache.find(c => c.id === "1345363178850357298");
+      if (!matchLogChannel) {
+          return;
+      }
+
+      const embed = new EmbedBuilder()
+          .setTitle("Match Log")
+          .setDescription(`**Match ID:** ${matchId}\n**Region:** ${region}\n**Log Type:** ${logType}\n**No. of Players:** ${noOfPlayers}\n**Log:** ${log || "N/A"}`)
+          .setColor("#3498db")
+          .setTimestamp()
+          .setFooter({ text: `Log saved by ${interaction.user.tag}` });
+
+      await matchLogChannel.send({ embeds: [embed] });
+
+  } catch (error) {
+      console.error(error);
+      if (interaction.replied || interaction.deferred) {
+          await interaction.editReply("An error occurred while processing the match log.");
+      } else {
+          await interaction.reply("An error occurred while processing the match log.");
+      }
+  }
+}
+
+module.exports = { email, verify, onJoin, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, registerCommand, listCommands, removeCommands, claimGroupRole, matchLogger };

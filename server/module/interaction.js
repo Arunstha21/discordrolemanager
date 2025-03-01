@@ -23,7 +23,37 @@ roleId: {
     require: true,
 }
 })
+
+const matchLog = new schema({
+    matchId :{
+        type: String,
+        require: true,
+    },
+    region: {
+        type: String,
+        require: true,
+        enum: ['asia', 'europe', 'middle_east', 'north_america', 'south_america']
+    },
+    logType: {
+        type: String,
+        require: true,
+        enum: ['issue', 'match_end', 'match_start']
+    },
+    noOfPlayers: {
+        type: Number,
+        require: true,
+    },
+    log: {
+        type: String,
+        require: false,
+    }
+    },
+    {
+        timestamps: true
+    })
+
   
 const PMGOServerTest = mongoose.model('pmgoServerTest', pmgoServerTestRole);
+const MatchLog = mongoose.model('matchLog', matchLog);
 
-module.exports = {PMGOServerTest};
+module.exports = {PMGOServerTest, MatchLog};
