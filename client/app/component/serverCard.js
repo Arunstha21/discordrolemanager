@@ -1,10 +1,12 @@
+import Image from "next/image";
+
 export default function ServerCard({ server, serverSelected }) {
   return (
         <div onClick={()=> serverSelected(server)} className="bg-sky-100 rounded-lg shadow-md hover:bg-gray-100 overflow-hidden">
           <div className="h-32 bg-[#7289da] flex items-center justify-center">
             <span className="text-4xl text-white font-bold">
                 {server.icon ? (
-                    <img
+                    <Image
                     src={server.icon}
                     alt={server.shortName}
                     className="w-16 h-16 rounded-full"

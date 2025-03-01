@@ -236,7 +236,7 @@ export default function CreateChannel({ server,serverData, fetchServerData }) {
                   and the created role will be assigned to the channel.
                 </p>
                 <br />
-                <p>Please create catagory if you don't see any.</p>
+                <p>Please create catagory if you don&apos;t see any.</p>
               </CardContent>
             </Card>
           </div>

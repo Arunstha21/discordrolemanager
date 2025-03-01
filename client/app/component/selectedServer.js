@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ImportMembers from "./import";
 import CreateChannel from "./CreateChannel";
 import ProvideRole from "./ProvideRole";
+import Image from "next/image";
 const apiLink = "https://discordrolemanager.onrender.com";
 
 export default function SelectedServer({ server, closeSelectedServer }) {
@@ -31,7 +32,7 @@ export default function SelectedServer({ server, closeSelectedServer }) {
           <div className="flex">
           <button className="px-4 py-2 text-white rounded-lg transition bg-indigo-500 hover:bg-indigo-700 mr-2" onClick={() => closeSelectedServer(null)}>Back</button>
             {server.icon ? (
-              <img
+              <Image
                 src={server.icon}
                 alt={server.shortName}
                 className="w-16 h-16 bg-indigo-300 rounded-full"
