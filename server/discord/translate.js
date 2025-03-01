@@ -25,7 +25,8 @@ async function getSupportedLanguages() {
       if (!targetLanguage || typeof targetLanguage !== "string") {
         throw new Error("A valid target language code is required.");
       }
-  
+      console.log(`Translating text to ${targetLanguage}:`, text);
+      
       const options = { model: "nmt", to: targetLanguage };
       const [translation] = await translate.translate(text, options);
       const detectedLanguage = await translate.detect(text);

@@ -165,6 +165,7 @@ app.listen(3001, async () => {
                     const message = reaction.message.content;
                     const messageUser = reaction.message.author;
                     const {translation, detectedLanguage} = await translateText(message, flag.code);
+                    console.log(translation);
                     
                     let embed = new EmbedBuilder()
                         .setColor(0x3498db)
