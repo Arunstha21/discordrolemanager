@@ -40,7 +40,7 @@ export default function ImportMembers({ fetchTableData }) {
 
     setIsUploading(true);
     try {
-      const response = await fetch("/api/members/import", {
+      const response = await fetch("https://discordrolemanager.onrender.com/api/members/import", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(csvData),
