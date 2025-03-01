@@ -1,5 +1,5 @@
 const logger = require('./logger');
-const credentials = require('../../credentials.json');
+const credentials = require('../credentials.json');
 
 let access_token = '';
 let expiry = new Date(Date.now() - 120 * 1000);
