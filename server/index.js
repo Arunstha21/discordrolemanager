@@ -33,7 +33,11 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
+app.use(express.static(__dirname + "/public"));
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
 app.post('/api/createServerWithTemplate', async (req, res) => {
     const { name, templateCode, roles } = req.body;
@@ -90,7 +94,7 @@ app.post('/api/createChannels', async (req, res) => {
 
 app.use('/api/members', router);
 app.use('/api/csa', csaRouter);
-app.use('/api/pmnc', pmncRouter);
+app.use('/api/pmgo', pmncRouter);
 
 
 const COMMANDS = {
@@ -112,10 +116,10 @@ const COMMANDS = {
 app.listen(3001, async () => {
     console.log('Server is running on port 3001');
     await connectDb();
-    const flagMap = await getFlagMap();
-    const BridgeCategoryId = "1334811119906328647"
-    const TicketCategoryId = "1326058681426645084"
-    const slashCommandChannel = "1341067978879406181"
+    // const flagMap = await getFlagMap();
+    // const BridgeCategoryId = "1334811119906328647"
+    // const TicketCategoryId = "1326058681426645084"
+    // const slashCommandChannel = "1341067978879406181"
 
     try {
         
@@ -124,97 +128,97 @@ app.listen(3001, async () => {
             console.log("Bot is ready!!");
         });
 
-        client.on("guildMemberAdd", async (member) => {
-            if(member.guild.id != "1344495827086872681") return;
-            await onJoin(member);
-        });
+        // client.on("guildMemberAdd", async (member) => {
+        //     if(member.guild.id != "1344495827086872681") return;
+        //     await onJoin(member);
+        // });
 
-        client.on("interactionCreate", async (interaction) => {
-            if (!interaction.isCommand()) return;
-            if(interaction.channel.parentId === TicketCategoryId){
-                if(interaction.commandName === 'find') await pmgoFind(interaction);
-            }
+        // client.on("interactionCreate", async (interaction) => {
+        //     if (!interaction.isCommand()) return;
+        //     if(interaction.channel.parentId === TicketCategoryId){
+        //         if(interaction.commandName === 'find') await pmgoFind(interaction);
+        //     }
 
-            if(interaction.channelId === slashCommandChannel){
-                if(interaction.commandName === 'roleclaim') await claimGroupRole(interaction);
-            }
+        //     if(interaction.channelId === slashCommandChannel){
+        //         if(interaction.commandName === 'roleclaim') await claimGroupRole(interaction);
+        //     }
 
-            const commands = {
-                email: email,
-                verify: verify,
-                close: close,
-                matchlog : matchLogger,
-                playerstats: playerStatsInt,
-                gunslingers: gunslingerStats,
-                grenademaster: grenadeMasterStats,
-                registercommand: registerCommand,
-                listcommands: listCommands,
-            };
+        //     const commands = {
+        //         email: email,
+        //         verify: verify,
+        //         close: close,
+        //         matchlog : matchLogger,
+        //         playerstats: playerStatsInt,
+        //         gunslingers: gunslingerStats,
+        //         grenademaster: grenadeMasterStats,
+        //         registercommand: registerCommand,
+        //         listcommands: listCommands,
+        //     };
 
-            const { commandName } = interaction;
-            const commandFunction = commands[commandName];
-            if (commandFunction) {
-                await commandFunction(interaction);
-            }
-        });
+        //     const { commandName } = interaction;
+        //     const commandFunction = commands[commandName];
+        //     if (commandFunction) {
+        //         await commandFunction(interaction);
+        //     }
+        // });
 
-        client.on("messageReactionAdd", async (reaction, user) => {
-            try {
-                if(reaction.message.channel.parentId === BridgeCategoryId) return;
-                if (flagMap.has(reaction.emoji.name)) {
-                    const flag = flagMap.get(reaction.emoji.name);
-                    const message = reaction.message.content;
-                    const messageUser = reaction.message.author;
-                    const {translation, detectedLanguage} = await translateText(message, flag.code);
-                    console.log(translation);
+        // client.on("messageReactionAdd", async (reaction, user) => {
+        //     try {
+        //         if(reaction.message.channel.parentId === BridgeCategoryId) return;
+        //         if (flagMap.has(reaction.emoji.name)) {
+        //             const flag = flagMap.get(reaction.emoji.name);
+        //             const message = reaction.message.content;
+        //             const messageUser = reaction.message.author;
+        //             const {translation, detectedLanguage} = await translateText(message, flag.code);
+        //             console.log(translation);
                     
-                    let embed = new EmbedBuilder()
-                        .setColor(0x3498db)
-                        .setDescription(translation);
+        //             let embed = new EmbedBuilder()
+        //                 .setColor(0x3498db)
+        //                 .setDescription(translation);
     
-                    if (messageUser.id === user.id) {
-                        embed.setAuthor({
-                            name: `${messageUser.username}`,
-                            iconURL: messageUser.displayAvatarURL(),
-                        }).setFooter({
-                            text: `Detected Language: ${detectedLanguage[0].language}`,
-                        });
-                    } else {
-                        embed.setAuthor({
-                            name: `${messageUser.username}`,
-                            iconURL: messageUser.displayAvatarURL(),
-                        }).setFooter({
-                            text: `Requested by ${user.username}\n Detected Language: ${detectedLanguage[0].language}`,
-                        });
-                    }
-                    reaction.message.channel.send({ embeds: [embed] });
-                }else {
-                    console.log(`${reaction.emoji.name} Emoji is not flag`);
-                }
-            } catch (error) {
-                logger.error("Error translating message:", error);
-                console.log("Error translating message:", error);
-            }
-        });
+        //             if (messageUser.id === user.id) {
+        //                 embed.setAuthor({
+        //                     name: `${messageUser.username}`,
+        //                     iconURL: messageUser.displayAvatarURL(),
+        //                 }).setFooter({
+        //                     text: `Detected Language: ${detectedLanguage[0].language}`,
+        //                 });
+        //             } else {
+        //                 embed.setAuthor({
+        //                     name: `${messageUser.username}`,
+        //                     iconURL: messageUser.displayAvatarURL(),
+        //                 }).setFooter({
+        //                     text: `Requested by ${user.username}\n Detected Language: ${detectedLanguage[0].language}`,
+        //                 });
+        //             }
+        //             reaction.message.channel.send({ embeds: [embed] });
+        //         }else {
+        //             console.log(`${reaction.emoji.name} Emoji is not flag`);
+        //         }
+        //     } catch (error) {
+        //         logger.error("Error translating message:", error);
+        //         console.log("Error translating message:", error);
+        //     }
+        // });
 
-        client.on("channelCreate", async (channel) => {
-            if(channel.parentId === TicketCategoryId){
-                try{
-                    setTimeout(async () => {
-                    await channel.send("Hello, Do you have any question regarding PMGO ? Please ask here. Our support team will help you shortly.");
-                    }, 1500);
-                } catch (error) {
-                    console.log("Error sending message to new channel:" + channel.name, error);
-                }
-            }
-        });
+        // client.on("channelCreate", async (channel) => {
+        //     if(channel.parentId === TicketCategoryId){
+        //         try{
+        //             setTimeout(async () => {
+        //             await channel.send("Hello, Do you have any question regarding PMGO ? Please ask here. Our support team will help you shortly.");
+        //             }, 1500);
+        //         } catch (error) {
+        //             console.log("Error sending message to new channel:" + channel.name, error);
+        //         }
+        //     }
+        // });
 
-        client.on('messageCreate', async (message) => {
-            if (message.author.bot) return;
-            if(message.content === "GAC Credentials"){
-                await sendGACData(message);
-            } 
-          });
+        // client.on('messageCreate', async (message) => {
+        //     if (message.author.bot) return;
+        //     if(message.content === "GAC Credentials"){
+        //         await sendGACData(message);
+        //     } 
+        //   });
 
         await client.login(token);
     } catch (error) {

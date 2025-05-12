@@ -1,5 +1,5 @@
 require("dotenv").config();
-const pmncDB = process.env.PMNC_DBURL;
+const pmncDB = process.env.PMGO_DBURL;
 
 const { MongoClient, ObjectId } = require("mongodb");
 const client = new MongoClient(pmncDB);
@@ -213,6 +213,10 @@ async function overallResults(ids) {
         playerStatsMap[playerId].survivalTime /
         playerStatsMap[playerId].matchPlayed;
       const avgSurvTime = toHHMMSS(survTime);
+      const avgElims = playerStatsMap[playerId].kill / playerStatsMap[playerId].matchPlayed;
+      const avgAssist = playerStatsMap[playerId].assist / playerStatsMap[playerId].matchPlayed;
+      const avgDamage = playerStatsMap[playerId].damage / playerStatsMap[playerId].matchPlayed;
+      const avgHeal = playerStatsMap[playerId].heal / playerStatsMap[playerId].matchPlayed;
 
       const gunslinger = playerStatsMap[playerId].kill + playerStatsMap[playerId].damage + playerStatsMap[playerId].headshot;
       const grenadeMaster = playerStatsMap[playerId].knockout + playerStatsMap[playerId].grenadeKill;
@@ -236,6 +240,13 @@ async function overallResults(ids) {
         mvp: MVP,
         slingerNumber: slingerNumber.toFixed(3),
         grenadeMaster: grenadeMaster,
+        avgData:{
+          avgElims: avgElims.toFixed(3),
+          avgAssist: avgAssist.toFixed(3),
+          avgDamage: avgDamage.toFixed(3),
+          avgHeal: avgHeal.toFixed(3),
+          avgSurvTime: avgSurvTime,
+        }
       });
     }
   

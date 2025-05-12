@@ -1,7 +1,7 @@
 const express = require("express");
 const pmncRouter = express.Router();
 require("dotenv").config();
-const pmncDB = process.env.PMNC_DBURL;
+const pmncDB = process.env.PMGO_DBURL;
 
 const { MongoClient, ObjectId } = require("mongodb");
 const { getData, overallResults } = require("./pmncResults");
