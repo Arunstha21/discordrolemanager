@@ -23,9 +23,7 @@ const client = new Client({
     partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILDMEMBER'],
 });
 const logger = require("./helper/logger");
-const { translateText, getFlagMap } = require('./discord/translate');
 require("dotenv").config();
-const startBot = require('./whatsapp/main');
 const token = process.env.DISCORD_TOKEN;
 
 app.use(jsonParser);
@@ -128,39 +126,39 @@ app.listen(3001, async () => {
             console.log("Bot is ready!!");
         });
 
-        // client.on("guildMemberAdd", async (member) => {
-        //     if(member.guild.id != "1344495827086872681") return;
-        //     await onJoin(member);
-        // });
+        client.on("guildMemberAdd", async (member) => {
+            if(member.guild.id != "1370691440312582144") return;
+            await onJoin(member);
+        });
 
-        // client.on("interactionCreate", async (interaction) => {
-        //     if (!interaction.isCommand()) return;
-        //     if(interaction.channel.parentId === TicketCategoryId){
-        //         if(interaction.commandName === 'find') await pmgoFind(interaction);
-        //     }
+        client.on("interactionCreate", async (interaction) => {
+            if (!interaction.isCommand()) return;
+            if(interaction.channel.parentId === TicketCategoryId){
+                if(interaction.commandName === 'find') await pmgoFind(interaction);
+            }
 
-        //     if(interaction.channelId === slashCommandChannel){
-        //         if(interaction.commandName === 'roleclaim') await claimGroupRole(interaction);
-        //     }
+            if(interaction.channelId === slashCommandChannel){
+                if(interaction.commandName === 'roleclaim') await claimGroupRole(interaction);
+            }
 
-        //     const commands = {
-        //         email: email,
-        //         verify: verify,
-        //         close: close,
-        //         matchlog : matchLogger,
-        //         playerstats: playerStatsInt,
-        //         gunslingers: gunslingerStats,
-        //         grenademaster: grenadeMasterStats,
-        //         registercommand: registerCommand,
-        //         listcommands: listCommands,
-        //     };
+            const commands = {
+                email: email,
+                verify: verify,
+                close: close,
+                matchlog : matchLogger,
+                playerstats: playerStatsInt,
+                gunslingers: gunslingerStats,
+                grenademaster: grenadeMasterStats,
+                registercommand: registerCommand,
+                listcommands: listCommands,
+            };
 
-        //     const { commandName } = interaction;
-        //     const commandFunction = commands[commandName];
-        //     if (commandFunction) {
-        //         await commandFunction(interaction);
-        //     }
-        // });
+            const { commandName } = interaction;
+            const commandFunction = commands[commandName];
+            if (commandFunction) {
+                await commandFunction(interaction);
+            }
+        });
 
         // client.on("messageReactionAdd", async (reaction, user) => {
         //     try {
