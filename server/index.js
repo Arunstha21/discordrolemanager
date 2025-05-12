@@ -133,13 +133,13 @@ app.listen(3001, async () => {
 
         client.on("interactionCreate", async (interaction) => {
             if (!interaction.isCommand()) return;
-            if(interaction.channel.parentId === TicketCategoryId){
-                if(interaction.commandName === 'find') await pmgoFind(interaction);
-            }
+            // if(interaction.channel.parentId === TicketCategoryId){
+            //     if(interaction.commandName === 'find') await pmgoFind(interaction);
+            // }
 
-            if(interaction.channelId === slashCommandChannel){
-                if(interaction.commandName === 'roleclaim') await claimGroupRole(interaction);
-            }
+            // if(interaction.channelId === slashCommandChannel){
+            //     if(interaction.commandName === 'roleclaim') await claimGroupRole(interaction);
+            // }
 
             const commands = {
                 email: email,
