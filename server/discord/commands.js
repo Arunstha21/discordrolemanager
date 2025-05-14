@@ -164,10 +164,14 @@ async function verify(interaction) {
 async function onJoin(member) {
   logger.info(`New member joined: ${member.user.username}`);
   const guildCheck = await checkGuild(member);
-  const userAuthorized = await checkUser(member);
-  if (!userAuthorized || guildCheck.guildId !== member.guild.id) {
+  if (!guildCheck || guildCheck.guildId != member.guild.id) {
     tickets(member);
-    return;                                                                                                                               
+    return;
+  }
+  const userAuthorized = await checkUser(member, guildCheck._id);
+  if (!userAuthorized) {
+    tickets(member);
+    return;
   }
   const roles = userAuthorized.role;
   for (const role of roles) {
@@ -204,13 +208,18 @@ async function checkGuild(member) {
   return guildDB;
 }
 
-async function checkUser(member) {
+async function checkUser(member, guildRecordId) {
   const { username, id, globalName } = member.user;
   const userRecord = await userData.findOne({
-    $or: [
-      { discordTag: username },
-      { discordTag: id },
-      { discordTag: globalName },
+    $and: [
+      {
+        $or: [
+          { discordTag: username },
+          { discordTag: id },
+          { discordTag: globalName },
+        ],
+      },
+      { guild: guildRecordId },
     ],
   });
   if (!userRecord) {
