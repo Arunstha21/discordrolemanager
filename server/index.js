@@ -36,6 +36,9 @@ app.use(express.static(__dirname + "/public"));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
+app.get('/vdoninja', (req, res) => {
+    res.sendFile(__dirname + '/public/vdoninja.html');
+});
 
 app.post('/api/createServerWithTemplate', async (req, res) => {
     const { name, templateCode, roles } = req.body;
