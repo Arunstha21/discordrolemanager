@@ -10,17 +10,25 @@ const pmncRouter = require('./routes/api/pmnc');
 const {registerCommands, deleteCommand} = require('./discord/registerCommands');
 const connectDb = require('./helper/db');
 const { onJoin, email, verify, close, playerStatsInt, gunslingerStats, grenadeMasterStats, pmgoFind, listCommands, registerCommand, claimGroupRole, matchLogger } = require('./discord/commands');
-const { Client, GatewayIntentBits, EmbedBuilder, messageLink } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, EmbedBuilder, messageLink } = require("discord.js");
 const fs = require('fs'); // Ensure fs module is imported
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMessageReactions,
-    ],
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILDMEMBER'],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.GuildInvites,
+  ],
+  partials: [
+    Partials.Message,
+    Partials.Channel,
+    Partials.Reaction,
+    Partials.GuildMember,
+    Partials.User,
+  ],
 });
 const logger = require("./helper/logger");
 require("dotenv").config();
@@ -131,6 +139,8 @@ app.listen(3001, async () => {
 
         client.on("guildMemberAdd", async (member) => {
             if(member.guild.id != "1398460305893359646") return;
+            console.log(`New member joined: ${member.user.username} (${member.id})`);
+            
             await onJoin(member);
         });
 
