@@ -131,11 +131,11 @@ async function verify(interaction) {
           const team = await teamData.findById(user.teamId);
 
           if (interaction.member.user.globalName && interaction.member.user.globalName.length !== 22) {
-            interaction.member.setNickname(
-                team.teamTag + " | " + interaction.member.user.globalName
-            ).catch(err => {
+            const name = team.teamTag + " | " + (interaction.member.user.globalName || interaction.member.user.username);
+            interaction.member.setNickname(name).catch(err => {
                 console.error("Failed to set nickname:", err);
             });
+            logger.info(`Nickname set to ${name} for ${interaction.member.user.username}`);
         }
 
           user.discordTag = interaction.user.tag;
@@ -194,7 +194,9 @@ async function onJoin(member) {
     await userAuthorized.save();
   const team = await teamData.findById(userAuthorized.teamId);
   if (team && team.teamTag) {
-    member.setNickname(team.teamTag + " | " + member.user.globalName);
+    const name = team.teamTag + " | " + (member.user.globalName || member.user.username);
+    member.setNickname(name);
+    logger.info(`Nickname set to ${name} for ${member.user.username}`);
   }
 }
 
