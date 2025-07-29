@@ -41,6 +41,10 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(express.static(__dirname + "/public"));
 
+const roleManagerActiveStatus = require("./discord/roleManager.json");
+const { Commands } = require('./module/whatsapp');
+const { sendGACData } = require('./discord/gacCreds');
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
@@ -224,12 +228,12 @@ app.listen(3001, async () => {
         //     }
         // });
 
-        // client.on('messageCreate', async (message) => {
-        //     if (message.author.bot) return;
-        //     if(message.content === "GAC Credentials"){
-        //         await sendGACData(message);
-        //     } 
-        //   });
+        client.on('messageCreate', async (message) => {
+            if (message.author.bot) return;
+            if(message.content === "GAC Credentials"){
+                await sendGACData(message);
+            } 
+          });
 
         await client.login(token);
     } catch (error) {
@@ -273,10 +277,6 @@ app.post('/api/sendResult', async (req, res) => {
     }
 }
 )
-
-const roleManagerActiveStatus = require("./discord/roleManager.json");
-const { Commands } = require('./module/whatsapp');
-const { sendGACData } = require('./discord/gacCreds');
 
 app.post('/api/activateRoleManager', (req, res) => {
     const { activate } = req.body;
