@@ -142,7 +142,7 @@ app.listen(3001, async () => {
         });
 
         client.on("guildMemberAdd", async (member) => {
-            if(member.guild.id != "1398460305893359646") return;
+            if(member.guild.id != "1413763382120546356") return;
             console.log(`New member joined: ${member.user.username} (${member.id})`);
             
             await onJoin(member);
