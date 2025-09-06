@@ -110,6 +110,9 @@ async function verify(interaction) {
               .setTitle("Verification Failed")
               .setDescription("Invalid OTP provided. Please try again.")
               .setColor("#FF0000");
+
+          logger.info(`Invalid OTP provided by ${interaction.user.username}, Expected: ${user.otp}, Provided: ${otp}`);
+          return;
       } else {
           const roles = user.role;
           for (const role of roles) {
@@ -549,14 +552,6 @@ async function removeCommands(interaction){
     console.error(error);
     await interaction.reply("An error occurred while removing the command");
   }
-}
-
-const region = {
-  804:"Asia",
-  805:"Europe",
-  806:"Middle East",
-  807:"North America",
-  810:"South America"
 }
 
 async function claimGroupRole(interaction){
