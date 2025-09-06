@@ -89,8 +89,9 @@ async function verify(interaction) {
   try {
       await interaction.deferReply();
 
+      const guild = await guildData.findOne({ guildId: interaction.guild.id });
       const otp = interaction.options.getNumber("otp");
-      const user = await userData.findOne({ sender: interaction.user.username });
+      const user = await userData.findOne({ sender: interaction.user.username, guild: guild._id });
 
       if (!user) {
           const messageEmbed = new EmbedBuilder()
@@ -104,14 +105,14 @@ async function verify(interaction) {
           return;
       }
 
-      let MessageEmbed;
       if (otp !== user.otp) {
-          MessageEmbed = new EmbedBuilder()
+         const MessageEmbed = new EmbedBuilder()
               .setTitle("Verification Failed")
               .setDescription("Invalid OTP provided. Please try again.")
               .setColor("#FF0000");
 
           logger.info(`Invalid OTP provided by ${interaction.user.username}, Expected: ${user.otp}, Provided: ${otp}`);
+           await interaction.editReply({ embeds: [MessageEmbed] });
           return;
       } else {
           const roles = user.role;
@@ -148,16 +149,16 @@ async function verify(interaction) {
 
           logger.info(`User ${user.discordTag} verified successfully`);
 
-          MessageEmbed = new EmbedBuilder()
+          const MessageEmbed = new EmbedBuilder()
               .setTitle("Verification Successful")
               .setDescription("You have been successfully verified.")
               .setColor("#00FF00");
-      }
 
-      await interaction.editReply({ embeds: [MessageEmbed] });
-      setTimeout(() => {
-          interaction.channel?.delete().catch(console.error);
-      }, 2000);
+        await interaction.editReply({ embeds: [MessageEmbed] });
+        setTimeout(() => {
+            interaction.channel?.delete().catch(console.error);
+        }, 2000);
+      }
 
   } catch (error) {
       console.error("Error during verification:", error);
